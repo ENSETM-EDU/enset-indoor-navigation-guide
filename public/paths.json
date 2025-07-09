@@ -1,0 +1,83 @@
+[
+  {
+    "id": "Porte1ToAmphitheatre",
+    "from": "Porte 1",
+    "to": "Amphithéâtre",
+    "time": "2 min",
+    "path": "photos-navigation/Porte1ToAmphitheatre",
+    "title": "Bienvenue à l'ENSET",
+    "description": "Une belle cérémonie pour célébrer votre diplôme. En suivant ce trajet, vous arriverez rapidement à la salle principale."
+  },
+  {
+    "id": "Porte2ToAmphitheatre",
+    "from": "Porte 2",
+    "to": "Amphithéâtre",
+    "time": "2 min",
+    "path": "photos-navigation/Porte2ToAmphitheatre",
+    "title": "Bienvenue à l'ENSET",
+    "description": "Vous allez assister à la cérémonie depuis la porte 2. Suivez le chemin pour rejoindre l’amphithéâtre en toute simplicité."
+  },
+  {
+    "id": "AmphitheatreToToilettesHomme",
+    "from": "Amphithéâtre",
+    "to": "Toilettes Hommes",
+    "time": "1 min",
+    "path": "photos-navigation/AmphitheatreToToilettesHomme",
+    "title": "Besoin d'une pause ?",
+    "description": "Suivez ce trajet pour rejoindre les toilettes pour hommes situées à proximité."
+  },
+  {
+    "id": "AmphitheatreToToilettesFemme",
+    "from": "Amphithéâtre",
+    "to": "Toilettes Femmes",
+    "time": "1 min",
+    "path": "photos-navigation/AmphitheatreToToilettesFemme",
+    "title": "Besoin d'une pause ?",
+    "description": "Ce chemin vous mène directement aux toilettes pour femmes."
+  },
+  {
+    "id": "AmphitheatreToMosqueeHomme",
+    "from": "Amphithéâtre",
+    "to": "Mosquée Hommes",
+    "time": "1 min",
+    "path": "photos-navigation/AmphitheatreToMosqueeHomme",
+    "title": "Temps de prière",
+    "description": "Rejoignez la mosquée pour hommes depuis la salle de cérémonie."
+  },
+  {
+    "id": "AmphitheatreToMosqueeFemme",
+    "from": "Amphithéâtre",
+    "to": "Mosquée Femmes",
+    "time": "1 min",
+    "path": "photos-navigation/AmphitheatreToMosqueeFemme",
+    "title": "Temps de prière",
+    "description": "Voici le trajet à suivre pour accéder à la mosquée pour femmes."
+  },
+  {
+    "id": "AmphitheatreToCafeteria",
+    "from": "Amphithéâtre",
+    "to": "Cafétéria",
+    "time": "1 min",
+    "path": "photos-navigation/AmphitheatreToCafeteria",
+    "title": "Une pause gourmande ?",
+    "description": "Besoin d’un rafraîchissement ou d’un snack ? Ce chemin vous guide vers la cafétéria."
+  },
+  {
+    "id": "toilettes",
+    "title": "Où souhaitez-vous aller ?",
+    "description": "Veuillez choisir votre genre pour accéder au bon chemin vers les toilettes.",
+    "options": {
+      "homme": "AmphitheatreToToilettesHomme",
+      "femme": "AmphitheatreToToilettesFemme"
+    }
+  },
+  {
+    "id": "mosquee",
+    "title": "Direction la mosquée",
+    "description": "Merci de choisir votre genre afin de vous guider vers la mosquée correspondante.",
+    "options": {
+      "homme": "AmphitheatreToMosqueeHomme",
+      "femme": "AmphitheatreToMosqueeFemme"
+    }
+  }
+]
