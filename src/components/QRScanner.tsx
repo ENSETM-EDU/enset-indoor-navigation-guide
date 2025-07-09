@@ -41,31 +41,50 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess }) => {
     }
   };
 
-  const startScanner = () => {
-    if (scannerRef.current) {
-      scannerRef.current.clear();
-    }
+  const startScanner = async () => {
+    try {
+      // Vérifier d'abord si on a accès à la caméra
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        video: { 
+          facingMode: useFrontCamera ? 'user' : 'environment' 
+        } 
+      });
+      stream.getTracks().forEach(track => track.stop()); // Libérer le stream
 
-    const scanner = new Html5QrcodeScanner(
-      'qr-reader',
-      {
-        fps: 10,
-        qrbox: { width: 250, height: 250 },
-        aspectRatio: 1.0,
-        disableFlip: false,
-        videoConstraints: {
-          facingMode: useFrontCamera ? 'user' : 'environment'
+      if (scannerRef.current) {
+        scannerRef.current.clear();
+      }
+
+      const scanner = new Html5QrcodeScanner(
+        'qr-reader',
+        {
+          fps: 10,
+          qrbox: { width: 250, height: 250 },
+          aspectRatio: 1.0,
+          disableFlip: false,
+          videoConstraints: {
+            facingMode: useFrontCamera ? 'user' : 'environment'
+          }
+        },
+        false
+      );
+
+      scanner.render(
+        handleSuccessfulScan,
+        (error) => {
+          console.warn('QR Code scan error:', error);
+          setError('Erreur lors du scan. Veuillez réessayer.');
         }
-      },
-      false
-    );
+      );
 
-    scanner.render(handleSuccessfulScan, (error) => {
-      console.warn('QR Code scan error:', error);
-    });
-
-    scannerRef.current = scanner;
-    setScanning(true);
+      scannerRef.current = scanner;
+      setScanning(true);
+      setError(''); // Effacer les erreurs précédentes
+    } catch (error) {
+      console.error('Camera access error:', error);
+      setError('Impossible d\'accéder à la caméra. Veuillez vérifier les permissions.');
+      setScanning(false);
+    }
   };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {

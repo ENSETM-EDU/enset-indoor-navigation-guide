@@ -187,7 +187,7 @@ const NavigationPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex-1 flex flex-col mt-12">
+            <div className="flex-1 flex flex-col mt-6">
               <div className="flex-1 bg-white/80 backdrop-blur-sm rounded-t-3xl border border-b-0 border-gray-200/50 shadow-xl overflow-hidden">
                 <AnimatePresence mode="wait">
                   {isLastStep ? (
