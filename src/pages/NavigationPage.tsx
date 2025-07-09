@@ -245,7 +245,7 @@ const NavigationPage: React.FC = () => {
                         <motion.img
                           src={images[currentStep]}
                           alt={`Étape ${currentStep + 1}`}
-                          className="w-full h-[70vh] object-cover"
+                          className="w-full h-[67vh] object-cover"
                           onClick={nextStep}
                           loading="lazy"
                           initial={{ scale: 1 }}

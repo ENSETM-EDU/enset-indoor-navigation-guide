@@ -14,55 +14,83 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess }) => {
   const [error, setError] = useState<string>('');
   const [scanning, setScanning] = useState(true);
   const [success, setSuccess] = useState(false);
+  const [permissionRequested, setPermissionRequested] = useState(false);
 
   useEffect(() => {
-    const scanner = new Html5QrcodeScanner(
-      'qr-reader',
-      {
-        fps: 10,
-        qrbox: { width: 250, height: 250 },
-        aspectRatio: 1.0,
-        disableFlip: false,
-      },
-      false
-    );
-
-    scanner.render(
-      (decodedText) => {
-        setSuccess(true);
-        setScanning(false);
-        
-        // Analyser l'URL scannée
-        try {
-          const url = new URL(decodedText);
-          const pathParts = url.pathname.split('/');
-          
-          if (pathParts.includes('navigate') && pathParts.length >= 3) {
-            const id = pathParts[pathParts.indexOf('navigate') + 1];
-            setTimeout(() => {
-              navigate(`/navigate/${id}`);
-              onScanSuccess();
-            }, 1000);
-          } else {
-            setError('QR Code invalide. Veuillez utiliser un QR Code de navigation ENSET.');
-            setSuccess(false);
-          }
-        } catch (e) {
-          setError('Format de QR Code non reconnu.');
-          setSuccess(false);
+    const initializeScanner = async () => {
+      try {
+        // Demander la permission de caméra explicitement
+        if (!permissionRequested) {
+          setPermissionRequested(true);
         }
-      },
-      (error) => {
-        console.warn('QR Code scan error:', error);
-      }
-    );
+        
+        const scanner = new Html5QrcodeScanner(
+          'qr-reader',
+          {
+            fps: 10,
+            qrbox: { width: 250, height: 250 },
+            aspectRatio: 1.0,
+            disableFlip: false,
+            // Configuration pour utiliser directement la caméra arrière
+            videoConstraints: {
+              facingMode: "environment" // Force l'utilisation de la caméra arrière
+            },
+            // Éviter de montrer le sélecteur de caméra
+            showTorchButtonIfSupported: true,
+            formatsToSupport: [0] // QR Code uniquement
+          },
+          false
+        );
 
-    scannerRef.current = scanner;
+        scanner.render(
+          (decodedText) => {
+            setSuccess(true);
+            setScanning(false);
+            
+            // Analyser l'URL scannée
+            try {
+              const url = new URL(decodedText);
+              const pathParts = url.pathname.split('/');
+              
+              if (pathParts.includes('navigate') && pathParts.length >= 3) {
+                const id = pathParts[pathParts.indexOf('navigate') + 1];
+                setTimeout(() => {
+                  navigate(`/navigate/${id}`);
+                  onScanSuccess();
+                }, 1000);
+              } else {
+                setError('QR Code invalide. Veuillez utiliser un QR Code de navigation ENSET.');
+                setSuccess(false);
+              }
+            } catch (e) {
+              setError('Format de QR Code non reconnu.');
+              setSuccess(false);
+            }
+          },
+          (error) => {
+            console.warn('QR Code scan error:', error);
+            // Gérer les erreurs de permission de caméra
+            if (error.includes('Permission') || error.includes('NotAllowedError')) {
+              setError('Permission de caméra refusée. Veuillez autoriser l\'accès à la caméra dans les paramètres de votre navigateur.');
+            }
+          }
+        );
+
+        scannerRef.current = scanner;
+      } catch (error) {
+        console.error('Erreur d\'initialisation du scanner:', error);
+        setError('Impossible d\'accéder à la caméra. Vérifiez les permissions.');
+      }
+    };
+
+    initializeScanner();
 
     return () => {
-      scanner.clear();
+      if (scannerRef.current) {
+        scannerRef.current.clear();
+      }
     };
-  }, [navigate, onScanSuccess]);
+  }, [navigate, onScanSuccess, permissionRequested]);
 
   return (
     <motion.div
@@ -86,7 +114,9 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess }) => {
           <p className="text-gray-600 text-sm mt-2">
             {success 
               ? 'Redirection en cours...' 
-              : 'Positionnez le QR Code dans le cadre'
+              : !permissionRequested
+                ? 'Autorisation de caméra nécessaire'
+                : 'Positionnez le QR Code dans le cadre'
             }
           </p>
         </div>
