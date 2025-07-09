@@ -151,7 +151,7 @@ const NavigationPage: React.FC = () => {
   const isLastStep = currentStep === totalSteps - 1;
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       <AnimatePresence>
         {showModal && (
           <NavigationModal
@@ -167,7 +167,7 @@ const NavigationPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="h-screen flex flex-col overflow-hidden"
+          className=" flex flex-col overflow-hidden"
         >
           <div className="px-4 py-2">
             <ProgressBar current={currentStep + 1} total={totalSteps} />
@@ -199,7 +199,7 @@ const NavigationPage: React.FC = () => {
                       transition={{ duration: 0.4 }}
                       className="relative text-center p-6 flex flex-col items-center justify-center h-full"
                     >
-                      <div 
+                      <div
                         className="absolute inset-0 z-0"
                         style={{
                           backgroundImage: `url(${images[images.length - 1]})`,
@@ -245,7 +245,7 @@ const NavigationPage: React.FC = () => {
                         <motion.img
                           src={images[currentStep]}
                           alt={`Étape ${currentStep + 1}`}
-                          className="w-full h-full object-cover"
+                          className="w-full h-[70vh] object-cover"
                           onClick={nextStep}
                           loading="lazy"
                           initial={{ scale: 1 }}
