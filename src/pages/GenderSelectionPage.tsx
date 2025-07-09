@@ -73,20 +73,18 @@ const GenderSelectionPage: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => handleGenderSelection('homme')}
-              className="w-full button-primary text-white px-6 py-4 rounded-2xl font-medium text-lg flex items-center justify-center space-x-3"
+              className="w-full button-primary text-white px-6 py-4 rounded-2xl font-medium text-lg"
             >
-              <span>👨</span>
-              <span>Homme</span>
+              Homme
             </motion.button>
 
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => handleGenderSelection('femme')}
-              className="w-full button-primary text-white px-6 py-4 rounded-2xl font-medium text-lg flex items-center justify-center space-x-3"
+              className="w-full button-primary text-white px-6 py-4 rounded-2xl font-medium text-lg"
             >
-              <span>👩</span>
-              <span>Femme</span>
+              Femme
             </motion.button>
           </div>
 
