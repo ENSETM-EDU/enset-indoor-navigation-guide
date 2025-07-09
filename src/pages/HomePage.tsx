@@ -1,28 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { QrCode, Navigation, Award, Users } from 'lucide-react';
+import { QrCode } from 'lucide-react';
 import QRScanner from '../components/QRScanner';
 
 const HomePage: React.FC = () => {
   const [showScanner, setShowScanner] = useState(false);
-
-  const features = [
-    {
-      icon: <Navigation className="w-8 h-8" />,
-      title: "Navigation Guidée",
-      description: "Suivez des parcours étape par étape avec des images détaillées"
-    },
-    {
-      icon: <Award className="w-8 h-8" />,
-      title: "Cérémonie de Remise",
-      description: "Trouvez facilement votre chemin vers l'amphithéâtre"
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Accessibilité",
-      description: "Directions vers les toilettes et lieux de prière"
-    }
-  ];
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -74,34 +56,6 @@ const HomePage: React.FC = () => {
           <QRScanner onScanSuccess={() => setShowScanner(false)} />
         </motion.div>
       )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
-      >
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-            whileHover={{ y: -5 }}
-            className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-700 rounded-2xl flex items-center justify-center mb-6 mx-auto text-white">
-              {feature.icon}
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-              {feature.title}
-            </h3>
-            <p className="text-gray-600 text-center leading-relaxed">
-              {feature.description}
-            </p>
-          </motion.div>
-        ))}
-      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
