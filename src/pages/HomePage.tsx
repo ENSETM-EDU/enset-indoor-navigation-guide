@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-xl text-gray-600 max-w-2xl mx-auto mb-8"
         >
-          Scannez un QR Code pour commencer votre parcours guidé vers la cérémonie de remise des diplômes
+          Scannez un QR Code pour commencer votre parcours guidé.
         </motion.p>
         
         <motion.button
