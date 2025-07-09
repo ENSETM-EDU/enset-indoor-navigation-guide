@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Html5QrcodeScanner } from 'html5-qrcode';
+import { Html5QrcodeScanner, Html5Qrcode } from 'html5-qrcode';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Camera, AlertCircle, CheckCircle } from 'lucide-react';
+import { Camera, AlertCircle, CheckCircle, Upload, SwitchCamera } from 'lucide-react';
 
 interface QRScannerProps {
   onScanSuccess: () => void;
@@ -12,10 +12,40 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess }) => {
   const navigate = useNavigate();
   const scannerRef = useRef<Html5QrcodeScanner | null>(null);
   const [error, setError] = useState<string>('');
-  const [scanning, setScanning] = useState(true);
+  const [scanning, setScanning] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [useFrontCamera, setUseFrontCamera] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
+  const handleSuccessfulScan = (decodedText: string) => {
+    setSuccess(true);
+    setScanning(false);
+    
+    try {
+      const url = new URL(decodedText);
+      const pathParts = url.pathname.split('/');
+      
+      if (pathParts.includes('navigate') && pathParts.length >= 3) {
+        const id = pathParts[pathParts.indexOf('navigate') + 1];
+        setTimeout(() => {
+          navigate(`/navigate/${id}`);
+          onScanSuccess();
+        }, 1000);
+      } else {
+        setError('QR Code invalide. Veuillez utiliser un QR Code de navigation ENSET.');
+        setSuccess(false);
+      }
+    } catch (e) {
+      setError('Format de QR Code non reconnu.');
+      setSuccess(false);
+    }
+  };
+
+  const startScanner = () => {
+    if (scannerRef.current) {
+      scannerRef.current.clear();
+    }
+
     const scanner = new Html5QrcodeScanner(
       'qr-reader',
       {
@@ -23,46 +53,52 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess }) => {
         qrbox: { width: 250, height: 250 },
         aspectRatio: 1.0,
         disableFlip: false,
+        videoConstraints: {
+          facingMode: useFrontCamera ? 'user' : 'environment'
+        }
       },
       false
     );
 
-    scanner.render(
-      (decodedText) => {
-        setSuccess(true);
-        setScanning(false);
-        
-        // Analyser l'URL scannée
-        try {
-          const url = new URL(decodedText);
-          const pathParts = url.pathname.split('/');
-          
-          if (pathParts.includes('navigate') && pathParts.length >= 3) {
-            const id = pathParts[pathParts.indexOf('navigate') + 1];
-            setTimeout(() => {
-              navigate(`/navigate/${id}`);
-              onScanSuccess();
-            }, 1000);
-          } else {
-            setError('QR Code invalide. Veuillez utiliser un QR Code de navigation ENSET.');
-            setSuccess(false);
-          }
-        } catch (e) {
-          setError('Format de QR Code non reconnu.');
-          setSuccess(false);
-        }
-      },
-      (error) => {
-        console.warn('QR Code scan error:', error);
-      }
-    );
+    scanner.render(handleSuccessfulScan, (error) => {
+      console.warn('QR Code scan error:', error);
+    });
 
     scannerRef.current = scanner;
+    setScanning(true);
+  };
 
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const html5QrcodeFile = new Html5Qrcode("qr-reader");
+      const result = await html5QrcodeFile.scanFile(file, true);
+      handleSuccessfulScan(result);
+    } catch (error) {
+      setError('Impossible de lire le QR code dans l\'image.');
+      setSuccess(false);
+    }
+  };
+
+  const toggleCamera = () => {
+    setUseFrontCamera(!useFrontCamera);
+    if (scanning) {
+      if (scannerRef.current) {
+        scannerRef.current.clear();
+      }
+      startScanner();
+    }
+  };
+
+  useEffect(() => {
     return () => {
-      scanner.clear();
+      if (scannerRef.current) {
+        scannerRef.current.clear();
+      }
     };
-  }, [navigate, onScanSuccess]);
+  }, []);
 
   return (
     <motion.div
@@ -86,14 +122,48 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess }) => {
           <p className="text-gray-600 text-sm mt-2">
             {success 
               ? 'Redirection en cours...' 
-              : 'Positionnez le QR Code dans le cadre'
+              : scanning 
+                ? 'Positionnez le QR Code dans le cadre'
+                : 'Choisissez une méthode de scan'
             }
           </p>
         </div>
 
+        {!scanning && !success && (
+          <div className="flex flex-col gap-4">
+            <button
+              onClick={startScanner}
+              className="w-full py-3 px-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+            >
+              <Camera className="w-5 h-5" />
+              Utiliser la caméra
+            </button>
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              className="w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+            >
+              <Upload className="w-5 h-5" />
+              Télécharger une image
+            </button>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileUpload}
+              ref={fileInputRef}
+              className="hidden"
+            />
+          </div>
+        )}
+
         {scanning && !success && (
-          <div className="qr-scanner-container">
+          <div className="qr-scanner-container relative">
             <div id="qr-reader" className="w-full"></div>
+            <button
+              onClick={toggleCamera}
+              className="absolute top-2 right-2 p-2 bg-white/80 rounded-full hover:bg-white transition-colors"
+            >
+              <SwitchCamera className="w-6 h-6 text-gray-700" />
+            </button>
           </div>
         )}
 
@@ -123,11 +193,13 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess }) => {
           </motion.div>
         )}
 
-        <div className="mt-6 text-center">
-          <p className="text-xs text-gray-500">
-            Assurez-vous que votre caméra est activée et que le QR Code est bien éclairé
-          </p>
-        </div>
+        {scanning && (
+          <div className="mt-6 text-center">
+            <p className="text-xs text-gray-500">
+              Assurez-vous que votre caméra est activée et que le QR Code est bien éclairé
+            </p>
+          </div>
+        )}
       </div>
     </motion.div>
   );

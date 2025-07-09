@@ -167,12 +167,14 @@ const NavigationPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex-1 flex flex-col"
+          className="h-screen flex flex-col overflow-hidden"
         >
-          <ProgressBar current={currentStep + 1} total={totalSteps} />
+          <div className="px-4 py-2">
+            <ProgressBar current={currentStep + 1} total={totalSteps} />
+          </div>
 
-          <div className="flex-1 flex flex-col p-4">
-            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-10 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+          <div className="flex-1 flex flex-col px-4 relative">
+            <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
               <div className="flex items-center justify-center space-x-3 text-sm">
                 <div className="flex items-center space-x-1">
                   <Clock className="w-4 h-4 text-gray-600" />
@@ -185,7 +187,7 @@ const NavigationPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex-1 flex flex-col mt-16">
+            <div className="flex-1 flex flex-col mt-12">
               <div className="flex-1 bg-white/80 backdrop-blur-sm rounded-t-3xl border border-b-0 border-gray-200/50 shadow-xl overflow-hidden">
                 <AnimatePresence mode="wait">
                   {isLastStep ? (
