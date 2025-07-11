@@ -10,6 +10,7 @@ interface PathData {
   from: string;
   to: string;
   time: string;
+  steps: number;
   path: string;
   title: string;
   description: string;
@@ -22,8 +23,10 @@ const NavigationPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [totalSteps, setTotalSteps] = useState(0);
   const [showModal, setShowModal] = useState(true);
-  const [images, setImages] = useState<string[]>([]);
+  const [currentImage, setCurrentImage] = useState<string>('');
+  const [imageCache, setImageCache] = useState<Map<number, string>>(new Map());
   const [loading, setLoading] = useState(true);
+  const [imageLoading, setImageLoading] = useState(false);
 
   useEffect(() => {
     const loadPathData = async () => {
@@ -40,7 +43,9 @@ const NavigationPage: React.FC = () => {
 
         if (path) {
           setPathData(path);
-          await loadImages(path.path);
+          setTotalSteps(path.steps);
+          // Charger la première image
+          await loadImageForStep(path.path, 1);
         } else {
           console.error('Parcours non trouvé');
         }
@@ -54,68 +59,80 @@ const NavigationPage: React.FC = () => {
     loadPathData();
   }, [id, navigate]);
 
-  const loadImages = async (pathDir: string) => {
-    const imageUrls: string[] = [];
-    let step = 1;
-    const maxSteps = 100; // Safety limit to prevent infinite loops
+  const loadImageForStep = async (pathDir: string, stepNumber: number) => {
+    // Vérifier si l'image est déjà en cache
+    if (imageCache.has(stepNumber)) {
+      setCurrentImage(imageCache.get(stepNumber)!);
+      return;
+    }
+
+    setImageLoading(true);
+    const imagePath = `${pathDir}/${stepNumber}.png`;
 
     try {
-      // Load numbered images (1.png, 2.png, 3.png, etc.)
-      while (step <= maxSteps) {
-        const imagePath = `${pathDir}/${step}.png`;
+      // Vérifier si l'image existe
+      const imageExists = await new Promise<boolean>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = imagePath;
+      });
 
-        try {
-          // Create a promise to check if image exists
-          const imageExists = await new Promise<boolean>((resolve) => {
-            const img = new Image();
-            img.onload = () => resolve(true);
-            img.onerror = () => resolve(false);
-            img.src = imagePath;
-          });
-
-          if (imageExists) {
-            imageUrls.push(imagePath);
-            step++;
-          } else {
-            // No more images found, break the loop
-            break;
-          }
-        } catch (error) {
-          console.error(`Erreur lors du chargement de l'image ${step}:`, error);
-          break;
-        }
-      }
-
-      if (imageUrls.length > 0) {
-        setImages(imageUrls);
-        setTotalSteps(imageUrls.length);
+      if (imageExists) {
+        // Mettre en cache l'image
+        setImageCache(prev => new Map(prev).set(stepNumber, imagePath));
+        setCurrentImage(imagePath);
       } else {
-        console.error('Aucune image trouvée pour ce parcours');
+        console.error(`Image non trouvée pour l'étape ${stepNumber}`);
       }
     } catch (error) {
-      console.error('Erreur générale lors du chargement des images:', error);
+      console.error(`Erreur lors du chargement de l'image ${stepNumber}:`, error);
+    } finally {
+      setImageLoading(false);
     }
   };
 
-  const nextStep = () => {
+  const nextStep = async () => {
     if (currentStep < totalSteps - 1) {
-      setCurrentStep(currentStep + 1);
+      const newStep = currentStep + 1;
+      setCurrentStep(newStep);
+      if (pathData) {
+        await loadImageForStep(pathData.path, newStep + 1);
+      }
     }
   };
 
-  const prevStep = () => {
+  const prevStep = async () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      const newStep = currentStep - 1;
+      setCurrentStep(newStep);
+      if (pathData) {
+        await loadImageForStep(pathData.path, newStep + 1);
+      }
     }
   };
 
-  const restart = () => {
+  const restart = async () => {
     setCurrentStep(0);
+    if (pathData) {
+      await loadImageForStep(pathData.path, 1);
+    }
   };
 
   const startNavigation = () => {
     setShowModal(false);
   };
+
+  // Précharger l'image suivante pour une meilleure expérience utilisateur
+  useEffect(() => {
+    if (pathData && currentStep < totalSteps - 1) {
+      const nextStepNumber = currentStep + 2; // +2 car currentStep est 0-indexed mais les images sont 1-indexed
+      if (nextStepNumber <= totalSteps && !imageCache.has(nextStepNumber)) {
+        // Précharger en arrière-plan sans attendre
+        loadImageForStep(pathData.path, nextStepNumber);
+      }
+    }
+  }, [currentStep, pathData, totalSteps, imageCache]);
 
   if (loading) {
     return (
@@ -202,7 +219,7 @@ const NavigationPage: React.FC = () => {
                       <div
                         className="absolute inset-0 z-0"
                         style={{
-                          backgroundImage: `url(${images[images.length - 1]})`,
+                          backgroundImage: currentImage ? `url(${currentImage})` : 'none',
                           backgroundSize: 'cover',
                           backgroundPosition: 'center',
                           opacity: 0.3
@@ -242,16 +259,22 @@ const NavigationPage: React.FC = () => {
                       className="h-full"
                     >
                       <div className="h-full relative overflow-hidden">
-                        <motion.img
-                          src={images[currentStep]}
-                          alt={`Étape ${currentStep + 1}`}
-                          className="w-full h-[67vh] object-cover"
-                          onClick={nextStep}
-                          loading="lazy"
-                          initial={{ scale: 1 }}
-                          animate={{ scale: 1.05 }}
-                          transition={{ duration: 3, ease: "easeOut" }}
-                        />
+                        {imageLoading ? (
+                          <div className="w-full h-[67vh] flex items-center justify-center bg-gray-100">
+                            <div className="w-8 h-8 border-4 border-blue-900 border-t-transparent rounded-full animate-spin"></div>
+                          </div>
+                        ) : (
+                          <motion.img
+                            src={currentImage}
+                            alt={`Étape ${currentStep + 1}`}
+                            className="w-full h-[67vh] object-cover"
+                            onClick={nextStep}
+                            loading="lazy"
+                            initial={{ scale: 1 }}
+                            animate={{ scale: 1.05 }}
+                            transition={{ duration: 3, ease: "easeOut" }}
+                          />
+                        )}
                       </div>
                     </motion.div>
                   )}
