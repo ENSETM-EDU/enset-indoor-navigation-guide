@@ -27,6 +27,7 @@ const NavigationPage: React.FC = () => {
   const [imageCache, setImageCache] = useState<Map<number, string>>(new Map());
   const [loading, setLoading] = useState(true);
   const [imageLoading, setImageLoading] = useState(false);
+  const [preloadingImages, setPreloadingImages] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const loadPathData = async () => {
@@ -44,8 +45,8 @@ const NavigationPage: React.FC = () => {
         if (path) {
           setPathData(path);
           setTotalSteps(path.steps);
-          // Charger la première image
-          await loadImageForStep(path.path, 1);
+          // Charger les 2 premières images au début
+          await loadInitialImages(path.path, path.steps);
         } else {
           console.error('Parcours non trouvé');
         }
@@ -59,10 +60,92 @@ const NavigationPage: React.FC = () => {
     loadPathData();
   }, [id, navigate]);
 
+  // Fonction pour charger une image sans affecter l'état de loading global
+  const preloadImage = async (pathDir: string, stepNumber: number): Promise<string | null> => {
+    // Vérifier si l'image est déjà en cache
+    if (imageCache.has(stepNumber)) {
+      return imageCache.get(stepNumber)!;
+    }
+
+    // Vérifier si on est déjà en train de charger cette image
+    if (preloadingImages.has(stepNumber)) {
+      return null;
+    }
+
+    setPreloadingImages(prev => new Set(prev).add(stepNumber));
+    const imagePath = `${pathDir}/${stepNumber}.png`;
+
+    try {
+      const imageExists = await new Promise<boolean>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = imagePath;
+      });
+
+      if (imageExists) {
+        setImageCache(prev => new Map(prev).set(stepNumber, imagePath));
+        return imagePath;
+      }
+    } catch (error) {
+      console.error(`Erreur lors du préchargement de l'image ${stepNumber}:`, error);
+    } finally {
+      setPreloadingImages(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(stepNumber);
+        return newSet;
+      });
+    }
+
+    return null;
+  };
+
+  // Fonction pour charger les images initiales (2 premières)
+  const loadInitialImages = async (pathDir: string, pathSteps: number) => {
+    setImageLoading(true);
+    
+    try {
+      // Charger la première image (obligatoire)
+      const firstImage = await preloadImage(pathDir, 1);
+      if (firstImage) {
+        setCurrentImage(firstImage);
+      }
+
+      // Charger la deuxième image en parallèle (si elle existe)
+      if (pathSteps > 1) {
+        preloadImage(pathDir, 2); // Ne pas attendre
+      }
+    } finally {
+      setImageLoading(false);
+    }
+  };
+
+  // Fonction pour précharger les images suivantes (2 à la fois)
+  const preloadNextImages = async (pathDir: string, currentStepNumber: number) => {
+    const imagesToPreload = [];
+    
+    // Précharger les 2 images suivantes
+    for (let i = 1; i <= 2; i++) {
+      const nextStep = currentStepNumber + i;
+      if (nextStep <= totalSteps && !imageCache.has(nextStep) && !preloadingImages.has(nextStep)) {
+        imagesToPreload.push(preloadImage(pathDir, nextStep));
+      }
+    }
+
+    // Lancer le préchargement en parallèle sans attendre
+    if (imagesToPreload.length > 0) {
+      Promise.all(imagesToPreload).catch(error => {
+        console.error('Erreur lors du préchargement des images suivantes:', error);
+      });
+    }
+  };
+
   const loadImageForStep = async (pathDir: string, stepNumber: number) => {
     // Vérifier si l'image est déjà en cache
     if (imageCache.has(stepNumber)) {
       setCurrentImage(imageCache.get(stepNumber)!);
+      // Lancer le préchargement des images suivantes
+      preloadNextImages(pathDir, stepNumber);
       return;
     }
 
@@ -82,6 +165,8 @@ const NavigationPage: React.FC = () => {
         // Mettre en cache l'image
         setImageCache(prev => new Map(prev).set(stepNumber, imagePath));
         setCurrentImage(imagePath);
+        // Lancer le préchargement des images suivantes
+        preloadNextImages(pathDir, stepNumber);
       } else {
         console.error(`Image non trouvée pour l'étape ${stepNumber}`);
       }
@@ -122,17 +207,6 @@ const NavigationPage: React.FC = () => {
   const startNavigation = () => {
     setShowModal(false);
   };
-
-  // Précharger l'image suivante pour une meilleure expérience utilisateur
-  useEffect(() => {
-    if (pathData && currentStep < totalSteps - 1) {
-      const nextStepNumber = currentStep + 2; // +2 car currentStep est 0-indexed mais les images sont 1-indexed
-      if (nextStepNumber <= totalSteps && !imageCache.has(nextStepNumber)) {
-        // Précharger en arrière-plan sans attendre
-        loadImageForStep(pathData.path, nextStepNumber);
-      }
-    }
-  }, [currentStep, pathData, totalSteps, imageCache]);
 
   if (loading) {
     return (
@@ -201,6 +275,12 @@ const NavigationPage: React.FC = () => {
                   <MapPin className="w-4 h-4 text-gray-600" />
                   <span className="text-gray-700">{currentStep + 1}/{totalSteps}</span>
                 </div>
+                {preloadingImages.size > 0 && (
+                  <div className="flex items-center space-x-1">
+                    <div className="w-3 h-3 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <span className="text-blue-600 text-xs">Préchargement...</span>
+                  </div>
+                )}
               </div>
             </div>
 
