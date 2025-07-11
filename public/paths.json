@@ -4,7 +4,7 @@
     "from": "Porte 1",
     "to": "Amphithéâtre",
     "time": "2 min",
-    "path": "photos-navigation/Porte1ToAmphitheatre",
+    "path": "https://img.enset.ma/photos-navigation/Porte1ToAmphitheatre",
     "title": "Bienvenue à l'ENSET",
     "description": "Une belle cérémonie pour célébrer votre diplôme. En suivant ce trajet, vous arriverez rapidement à la salle principale."
   },
@@ -13,7 +13,7 @@
     "from": "Porte 2",
     "to": "Amphithéâtre",
     "time": "2 min",
-    "path": "photos-navigation/Porte2ToAmphitheatre",
+    "path": "https://img.enset.ma/photos-navigation/Porte2ToAmphitheatre",
     "title": "Bienvenue à l'ENSET",
     "description": "Vous allez assister à la cérémonie depuis la porte 2. Suivez le chemin pour rejoindre l’amphithéâtre en toute simplicité."
   },
@@ -22,7 +22,7 @@
     "from": "Amphithéâtre",
     "to": "Toilettes Hommes",
     "time": "1 min",
-    "path": "photos-navigation/AmphitheatreToToilettesHomme",
+    "path": "https://img.enset.ma/photos-navigation/AmphitheatreToToilettesHomme",
     "title": "Besoin d'une pause ?",
     "description": "Suivez ce trajet pour rejoindre les toilettes pour hommes situées à proximité."
   },
@@ -31,7 +31,7 @@
     "from": "Amphithéâtre",
     "to": "Toilettes Femmes",
     "time": "1 min",
-    "path": "photos-navigation/AmphitheatreToToilettesFemme",
+    "path": "https://img.enset.ma/photos-navigation/AmphitheatreToToilettesFemme",
     "title": "Besoin d'une pause ?",
     "description": "Ce chemin vous mène directement aux toilettes pour femmes."
   },
@@ -40,7 +40,7 @@
     "from": "Amphithéâtre",
     "to": "Mosquée Hommes",
     "time": "1 min",
-    "path": "photos-navigation/AmphitheatreToMosqueeHomme",
+    "path": "https://img.enset.ma/photos-navigation/AmphitheatreToMosqueeHomme",
     "title": "Temps de prière",
     "description": "Rejoignez la mosquée pour hommes depuis la salle de cérémonie."
   },
@@ -49,7 +49,7 @@
     "from": "Amphithéâtre",
     "to": "Mosquée Femmes",
     "time": "1 min",
-    "path": "photos-navigation/AmphitheatreToMosqueeFemme",
+    "path": "https://img.enset.ma/photos-navigation/AmphitheatreToMosqueeFemme",
     "title": "Temps de prière",
     "description": "Voici le trajet à suivre pour accéder à la mosquée pour femmes."
   },
@@ -58,7 +58,7 @@
     "from": "Amphithéâtre",
     "to": "Cafétéria",
     "time": "1 min",
-    "path": "photos-navigation/AmphitheatreToCafeteria",
+    "path": "https://img.enset.ma/photos-navigation/AmphitheatreToCafeteria",
     "title": "Une pause gourmande ?",
     "description": "Besoin d’un rafraîchissement ou d’un snack ? Ce chemin vous guide vers la cafétéria."
   },

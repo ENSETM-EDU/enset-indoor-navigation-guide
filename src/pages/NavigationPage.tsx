@@ -62,7 +62,7 @@ const NavigationPage: React.FC = () => {
     try {
       // Load numbered images (1.png, 2.png, 3.png, etc.)
       while (step <= maxSteps) {
-        const imagePath = `/${pathDir}/${step}.png`;
+        const imagePath = `${pathDir}/${step}.png`;
 
         try {
           // Create a promise to check if image exists
