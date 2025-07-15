@@ -143,6 +143,61 @@
     "floor_level": 1
   },
   {
+    "id": "Porte2ToAmphi1",
+    "from": "Porte 2",
+    "to": "Amphi 1",
+    "time": "1 min",
+    "steps": 18,
+    "path": "https://img.enset.ma/photos-navigation/Porte2ToAmphi1",
+    "title": "Trajet vers l'amphi 1",
+    "description": "Chemin à suivre pour accéder à l'amphi 1 depuis la porte 2.",
+    "floor_level": 1
+  },
+  {
+    "id": "Porte2ToAmphi2",
+    "from": "Porte 2",
+    "to": "Amphi 2",
+    "time": "1 min",
+    "steps": 17,
+    "path": "https://img.enset.ma/photos-navigation/Porte2ToAmphi2",
+    "title": "Trajet vers l'amphi 2",
+    "description": "Chemin à suivre pour accéder à l'amphi 2 depuis la porte 2.",
+    "floor_level": 1
+  },
+  {
+    "id": "Porte2ToAmphi3",
+    "from": "Porte 2",
+    "to": "Amphi 3",
+    "time": "1 min",
+    "steps": 17,
+    "path": "https://img.enset.ma/photos-navigation/Porte2ToAmphi3",
+    "title": "Trajet vers l'amphi 3",
+    "description": "Chemin à suivre pour accéder à l'amphi 3 depuis la porte 2.",
+    "floor_level": 1
+  },
+  {
+    "id": "Porte2ToAmphi4",
+    "from": "Porte 2",
+    "to": "Amphi 4",
+    "time": "1 min",
+    "steps": 18,
+    "path": "https://img.enset.ma/photos-navigation/Porte2ToAmphi4",
+    "title": "Trajet vers l'amphi 4",
+    "description": "Chemin à suivre pour accéder à l'amphi 4 depuis la porte 2.",
+    "floor_level": 1
+  },
+  {
+    "id": "Porte2ToAmphi5",
+    "from": "Porte 2",
+    "to": "Amphi 5",
+    "time": "1 min",
+    "steps": 19,
+    "path": "https://img.enset.ma/photos-navigation/Porte2ToAmphi5",
+    "title": "Trajet vers l'amphi 5",
+    "description": "Chemin à suivre pour accéder à l'amphi 5 depuis la porte 2.",
+    "floor_level": 1
+  },
+  {
     "id": "toilettes",
     "title": "Où souhaitez-vous aller ?",
     "description": "Veuillez choisir votre genre pour accéder au bon chemin vers les toilettes.",

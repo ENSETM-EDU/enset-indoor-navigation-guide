@@ -1,9 +1,9 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import HomePage from './pages/HomePage';
 import NavigationPage from './pages/NavigationPage';
 import GenderSelectionPage from './pages/GenderSelectionPage';
+import FindMyExamRoomPage from './pages/FindMyExamRoomPage';
 import Header from './components/Header';
 import './App.css';
 
@@ -22,6 +22,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/navigate/:id" element={<NavigationPage />} />
             <Route path="/gender-selection/:type" element={<GenderSelectionPage />} />
+            <Route path="/findmyexamroom/:idConcours" element={<FindMyExamRoomPage />} />
           </Routes>
         </motion.main>
       </div>
