@@ -73,7 +73,7 @@ const NavigationPage: React.FC = () => {
     }
 
     setPreloadingImages(prev => new Set(prev).add(stepNumber));
-    const imagePath = `${pathDir}/${stepNumber}.png`;
+    const imagePath = `${pathDir}/${stepNumber}.webp`;
 
     try {
       const imageExists = await new Promise<boolean>((resolve) => {
@@ -150,7 +150,7 @@ const NavigationPage: React.FC = () => {
     }
 
     setImageLoading(true);
-    const imagePath = `${pathDir}/${stepNumber}.png`;
+    const imagePath = `${pathDir}/${stepNumber}.webp`;
 
     try {
       // Vérifier si l'image existe

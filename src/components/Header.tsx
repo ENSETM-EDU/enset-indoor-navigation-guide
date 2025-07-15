@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const navigate = useNavigate();
 
   const handleHomeClick = () => {
-    navigate('/');
+    // Remplacez par votre navigation
+    console.log('Navigation vers Home');
   };
 
   useEffect(() => {
@@ -25,24 +23,31 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  const headerStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 50,
+    background: 'rgba(255, 255, 255, 0.90)',
+    backdropFilter: 'blur(12px)',
+    borderBottom: '1px solid rgba(229, 231, 235, 0.3)',
+    boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+    transform: `translateY(${isVisible ? '0' : '-100%'})`,
+    opacity: isVisible ? 1 : 0,
+    transition: 'transform 0.3s ease, opacity 0.3s ease'
+  };
+
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ 
-        y: isVisible ? 0 : -100,
-        opacity: isVisible ? 1 : 0
-      }}
-      transition={{ duration: 0.3 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50"
-    >
-      <div className="container mx-auto px-4 py-4">
+    <header style={headerStyle}>
+      <div className="container mx-auto px-3 sm:px-4 py-2.5 sm:py-3">
         <div className="flex items-center justify-between">
-          {/* Logo section - clickable */}
+          {/* Logo section - clickable et plus compact */}
           <button 
             onClick={handleHomeClick}
-            className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200"
+            className="flex items-center space-x-2 sm:space-x-3 hover:opacity-80 transition-all duration-200 group"
           >
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shadow-md overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 group-hover:shadow-lg transition-shadow">
               <img 
                 src="/logo512.png" 
                 alt="ENSET Mohammedia Logo" 
@@ -50,22 +55,28 @@ const Header: React.FC = () => {
               />
             </div>
             <div className="text-left">
-              <h1 className="text-xl font-bold text-gray-900 font-poppins">ENSET Mohammedia</h1>
-              <p className="text-sm text-gray-600 font-poppins">Navigation Guide</p>
+              <h1 className="text-base sm:text-lg font-semibold text-gray-900 leading-tight">
+                ENSET Mohammedia
+              </h1>
+              <p className="text-xs sm:text-sm text-gray-500 hidden sm:block">
+                Navigation Guide
+              </p>
             </div>
           </button>
 
-          {/* Home button */}
+          {/* Home button - adaptatif mobile */}
           <button
             onClick={handleHomeClick}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200 shadow-md"
+            className="flex items-center space-x-1.5 sm:space-x-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
           >
             <Home className="w-4 h-4" />
-            <span className="font-medium font-poppins">Home</span>
+            <span className="font-medium text-sm sm:text-base">
+              Home
+            </span>
           </button>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 };
 
