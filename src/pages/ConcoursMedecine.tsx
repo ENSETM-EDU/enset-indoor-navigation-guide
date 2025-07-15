@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, User, Clock, MapPin, AlertCircle, Loader2, Stethoscope, Moon, Sun, Navigation } from 'lucide-react';
+import { Search, User, Clock, MapPin, AlertCircle, Loader2, Stethoscope, Navigation } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 
@@ -28,7 +28,7 @@ const ConcoursMedecine: React.FC = () => {
   const [examInfo, setExamInfo] = useState<ExamInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark } = useTheme();
   const navigate = useNavigate();
 
   // Fonction pour commencer la navigation
@@ -194,20 +194,6 @@ const ConcoursMedecine: React.FC = () => {
         : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'
     }`}>
       <FloatingBubbles />
-      
-      {/* Toggle Theme Button */}
-      <motion.button
-        onClick={toggleTheme}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className={`fixed top-6 right-6 z-50 p-3 rounded-full shadow-lg transition-all duration-300 ${
-          isDark 
-            ? 'bg-yellow-500 text-yellow-900 hover:bg-yellow-400' 
-            : 'bg-slate-800 text-yellow-400 hover:bg-slate-700'
-        }`}
-      >
-        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-      </motion.button>
       
       <div className="relative z-10 container mx-auto px-4 py-12">
         {/* Hero Section */}

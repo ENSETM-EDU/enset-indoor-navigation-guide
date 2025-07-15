@@ -40,10 +40,10 @@
     "salle_examen": "amphi5"
   },
   {
-    "id": "CE295756",
+    "id": "Z147955",
     "cne": "J168555223",
-    "nom": "Mahmoudi",
-    "prenom": "Lamia",
+    "nom": "Rebbani",
+    "prenom": "Ahmed",
     "numero_examen": 1057,
     "salle_examen": "salle2"
   },
@@ -56,10 +56,10 @@
     "salle_examen": "salle1"
   },
   {
-    "id": "H731557",
+    "id": "M654825",
     "cne": "H799082134",
-    "nom": "Fassi",
-    "prenom": "Sara",
+    "nom": "Haji",
+    "prenom": "Mohammed",
     "numero_examen": 1175,
     "salle_examen": "salle4"
   },
