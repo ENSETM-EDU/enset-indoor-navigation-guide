@@ -5,6 +5,7 @@ import NavigationPage from './pages/NavigationPage';
 import GenderSelectionPage from './pages/GenderSelectionPage';
 import FindMyExamRoomPage from './pages/FindMyExamRoomPage';
 import EnsadPage from './pages/EnsadPage';
+import ConcoursMedecine from './pages/ConcoursMedecine';
 import Header from './components/Header';
 import './App.css';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/navigate/:id" element={<NavigationPage />} />
             <Route path="/gender-selection/:type" element={<GenderSelectionPage />} />
             <Route path="/findmyexamroom/:idConcours" element={<FindMyExamRoomPage />} />
+            <Route path="/concours-medecine" element={<ConcoursMedecine />} />
             <Route path="/ensad" element={<EnsadPage />} />
             <Route path="/ensad/:porte" element={<EnsadPage />} />
           </Routes>
