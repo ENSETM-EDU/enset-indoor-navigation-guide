@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleHomeClick = () => {
-    // Remplacez par votre navigation
-    console.log('Navigation vers Home');
+    navigate('/');
   };
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const Header: React.FC = () => {
             onClick={handleHomeClick}
             className="flex items-center space-x-2 sm:space-x-3 hover:opacity-80 transition-all duration-200 group"
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shadow-md overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 group-hover:shadow-lg transition-shadow">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
               <img 
                 src="/logo512.png" 
                 alt="ENSET Mohammedia Logo" 
