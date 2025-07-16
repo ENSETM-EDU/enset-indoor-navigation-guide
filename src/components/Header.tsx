@@ -65,14 +65,14 @@ const Header: React.FC = () => {
             </div>
           </button>
 
-          {/* Home button - adaptatif mobile */}
+          {/* Home button - style professionnel */}
           <button
             onClick={handleHomeClick}
-            className="flex items-center space-x-1.5 sm:space-x-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+            className="flex items-center space-x-2 px-4 py-2.5 bg-white/90 hover:bg-white border border-gray-200/60 hover:border-gray-300/60 text-gray-700 hover:text-gray-900 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-sm group"
           >
-            <Home className="w-4 h-4" />
-            <span className="font-medium text-sm sm:text-base">
-              Home
+            <Home className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
+            <span className="font-medium text-sm hidden sm:inline">
+              Accueil
             </span>
           </button>
         </div>
