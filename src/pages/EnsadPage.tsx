@@ -89,53 +89,17 @@ const EnsadPage: React.FC = () => {
           <h1 className="text-white text-5xl md:text-7xl font-light italic mb-2" style={{ fontFamily: 'Georgia, serif' }}>
             Cérémonie
           </h1>
-          <p className="text-white/90 text-xl md:text-2xl font-light italic">
+          <p className="text-white/90 text-xl md:text-2xl font-light italic mb-8">
             de remise de diplômes
           </p>
         </motion.div>
-
-        {/* Promotion Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center my-10"
-        >
-          <div className="text-white text-6xl md:text-8xl font-light italic" style={{ fontFamily: 'Georgia, serif' }}>
-            <span className="text-7xl md:text-9xl font-bold">5</span>
-            <sup className="text-4xl md:text-5xl">ème</sup>
-          </div>
-          <div className="text-white text-4xl md:text-6xl font-light italic mt-2" style={{ fontFamily: 'Georgia, serif' }}>
-            promotion
-          </div>
-        </motion.div>
-
-        {/* Degree Title */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="text-center mb-16"
-        >
-          <p className="text-white text-xl md:text-2xl font-light tracking-wide">
-            Diplôme des Métiers d'Art et de Design
-          </p>
-        </motion.div>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: '80px' }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="h-0.5 bg-white mb-10"
-        />
 
         {/* Navigation Button */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center mb-12"
         >
           <button
             onClick={() => {
@@ -154,6 +118,42 @@ const EnsadPage: React.FC = () => {
             Commencer la navigation
           </button>
         </motion.div>
+
+        {/* Promotion Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="text-center my-10"
+        >
+          <div className="text-white text-6xl md:text-8xl font-light italic" style={{ fontFamily: 'Georgia, serif' }}>
+            <span className="text-7xl md:text-9xl font-bold">5</span>
+            <sup className="text-4xl md:text-5xl">ème</sup>
+          </div>
+          <div className="text-white text-4xl md:text-6xl font-light italic mt-2" style={{ fontFamily: 'Georgia, serif' }}>
+            promotion
+          </div>
+        </motion.div>
+
+        {/* Degree Title */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="text-center mb-16"
+        >
+          <p className="text-white text-xl md:text-2xl font-light tracking-wide">
+            Diplôme des Métiers d'Art et de Design
+          </p>
+        </motion.div>
+
+        {/* Divider */}
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: '80px' }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="h-0.5 bg-white mb-10"
+        />
 
         {/* Event Details */}
         <motion.div
