@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import HomePage from './pages/HomePage';
 import NavigationPage from './pages/NavigationPage';
 import GenderSelectionPage from './pages/GenderSelectionPage';
@@ -33,6 +34,7 @@ function App() {
             <Route path="/enset/:porte" element={<EnsetPage />} />
           </Routes>
         </motion.main>
+        <Analytics />
       </div>
     </Router>
   );
