@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, User, Clock, MapPin, AlertCircle, Loader2, Stethoscope, Navigation } from 'lucide-react';
+import { Search, User, Clock, MapPin, AlertCircle, Loader2, GraduationCap, Navigation } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 
@@ -11,6 +11,7 @@ interface StudentData {
   prenom: string;
   numero_examen: number;
   salle_examen: string;
+  epreuve: string;
 }
 
 interface ExamInfo {
@@ -21,9 +22,12 @@ interface ExamInfo {
   numeroExamen: number;
   heure: string;
   porte: string;
+  epreuve: string;
+  epreuveNom: string;
+  dateExamen: string;
 }
 
-const ConcoursMedecine: React.FC = () => {
+const ConcoursEnset: React.FC = () => {
   const [cin, setCin] = useState<string>('');
   const [examInfo, setExamInfo] = useState<ExamInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -111,23 +115,33 @@ const ConcoursMedecine: React.FC = () => {
     );
   };
 
+  // Fonction pour obtenir les informations d'épreuve
+  const getEpreuveInfo = (epreuve: string) => {
+    const epreuveMapping: { [key: string]: { nom: string; date: string; heure: string } } = {
+      'GM': { nom: 'Génie Mécanique', date: 'Mardi 22/07/2025', heure: '08:30 - 11:30' },
+      'MI': { nom: 'Génie Informatique', date: 'Mardi 22/07/2025', heure: '14:30 - 17:30' },
+      'GE': { nom: 'Génie Électrique', date: 'Mercredi 23/07/2025', heure: '08:30 - 11:30' },
+    };
+    return epreuveMapping[epreuve] || { nom: epreuve, date: 'Date à confirmer', heure: '08:30 - 11:30' };
+  };
+
   // Fonction pour obtenir les informations de la salle
   const getSalleInfo = (salleExamen: string) => {
-    const salleMapping: { [key: string]: { nom: string; porte: string; heure: string } } = {
-      'amphi1': { nom: 'Amphithéâtre 1', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'amphi2': { nom: 'Amphithéâtre 2', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'amphi3': { nom: 'Amphithéâtre 3', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'amphi4': { nom: 'Amphithéâtre 4', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'amphi5': { nom: 'Amphithéâtre 5', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'amphitheatre': { nom: 'Amphithéâtre Principal', porte: 'Porte 1', heure: '08:30 - 11:30' },
-      'salle1': { nom: 'Salle 1', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'salle2': { nom: 'Salle 2', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'salle3': { nom: 'Salle 3', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'salle4': { nom: 'Salle 4', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'salle5': { nom: 'Salle 5', porte: 'Porte 2', heure: '08:30 - 11:30' },
-      'salle6': { nom: 'Salle 6', porte: 'Porte 2', heure: '08:30 - 11:30' },
+    const salleMapping: { [key: string]: { nom: string; porte: string } } = {
+      'amphi1': { nom: 'Amphithéâtre 1', porte: 'Porte 2' },
+      'amphi2': { nom: 'Amphithéâtre 2', porte: 'Porte 2' },
+      'amphi3': { nom: 'Amphithéâtre 3', porte: 'Porte 2' },
+      'amphi4': { nom: 'Amphithéâtre 4', porte: 'Porte 2' },
+      'amphi5': { nom: 'Amphithéâtre 5', porte: 'Porte 2' },
+      'amphitheatre': { nom: 'Amphithéâtre Principal', porte: 'Porte 1' },
+      'salle1': { nom: 'Salle 1', porte: 'Porte 2' },
+      'salle2': { nom: 'Salle 2', porte: 'Porte 2' },
+      'salle3': { nom: 'Salle 3', porte: 'Porte 2' },
+      'salle4': { nom: 'Salle 4', porte: 'Porte 2' },
+      'salle5': { nom: 'Salle 5', porte: 'Porte 2' },
+      'salle6': { nom: 'Salle 6', porte: 'Porte 2' },
     };
-    return salleMapping[salleExamen] || { nom: salleExamen, porte: 'Porte 1', heure: '08:30 - 11:30' };
+    return salleMapping[salleExamen] || { nom: salleExamen, porte: 'Porte 1' };
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -143,7 +157,7 @@ const ConcoursMedecine: React.FC = () => {
 
     try {
       // Charger les données depuis le fichier JSON
-      const response = await fetch('/cnc-medcine-student.json');
+      const response = await fetch('/cnc-enset-student.json');
       
       if (!response.ok) {
         throw new Error('Impossible de charger les données');
@@ -159,8 +173,9 @@ const ConcoursMedecine: React.FC = () => {
         return;
       }
 
-      // Obtenir les informations de la salle
+      // Obtenir les informations de la salle et de l'épreuve
       const salleInfo = getSalleInfo(student.salle_examen);
+      const epreuveInfo = getEpreuveInfo(student.epreuve);
       
       // Transformer les données pour l'affichage
       setExamInfo({
@@ -169,8 +184,11 @@ const ConcoursMedecine: React.FC = () => {
         cne: student.cne,
         salle: salleInfo.nom,
         numeroExamen: student.numero_examen,
-        heure: salleInfo.heure,
-        porte: salleInfo.porte
+        heure: epreuveInfo.heure,
+        porte: salleInfo.porte,
+        epreuve: student.epreuve,
+        epreuveNom: epreuveInfo.nom,
+        dateExamen: epreuveInfo.date
       });
       
     } catch (err) {
@@ -203,15 +221,15 @@ const ConcoursMedecine: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          {/* Icon médical */}
+          {/* Icon éducation */}
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full shadow-lg mb-6"
           >
-            <Stethoscope className="w-10 h-10 text-white" />
-          </motion.div>
+            <GraduationCap className="w-10 h-10 text-white" />
+          </motion.div> 
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -232,7 +250,7 @@ const ConcoursMedecine: React.FC = () => {
               isDark ? 'text-blue-400' : 'text-blue-700'
             }`}
           >
-            Concours Médecine – Session 2025
+            Concours ENSET – Session 2025
           </motion.h2>
           
           <motion.p
@@ -401,6 +419,47 @@ const ConcoursMedecine: React.FC = () => {
                     
                     <div className={`flex items-center justify-between p-4 rounded-xl border ${
                       isDark 
+                        ? 'bg-green-900/30 border-green-700' 
+                        : 'bg-green-50 border-green-200'
+                    }`}>
+                      <div className="flex items-center gap-2">
+                        <GraduationCap className={`w-5 h-5 ${
+                          isDark ? 'text-green-400' : 'text-green-600'
+                        }`} />
+                        <span className={`font-semibold ${
+                          isDark ? 'text-green-300' : 'text-green-700'
+                        }`}>Épreuve</span>
+                      </div>
+                      <div className="text-right">
+                        <div className={`font-bold ${
+                          isDark ? 'text-green-200' : 'text-green-800'
+                        }`}>{examInfo.epreuveNom}</div>
+                        <div className={`text-sm ${
+                          isDark ? 'text-green-300' : 'text-green-600'
+                        }`}>({examInfo.epreuve})</div>
+                      </div>
+                    </div>
+                    
+                    <div className={`flex items-center justify-between p-4 rounded-xl border ${
+                      isDark 
+                        ? 'bg-yellow-900/30 border-yellow-700' 
+                        : 'bg-yellow-50 border-yellow-200'
+                    }`}>
+                      <div className="flex items-center gap-2">
+                        <Clock className={`w-5 h-5 ${
+                          isDark ? 'text-yellow-400' : 'text-yellow-600'
+                        }`} />
+                        <span className={`font-semibold ${
+                          isDark ? 'text-yellow-300' : 'text-yellow-700'
+                        }`}>Date d'examen</span>
+                      </div>
+                      <span className={`font-bold ${
+                        isDark ? 'text-yellow-200' : 'text-yellow-800'
+                      }`}>{examInfo.dateExamen}</span>
+                    </div>
+                    
+                    <div className={`flex items-center justify-between p-4 rounded-xl border ${
+                      isDark 
                         ? 'bg-blue-900/30 border-blue-700' 
                         : 'bg-blue-50 border-blue-200'
                     }`}>
@@ -428,7 +487,7 @@ const ConcoursMedecine: React.FC = () => {
                         }`} />
                         <span className={`font-semibold ${
                           isDark ? 'text-orange-300' : 'text-orange-700'
-                        }`}>Horaire</span>
+                        }`}>Horaire d'examen</span>
                       </div>
                       <span className={`font-bold ${
                         isDark ? 'text-orange-200' : 'text-orange-800'
@@ -514,7 +573,7 @@ const ConcoursMedecine: React.FC = () => {
           <p className={`text-sm ${
             isDark ? 'text-gray-400' : 'text-slate-500'
           }`}>
-            © ENSET Mohammedia - Concours Médecine 2025
+            © ENSET Mohammedia - Concours ENSET 2025
           </p>
           <p className={`text-xs mt-2 ${
             isDark ? 'text-gray-500' : 'text-slate-400'
@@ -527,4 +586,4 @@ const ConcoursMedecine: React.FC = () => {
   );
 };
 
-export default ConcoursMedecine;
+export default ConcoursEnset;
