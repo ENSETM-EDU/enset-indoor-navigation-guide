@@ -6,7 +6,6 @@ import { useTheme } from '../hooks/useTheme';
 
 interface StudentData {
   id: string;
-  cne: string;
   nom: string;
   prenom: string;
   numero_examen: number;
@@ -16,7 +15,6 @@ interface StudentData {
 
 interface ExamInfo {
   name: string;
-  cin: string;
   cne: string;
   salle: string;
   numeroExamen: number;
@@ -28,7 +26,7 @@ interface ExamInfo {
 }
 
 const ConcoursEnset: React.FC = () => {
-  const [cin, setCin] = useState<string>('');
+  const [cne, setCne] = useState<string>('');
   const [examInfo, setExamInfo] = useState<ExamInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -147,8 +145,8 @@ const ConcoursEnset: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!cin.trim()) {
-      setError('Veuillez saisir votre numéro CIN');
+    if (!cne.trim()) {
+      setError('Veuillez saisir votre numéro CNE');
       return;
     }
 
@@ -165,11 +163,11 @@ const ConcoursEnset: React.FC = () => {
 
       const studentsData: StudentData[] = await response.json();
       
-      // Rechercher l'étudiant par CIN (id dans le JSON)
-      const student = studentsData.find(s => s.id.toLowerCase() === cin.toLowerCase());
+      // Rechercher l'étudiant par CNE (id dans le JSON)
+      const student = studentsData.find(s => s.id.toLowerCase() === cne.toLowerCase());
       
       if (!student) {
-        setError('CIN non trouvé dans notre base de données. Veuillez vérifier votre numéro.');
+        setError('CNE non trouvé dans notre base de données. Veuillez vérifier votre numéro.');
         return;
       }
 
@@ -180,8 +178,7 @@ const ConcoursEnset: React.FC = () => {
       // Transformer les données pour l'affichage
       setExamInfo({
         name: `${student.prenom} ${student.nom}`,
-        cin: student.id,
-        cne: student.cne,
+        cne: student.id,
         salle: salleInfo.nom,
         numeroExamen: student.numero_examen,
         heure: epreuveInfo.heure,
@@ -200,7 +197,7 @@ const ConcoursEnset: React.FC = () => {
   };
 
   const resetForm = () => {
-    setCin('');
+    setCne('');
     setExamInfo(null);
     setError('');
   };
@@ -262,7 +259,7 @@ const ConcoursEnset: React.FC = () => {
             }`}
           >
             Merci de vous présenter ici pour accéder à vos informations d'examen.<br />
-            Veuillez saisir votre numéro de CIN pour être guidé vers votre salle d'examen.
+            Veuillez saisir votre numéro de CNE pour être guidé vers votre salle d'examen.
           </motion.p>
         </motion.div>
 
@@ -284,10 +281,10 @@ const ConcoursEnset: React.FC = () => {
               >
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="cin" className={`block text-sm font-semibold mb-3 ${
+                    <label htmlFor="cne" className={`block text-sm font-semibold mb-3 ${
                       isDark ? 'text-gray-200' : 'text-slate-700'
                     }`}>
-                      Numéro CIN
+                      Numéro CNE
                     </label>
                     <div className="relative">
                       <User className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 ${
@@ -295,10 +292,10 @@ const ConcoursEnset: React.FC = () => {
                       }`} />
                       <input
                         type="text"
-                        id="cin"
-                        value={cin}
-                        onChange={(e) => setCin(e.target.value.toUpperCase())}
-                        placeholder="Ex: AB123456"
+                        id="cne"
+                        value={cne}
+                        onChange={(e) => setCne(e.target.value.toUpperCase())}
+                        placeholder="Ex: C843584730"
                         className={`w-full pl-12 pr-4 py-4 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg font-medium ${
                           isDark 
                             ? 'bg-gray-700/70 border-gray-600 text-gray-100 placeholder-gray-400' 
@@ -326,7 +323,7 @@ const ConcoursEnset: React.FC = () => {
 
                   <motion.button
                     type="submit"
-                    disabled={isLoading || !cin.trim()}
+                    disabled={isLoading || !cne.trim()}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -344,18 +341,6 @@ const ConcoursEnset: React.FC = () => {
                     )}
                   </motion.button>
                 </form>
-
-                {/* Note d'aide */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                  className={`mt-6 text-center text-sm ${
-                    isDark ? 'text-gray-400' : 'text-slate-500'
-                  }`}
-                >
-                  <p>💡 <strong>Astuce :</strong> Essayez avec NI583215, A730547, ou DR834152</p>
-                </motion.div>
               </motion.div>
             ) : (
               <motion.div
@@ -393,17 +378,6 @@ const ConcoursEnset: React.FC = () => {
                       <span className={`font-medium ${
                         isDark ? 'text-gray-100' : 'text-slate-800'
                       }`}>{examInfo.name}</span>
-                    </div>
-                    
-                    <div className={`flex items-center justify-between p-4 rounded-xl ${
-                      isDark ? 'bg-gray-700/50' : 'bg-slate-50'
-                    }`}>
-                      <span className={`font-semibold ${
-                        isDark ? 'text-gray-300' : 'text-slate-700'
-                      }`}>CIN</span>
-                      <span className={`font-medium ${
-                        isDark ? 'text-gray-100' : 'text-slate-800'
-                      }`}>{examInfo.cin}</span>
                     </div>
                     
                     <div className={`flex items-center justify-between p-4 rounded-xl ${
