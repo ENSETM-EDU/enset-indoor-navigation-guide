@@ -232,7 +232,7 @@ const ConcoursEnset: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className={`text-4xl md:text-5xl font-bold mb-4 ${
+            className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-4 ${
               isDark ? 'text-gray-100' : 'text-slate-800'
             }`}
           >
@@ -243,7 +243,7 @@ const ConcoursEnset: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className={`text-2xl md:text-3xl font-semibold mb-6 ${
+            className={`text-lg sm:text-xl md:text-3xl font-semibold mb-6 ${
               isDark ? 'text-blue-400' : 'text-blue-700'
             }`}
           >
@@ -254,7 +254,7 @@ const ConcoursEnset: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className={`text-lg max-w-2xl mx-auto leading-relaxed ${
+            className={`text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed ${
               isDark ? 'text-gray-300' : 'text-slate-600'
             }`}
           >
@@ -281,13 +281,13 @@ const ConcoursEnset: React.FC = () => {
               >
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="cne" className={`block text-sm font-semibold mb-3 ${
+                    <label htmlFor="cne" className={`block text-xs sm:text-sm font-semibold mb-3 ${
                       isDark ? 'text-gray-200' : 'text-slate-700'
                     }`}>
                       Numéro CNE
                     </label>
                     <div className="relative">
-                      <User className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 ${
+                      <User className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 ${
                         isDark ? 'text-gray-400' : 'text-slate-400'
                       }`} />
                       <input
@@ -296,7 +296,7 @@ const ConcoursEnset: React.FC = () => {
                         value={cne}
                         onChange={(e) => setCne(e.target.value.toUpperCase())}
                         placeholder="Ex: C843584730"
-                        className={`w-full pl-12 pr-4 py-4 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg font-medium ${
+                        className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-base sm:text-lg font-medium ${
                           isDark 
                             ? 'bg-gray-700/70 border-gray-600 text-gray-100 placeholder-gray-400' 
                             : 'bg-white/70 border-slate-200 text-slate-900 placeholder-slate-400'
@@ -316,8 +316,8 @@ const ConcoursEnset: React.FC = () => {
                           : 'text-red-600 bg-red-50 border-red-200'
                       }`}
                     >
-                      <AlertCircle className="w-5 h-5" />
-                      <span className="text-sm font-medium">{error}</span>
+                      <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <span className="text-xs sm:text-sm font-medium">{error}</span>
                     </motion.div>
                   )}
 
@@ -326,17 +326,17 @@ const ConcoursEnset: React.FC = () => {
                     disabled={isLoading || !cne.trim()}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        Recherche en cours...
+                        <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+                        <span className="text-sm sm:text-base">Recherche en cours...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-5 h-5" />
-                        Afficher mon parcours
+                        <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span className="text-sm sm:text-base">Afficher mon parcours</span>
                       </>
                     )}
                   </motion.button>
@@ -360,33 +360,33 @@ const ConcoursEnset: React.FC = () => {
                     <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <User className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className={`text-2xl font-bold mb-2 ${
+                    <h3 className={`text-xl sm:text-2xl font-bold mb-2 ${
                       isDark ? 'text-gray-100' : 'text-slate-800'
                     }`}>Informations confirmées</h3>
-                    <p className={isDark ? 'text-gray-300' : 'text-slate-600'}>
+                    <p className={`text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
                       Votre place d'examen a été trouvée
                     </p>
                   </div>
 
                   <div className="space-y-4">
-                    <div className={`flex items-center justify-between p-4 rounded-xl ${
+                    <div className={`flex items-center justify-between p-3 sm:p-4 rounded-xl ${
                       isDark ? 'bg-gray-700/50' : 'bg-slate-50'
                     }`}>
-                      <span className={`font-semibold ${
+                      <span className={`font-semibold text-sm sm:text-base ${
                         isDark ? 'text-gray-300' : 'text-slate-700'
                       }`}>Nom complet</span>
-                      <span className={`font-medium ${
+                      <span className={`font-medium text-sm sm:text-base ${
                         isDark ? 'text-gray-100' : 'text-slate-800'
                       }`}>{examInfo.name}</span>
                     </div>
                     
-                    <div className={`flex items-center justify-between p-4 rounded-xl ${
+                    <div className={`flex items-center justify-between p-3 sm:p-4 rounded-xl ${
                       isDark ? 'bg-gray-700/50' : 'bg-slate-50'
                     }`}>
-                      <span className={`font-semibold ${
+                      <span className={`font-semibold text-sm sm:text-base ${
                         isDark ? 'text-gray-300' : 'text-slate-700'
                       }`}>CNE</span>
-                      <span className={`font-medium ${
+                      <span className={`font-medium text-sm sm:text-base ${
                         isDark ? 'text-gray-100' : 'text-slate-800'
                       }`}>{examInfo.cne}</span>
                     </div>
@@ -503,17 +503,17 @@ const ConcoursEnset: React.FC = () => {
                     onClick={startNavigation}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2"
+                    className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2"
                   >
-                    <Navigation className="w-5 h-5" />
-                    Commencer le guidage
+                    <Navigation className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="text-sm sm:text-base">Suivre le parcours</span>
                   </motion.button>
                   
                   <motion.button
                     onClick={resetForm}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`px-6 py-4 border font-semibold rounded-xl transition-all duration-200 ${
+                    className={`px-4 sm:px-6 py-3 sm:py-4 border font-semibold rounded-xl transition-all duration-200 text-sm sm:text-base ${
                       isDark 
                         ? 'bg-gray-800/80 border-gray-600 text-gray-200 hover:bg-gray-700/80' 
                         : 'bg-white/80 border-slate-200 text-slate-700 hover:bg-white'
