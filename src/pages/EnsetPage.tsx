@@ -149,9 +149,79 @@ const EnsetPage: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.5 }}
-            className="mb-4"
+            className="mb-4 relative"
           >
-            <button
+            {/* Flow particles around button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-3 h-3 bg-yellow-400 rounded-full opacity-80"
+                  style={{
+                    filter: 'blur(1px)',
+                    left: '50%',
+                    top: '50%',
+                    transformOrigin: '0 0',
+                  }}
+                  animate={{
+                    x: [
+                      Math.cos((i * 45 * Math.PI) / 180) * 80 - 6,
+                      Math.cos(((i * 45 + 90) * Math.PI) / 180) * 80 - 6,
+                      Math.cos(((i * 45 + 180) * Math.PI) / 180) * 80 - 6,
+                      Math.cos(((i * 45 + 270) * Math.PI) / 180) * 80 - 6,
+                      Math.cos((i * 45 * Math.PI) / 180) * 80 - 6,
+                    ],
+                    y: [
+                      Math.sin((i * 45 * Math.PI) / 180) * 80 - 6,
+                      Math.sin(((i * 45 + 90) * Math.PI) / 180) * 80 - 6,
+                      Math.sin(((i * 45 + 180) * Math.PI) / 180) * 80 - 6,
+                      Math.sin(((i * 45 + 270) * Math.PI) / 180) * 80 - 6,
+                      Math.sin((i * 45 * Math.PI) / 180) * 80 - 6,
+                    ],
+                    opacity: [0.8, 1, 0.8, 1, 0.8],
+                    scale: [0.8, 1.4, 0.8, 1.4, 0.8],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: i * 0.15,
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Glowing ring around button */}
+            <motion.div
+              className="absolute inset-0 -m-4 rounded-full border-2 border-yellow-400/40"
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.1, 1],
+                opacity: [0.4, 0.8, 0.4],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            {/* Secondary ring */}
+            <motion.div
+              className="absolute inset-0 -m-6 rounded-full border border-amber-300/30"
+              animate={{
+                rotate: [360, 0],
+                scale: [1.1, 1, 1.1],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            <motion.button
               onClick={() => {
                 // Redirection basée sur le paramètre porte
                 if (porte === 'porte1') {
@@ -163,10 +233,30 @@ const EnsetPage: React.FC = () => {
                   navigate('/');
                 }
               }}
-              className="bg-yellow-400/20 backdrop-blur-sm border-2 border-yellow-400/50 text-yellow-400 px-6 py-3 rounded-full font-medium text-base hover:bg-yellow-400/30 hover:scale-105 transition-all duration-300 shadow-lg"
+              className="relative z-10 bg-gradient-to-r from-yellow-400/30 to-amber-500/30 backdrop-blur-sm border-2 border-yellow-400 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-400/50 hover:to-amber-500/50 hover:scale-110 transition-all duration-300 shadow-2xl"
+              style={{
+                background: 'linear-gradient(45deg, rgba(212, 175, 55, 0.3), rgba(245, 158, 11, 0.3))',
+                borderColor: '#d4af37',
+                textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'
+              }}
+              animate={{
+                boxShadow: [
+                  '0 0 25px rgba(212, 175, 55, 0.5)',
+                  '0 0 50px rgba(245, 158, 11, 0.8)',
+                  '0 0 25px rgba(212, 175, 55, 0.5)',
+                  '0 0 60px rgba(212, 175, 55, 0.9)',
+                  '0 0 25px rgba(245, 158, 11, 0.5)'
+                ],
+                scale: [1, 1.15, 0.95, 1.12, 1]
+              }}
+              transition={{
+                duration: 0.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             >
-              Commencer
-            </button>
+              Commencer la navigation
+            </motion.button>
           </motion.div>
         </div>
 
