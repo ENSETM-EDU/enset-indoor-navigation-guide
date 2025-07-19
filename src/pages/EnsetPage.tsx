@@ -248,7 +248,7 @@ const EnsetPage: React.FC = () => {
                   '0 0 25px rgba(245, 158, 11, 0.5)'
                 ],
                 scale: [1, 1.15, 0.95, 1.12, 1]
-              }}
+              }} 
               transition={{
                 duration: 0.5,
                 repeat: Infinity,
