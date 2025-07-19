@@ -26,7 +26,6 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/navigate/:id" element={<NavigationPage />} />
             <Route path="/gender-selection/:type" element={<GenderSelectionPage />} />
-            <Route path="/findmyexamroom/:idConcours" element={<FindMyExamRoomPage />} />
             <Route path="/concours-enset" element={<ConcoursEnset />} />
             <Route path="/ensad" element={<EnsadPage />} />
             <Route path="/ensad/:porte" element={<EnsadPage />} />

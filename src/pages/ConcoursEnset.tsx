@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, User, Clock, MapPin, AlertCircle, Loader2, GraduationCap, Navigation } from 'lucide-react';
+import { Search, User, Clock, MapPin, AlertCircle, Loader2, GraduationCap, Navigation, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 
@@ -27,11 +27,31 @@ interface ExamInfo {
 
 const ConcoursEnset: React.FC = () => {
   const [cne, setCne] = useState<string>('');
+  const [selectedFiliere, setSelectedFiliere] = useState<string>('');
   const [examInfo, setExamInfo] = useState<ExamInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const { isDark } = useTheme();
   const navigate = useNavigate();
+
+  // Définition des filières disponibles
+  const filieres = [
+    {
+      value: 'mi',
+      label: 'Génie Informatique',
+      specialites: ['II-BDCC', 'II-CCN', 'GLSID']
+    },
+    {
+      value: 'gm',
+      label: 'Génie Mécanique',
+      specialites: ['GIL', 'GMSI']
+    },
+    {
+      value: 'ge',
+      label: 'Génie Électrique',
+      specialites: ['GECSI', 'GEER']
+    }
+  ];
 
   // Fonction pour commencer la navigation
   const startNavigation = () => {
@@ -150,12 +170,17 @@ const ConcoursEnset: React.FC = () => {
       return;
     }
 
+    if (!selectedFiliere) {
+      setError('Veuillez sélectionner une filière');
+      return;
+    }
+
     setIsLoading(true);
     setError('');
 
     try {
-      // Charger les données depuis le fichier JSON
-      const response = await fetch('/cnc-enset-student.json');
+      // Charger les données depuis le fichier JSON correspondant à la filière sélectionnée
+      const response = await fetch(`/cnc-enset-student-${selectedFiliere}.json`);
       
       if (!response.ok) {
         throw new Error('Impossible de charger les données');
@@ -167,7 +192,7 @@ const ConcoursEnset: React.FC = () => {
       const student = studentsData.find(s => s.id.toLowerCase() === cne.toLowerCase());
       
       if (!student) {
-        setError('CNE non trouvé dans notre base de données. Veuillez vérifier votre numéro.');
+        setError('CNE non trouvé dans notre base de données pour cette filière. Veuillez vérifier votre numéro ou changer de filière.');
         return;
       }
 
@@ -198,6 +223,7 @@ const ConcoursEnset: React.FC = () => {
 
   const resetForm = () => {
     setCne('');
+    setSelectedFiliere('');
     setExamInfo(null);
     setError('');
   };
@@ -280,6 +306,42 @@ const ConcoursEnset: React.FC = () => {
                 }`}
               >
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Sélection de filière */}
+                  <div>
+                    <label htmlFor="filiere" className={`block text-xs sm:text-sm font-semibold mb-3 ${
+                      isDark ? 'text-gray-200' : 'text-slate-700'
+                    }`}>
+                      Filière d'examen
+                    </label>
+                    <div className="relative">
+                      <GraduationCap className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 ${
+                        isDark ? 'text-gray-400' : 'text-slate-400'
+                      }`} />
+                      <ChevronDown className={`absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 pointer-events-none ${
+                        isDark ? 'text-gray-400' : 'text-slate-400'
+                      }`} />
+                      <select
+                        id="filiere"
+                        value={selectedFiliere}
+                        onChange={(e) => setSelectedFiliere(e.target.value)}
+                        className={`w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-base sm:text-lg font-medium appearance-none cursor-pointer ${
+                          isDark 
+                            ? 'bg-gray-700/70 border-gray-600 text-gray-100' 
+                            : 'bg-white/70 border-slate-200 text-slate-900'
+                        }`}
+                        disabled={isLoading}
+                      >
+                        <option value="">Sélectionnez votre filière</option>
+                        {filieres.map((filiere) => (
+                          <option key={filiere.value} value={filiere.value}>
+                            {filiere.label} ({filiere.specialites.join(', ')})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Champ CNE */}
                   <div>
                     <label htmlFor="cne" className={`block text-xs sm:text-sm font-semibold mb-3 ${
                       isDark ? 'text-gray-200' : 'text-slate-700'
@@ -323,7 +385,7 @@ const ConcoursEnset: React.FC = () => {
 
                   <motion.button
                     type="submit"
-                    disabled={isLoading || !cne.trim()}
+                    disabled={isLoading || !cne.trim() || !selectedFiliere}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -468,31 +530,17 @@ const ConcoursEnset: React.FC = () => {
                       }`}>{examInfo.heure}</span>
                     </div>
                     
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className={`p-4 rounded-xl border text-center ${
-                        isDark 
-                          ? 'bg-purple-900/30 border-purple-700' 
-                          : 'bg-purple-50 border-purple-200'
-                      }`}>
-                        <div className={`font-semibold mb-1 ${
-                          isDark ? 'text-purple-300' : 'text-purple-700'
-                        }`}>Entrée</div>
-                        <div className={`font-bold ${
-                          isDark ? 'text-purple-200' : 'text-purple-800'
-                        }`}>{examInfo.porte}</div>
-                      </div>
-                      <div className={`p-4 rounded-xl border text-center ${
-                        isDark 
-                          ? 'bg-indigo-900/30 border-indigo-700' 
-                          : 'bg-indigo-50 border-indigo-200'
-                      }`}>
-                        <div className={`font-semibold mb-1 ${
-                          isDark ? 'text-indigo-300' : 'text-indigo-700'
-                        }`}>N° Examen</div>
-                        <div className={`font-bold ${
-                          isDark ? 'text-indigo-200' : 'text-indigo-800'
-                        }`}>{examInfo.numeroExamen}</div>
-                      </div>
+                    <div className={`p-4 rounded-xl border text-center ${
+                      isDark 
+                        ? 'bg-indigo-900/30 border-indigo-700' 
+                        : 'bg-indigo-50 border-indigo-200'
+                    }`}>
+                      <div className={`font-semibold mb-1 ${
+                        isDark ? 'text-indigo-300' : 'text-indigo-700'
+                      }`}>N° Examen</div>
+                      <div className={`font-bold ${
+                        isDark ? 'text-indigo-200' : 'text-indigo-800'
+                      }`}>{examInfo.numeroExamen}</div>
                     </div>
                   </div>
                 </div>
