@@ -15,7 +15,7 @@
     "from": "Porte 2",
     "to": "Amphithéâtre",
     "time": "2 min",
-    "steps": 9,
+    "steps": 8,
     "path": "/photos-navigation/Porte2ToAmphitheatre",
     "title": "Trajet vers l'amphithéâtre",
     "description": "Suivez ce chemin pour rejoindre l’amphithéâtre à partir de la porte 2.",
