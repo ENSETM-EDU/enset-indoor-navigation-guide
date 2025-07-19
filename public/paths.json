@@ -70,7 +70,7 @@
     "from": "Amphithéâtre",
     "to": "Cafétéria",
     "time": "1 min",
-    "steps": 6,
+    "steps": 7,
     "path": "/photos-navigation/AmphitheatreToCafeteria",
     "title": "Trajet vers la cafétéria",
     "description": "Suivez ce trajet pour rejoindre la cafétéria depuis l’amphithéâtre.",
