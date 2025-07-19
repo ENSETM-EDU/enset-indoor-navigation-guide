@@ -165,7 +165,7 @@ const EnsetPage: React.FC = () => {
               }}
               className="bg-yellow-400/20 backdrop-blur-sm border-2 border-yellow-400/50 text-yellow-400 px-6 py-3 rounded-full font-medium text-base hover:bg-yellow-400/30 hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              Commencer la navigation
+              Commencer
             </button>
           </motion.div>
         </div>
