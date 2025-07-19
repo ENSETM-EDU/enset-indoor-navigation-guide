@@ -233,7 +233,7 @@ const EnsetPage: React.FC = () => {
                   navigate('/');
                 }
               }}
-              className="relative z-10 bg-gradient-to-r from-yellow-400/30 to-amber-500/30 backdrop-blur-sm border-2 border-yellow-400 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-400/50 hover:to-amber-500/50 hover:scale-110 transition-all duration-300 shadow-2xl"
+              className="relative z-10 bg-gradient-to-r from-yellow-400/30 to-amber-500/30 backdrop-blur-sm border-2 border-yellow-400 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-400/50 hover:to-amber-500/50 hover:scale-110 transition-all duration-200 shadow-2xl"
               style={{
                 background: 'linear-gradient(45deg, rgba(212, 175, 55, 0.3), rgba(245, 158, 11, 0.3))',
                 borderColor: '#d4af37',
@@ -247,10 +247,10 @@ const EnsetPage: React.FC = () => {
                   '0 0 60px rgba(212, 175, 55, 0.9)',
                   '0 0 25px rgba(245, 158, 11, 0.5)'
                 ],
-                scale: [1, 1.15, 0.95, 1.12, 1]
+                scale: [1, 1.5, 2.8, 1.5, 1]
               }}
               transition={{
-                duration: 0.5,
+                duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
