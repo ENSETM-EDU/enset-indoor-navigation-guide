@@ -228,7 +228,7 @@ const EnsetPage: React.FC = () => {
           </div>
           
           <div className="text-yellow-400/80 text-sm tracking-widest">
-            enset.ac.ma
+            enset-media.ac.ma
           </div>
         </motion.div>
       </div>
