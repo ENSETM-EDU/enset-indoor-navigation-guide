@@ -60,7 +60,7 @@ const Header: React.FC = () => {
                 ENSET
               </h1>
               <p className="text-xs sm:text-sm text-gray-500 hidden sm:block">
-                Navigation Guide
+                Guide de navigation
               </p>
             </div>
           </button>
