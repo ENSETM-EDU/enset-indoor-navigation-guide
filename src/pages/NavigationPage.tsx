@@ -32,9 +32,21 @@ const NavigationPage: React.FC = () => {
   useEffect(() => {
     const loadPathData = async () => {
       try {
-        // Rediriger vers la sélection du genre pour toilettes et mosquée
-        if (id === 'toilettes' || id === 'mosquee') {
-          navigate(`/gender-selection/${id}`);
+        // Rediriger vers la page toilettes si l'ID commence par 'toilettes'
+        if (id === 'toilettes') {
+          // Extraire le point de départ depuis l'URL ou utiliser un point par défaut
+          const urlParams = new URLSearchParams(window.location.search);
+          const pointDepart = urlParams.get('from') || 'Porte1';
+          navigate(`/toilettes/${pointDepart}`);
+          return;
+        }
+
+        // Rediriger vers la page mosquée si l'ID commence par 'mosquee'
+        if (id === 'mosquee') {
+          // Extraire le point de départ depuis l'URL ou utiliser un point par défaut
+          const urlParams = new URLSearchParams(window.location.search);
+          const pointDepart = urlParams.get('from') || 'Porte1';
+          navigate(`/mosquee/${pointDepart}`);
           return;
         }
 

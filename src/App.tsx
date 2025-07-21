@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import HomePage from './pages/HomePage';
 import NavigationPage from './pages/NavigationPage';
-import GenderSelectionPage from './pages/GenderSelectionPage';
-import FindMyExamRoomPage from './pages/FindMyExamRoomPage';
 import EnsadPage from './pages/EnsadPage';
 import EnsetPage from './pages/EnsetPage';
 import ConcoursEnset from './pages/ConcoursEnset';
+import ToilettesPage from './pages/ToilettesPage';
+import MosqueePage from './pages/MosqueePage';
 import Header from './components/Header';
 import './App.css';
 
@@ -25,7 +25,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/navigate/:id" element={<NavigationPage />} />
-            <Route path="/gender-selection/:type" element={<GenderSelectionPage />} />
+            <Route path="/toilettes/:pointDepart" element={<ToilettesPage />} />
+            <Route path="/mosquee/:pointDepart" element={<MosqueePage />} />
             <Route path="/concours-enset" element={<ConcoursEnset />} />
             <Route path="/ensad" element={<EnsadPage />} />
             <Route path="/ensad/:porte" element={<EnsadPage />} />

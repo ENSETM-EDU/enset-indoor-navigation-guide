@@ -66,6 +66,94 @@
     "floor_level": 0
   },
   {
+    "id": "Escalier1ToToilettesHomme",
+    "from": "Escalier 1",
+    "to": "Toilettes Hommes",
+    "time": "1 min",
+    "steps": 6,
+    "path": "/photos-navigation/Escalier1ToToilettesHomme",
+    "title": "Trajet vers les toilettes",
+    "description": "Itinéraire pour accéder aux toilettes pour hommes depuis l’escalier 1.",
+    "floor_level": 0
+  },
+  {
+    "id": "Escalier3ToToilettesHomme",
+    "from": "Escalier 3",
+    "to": "Toilettes Hommes",
+    "time": "1 min",
+    "steps": 7,
+    "path": "/photos-navigation/Escalier3ToToilettesHomme",
+    "title": "Trajet vers les toilettes",
+    "description": "Itinéraire pour accéder aux toilettes pour hommes depuis l’escalier 3.",
+    "floor_level": 0
+  },
+  {
+    "id": "Escalier1ToMosqueeHomme",
+    "from": "Escalier 1",
+    "to": "Mosquée Hommes",
+    "time": "1 min",
+    "steps": 6,
+    "path": "/photos-navigation/Escalier1ToMosqueeHomme",
+    "title": "Trajet vers la mosquée",
+    "description": "Itinéraire vers la mosquée pour hommes depuis l’escalier 1.",
+    "floor_level": 0
+  },
+  {
+    "id": "Escalier3ToMosqueeHomme",
+    "from": "Escalier 3",
+    "to": "Mosquée Hommes",
+    "time": "1 min",
+    "steps": 8,
+    "path": "/photos-navigation/Escalier3ToMosqueeHomme",
+    "title": "Trajet vers la mosquée",
+    "description": "Itinéraire vers la mosquée pour hommes depuis l’escalier 3.",
+    "floor_level": 0
+  },
+  {
+    "id": "Escalier1ToToilettesFemme",
+    "from": "Escalier 1",
+    "to": "Toilettes Femmes",
+    "time": "1 min",
+    "steps": 7,
+    "path": "/photos-navigation/Escalier1ToToilettesFemme",
+    "title": "Trajet vers les toilettes",
+    "description": "Itinéraire pour accéder aux toilettes pour femmes depuis l’escalier 1.",
+    "floor_level": 0
+  },
+  {
+    "id": "Escalier3ToToilettesFemme",
+    "from": "Escalier 3",
+    "to": "Toilettes Femmes",
+    "time": "1 min",
+    "steps": 8,
+    "path": "/photos-navigation/Escalier3ToToilettesFemme",
+    "title": "Trajet vers les toilettes",
+    "description": "Itinéraire pour accéder aux toilettes pour femmes depuis l’escalier 3.",
+    "floor_level": 0
+  },
+  {
+    "id": "Escalier1ToMosqueeFemme",
+    "from": "Escalier 1",
+    "to": "Mosquée Femmes",
+    "time": "1 min",
+    "steps": 7,
+    "path": "/photos-navigation/Escalier1ToMosqueeFemme",
+    "title": "Trajet vers la mosquée",
+    "description": "Itinéraire vers la mosquée pour femmes depuis l’escalier 1.",
+    "floor_level": 0
+  },
+  {
+    "id": "Escalier3ToMosqueeFemme",
+    "from": "Escalier 3",
+    "to": "Mosquée Femmes",
+    "time": "1 min",
+    "steps": 9,
+    "path": "/photos-navigation/Escalier3ToMosqueeFemme",
+    "title": "Trajet vers la mosquée",
+    "description": "Itinéraire vers la mosquée pour femmes depuis l’escalier 3.",
+    "floor_level": 0
+  },
+  {
     "id": "AmphitheatreToCafeteria",
     "from": "Amphithéâtre",
     "to": "Cafétéria",
@@ -196,23 +284,5 @@
     "title": "Trajet vers la salle 6",
     "description": "Chemin à suivre pour accéder à la salle 6 depuis la porte 2.",
     "floor_level": 1
-  },
-  {
-    "id": "toilettes",
-    "title": "Où souhaitez-vous aller ?",
-    "description": "Veuillez choisir votre genre pour accéder au bon chemin vers les toilettes.",
-    "options": {
-      "homme": "AmphitheatreToToilettesHomme",
-      "femme": "AmphitheatreToToilettesFemme"
-    }
-  },
-  {
-    "id": "mosquee",
-    "title": "Direction la mosquée",
-    "description": "Merci de choisir votre genre afin de vous guider vers la mosquée correspondante.",
-    "options": {
-      "homme": "AmphitheatreToMosqueeHomme",
-      "femme": "AmphitheatreToMosqueeFemme"
-    }
   }
 ]
