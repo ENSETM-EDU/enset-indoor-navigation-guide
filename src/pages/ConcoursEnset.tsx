@@ -462,7 +462,7 @@ const ConcoursEnset: React.FC = () => {
                         <GraduationCap className={`w-5 h-5 ${
                           isDark ? 'text-green-400' : 'text-green-600'
                         }`} />
-                        <span className={`font-semibold ${
+                        <span className={`text-sm font-medium ${
                           isDark ? 'text-green-300' : 'text-green-700'
                         }`}>Épreuve</span>
                       </div>
@@ -485,7 +485,7 @@ const ConcoursEnset: React.FC = () => {
                         <Clock className={`w-5 h-5 ${
                           isDark ? 'text-yellow-400' : 'text-yellow-600'
                         }`} />
-                        <span className={`font-semibold ${
+                        <span className={`text-sm font-medium ${
                           isDark ? 'text-yellow-300' : 'text-yellow-700'
                         }`}>Date d'examen</span>
                       </div>
@@ -503,7 +503,7 @@ const ConcoursEnset: React.FC = () => {
                         <MapPin className={`w-5 h-5 ${
                           isDark ? 'text-blue-400' : 'text-blue-600'
                         }`} />
-                        <span className={`font-semibold ${
+                        <span className={`text-sm font-medium ${
                           isDark ? 'text-blue-300' : 'text-blue-700'
                         }`}>Salle d'examen</span>
                       </div>
@@ -521,7 +521,7 @@ const ConcoursEnset: React.FC = () => {
                         <Clock className={`w-5 h-5 ${
                           isDark ? 'text-orange-400' : 'text-orange-600'
                         }`} />
-                        <span className={`font-semibold ${
+                        <span className={`text-sm font-medium ${
                           isDark ? 'text-orange-300' : 'text-orange-700'
                         }`}>Horaire d'examen</span>
                       </div>
@@ -535,7 +535,7 @@ const ConcoursEnset: React.FC = () => {
                         ? 'bg-indigo-900/30 border-indigo-700' 
                         : 'bg-indigo-50 border-indigo-200'
                     }`}>
-                      <div className={`font-semibold mb-1 ${
+                      <div className={`text-sm font-medium mb-1 ${
                         isDark ? 'text-indigo-300' : 'text-indigo-700'
                       }`}>N° Examen</div>
                       <div className={`font-bold ${
