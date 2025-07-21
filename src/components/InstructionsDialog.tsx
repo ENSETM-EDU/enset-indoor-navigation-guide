@@ -22,7 +22,7 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
       step: 2,
       icon: <User className="w-6 h-6" />,
       title: "Entrer votre CNE",
-      description: "Saisissez votre numéro CNE valide tel qu'il apparaît sur votre convocation"
+      description: "Saisissez votre numéro CNE valide"
     },
     {
       step: 3,
