@@ -190,10 +190,10 @@ const NavigationPage: React.FC = () => {
   };
 
   const nextStep = async () => {
-    if (currentStep < totalSteps - 1) {
+    if (currentStep < totalSteps) {
       const newStep = currentStep + 1;
       setCurrentStep(newStep);
-      if (pathData) {
+      if (pathData && newStep < totalSteps) {
         await loadImageForStep(pathData.path, newStep + 1);
       }
     }
@@ -251,7 +251,7 @@ const NavigationPage: React.FC = () => {
     );
   }
 
-  const isLastStep = currentStep === totalSteps - 1;
+  const isLastStep = currentStep === totalSteps;
 
   return (
     <div className="h-screen flex flex-col">
@@ -273,7 +273,7 @@ const NavigationPage: React.FC = () => {
           className=" flex flex-col overflow-hidden"
         >
           <div className="px-4 py-2">
-            <ProgressBar current={currentStep + 1} total={totalSteps} />
+            <ProgressBar current={currentStep + 1} total={totalSteps + 1} />
           </div>
 
           <div className="flex-1 flex flex-col px-4 relative">
@@ -285,7 +285,9 @@ const NavigationPage: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-1">
                   <MapPin className="w-4 h-4 text-gray-600" />
-                  <span className="text-gray-700">{currentStep + 1}/{totalSteps}</span>
+                  <span className="text-gray-700">
+                    {currentStep === totalSteps ? 'Arrivé !' : `${currentStep + 1}/${totalSteps}`}
+                  </span>
                 </div>
                 {preloadingImages.size > 0 && (
                   <div className="flex items-center space-x-1">
@@ -308,37 +310,26 @@ const NavigationPage: React.FC = () => {
                       transition={{ duration: 0.4 }}
                       className="relative text-center p-6 flex flex-col items-center justify-center h-full"
                     >
-                      <div
-                        className="absolute inset-0 z-0"
-                        style={{
-                          backgroundImage: currentImage ? `url(${currentImage})` : 'none',
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                          opacity: 0.3
-                        }}
-                      />
-                      <div className="relative z-10">
-                        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                          <CheckCircle className="w-10 h-10 text-green-600" />
-                        </div>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                          Destination atteinte !
-                        </h2>
-                        <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
-                          <button
-                            onClick={restart}
-                            className="button-secondary w-full text-gray-700 px-6 py-3 rounded-xl font-medium flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm"
-                          >
-                            <RotateCcw className="w-5 h-5" />
-                            <span>Recommencer</span>
-                          </button>
-                          <button
-                            onClick={() => navigate('/')}
-                            className="button-primary w-full text-white px-6 py-3 rounded-xl font-medium"
-                          >
-                            Nouveau parcours
-                          </button>
-                        </div>
+                      <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <CheckCircle className="w-10 h-10 text-green-600" />
+                      </div>
+                      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                        Destination atteinte !
+                      </h2>
+                      <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
+                        <button
+                          onClick={restart}
+                          className="button-secondary w-full text-gray-700 px-6 py-3 rounded-xl font-medium flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm"
+                        >
+                          <RotateCcw className="w-5 h-5" />
+                          <span>Recommencer</span>
+                        </button>
+                        <button
+                          onClick={() => navigate('/')}
+                          className="button-primary w-full text-white px-6 py-3 rounded-xl font-medium"
+                        >
+                          Nouveau parcours
+                        </button>
                       </div>
                     </motion.div>
                   ) : (
@@ -388,7 +379,7 @@ const NavigationPage: React.FC = () => {
 
                       <button
                         onClick={nextStep}
-                        disabled={currentStep === totalSteps - 1}
+                        disabled={currentStep >= totalSteps}
                         className="flex-1 button-primary text-white px-4 py-3 rounded-xl font-medium flex items-center justify-center space-x-1 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <span>Suivant</span>
