@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, User, Clock, MapPin, AlertCircle, Loader2, GraduationCap, Navigation, ChevronDown } from 'lucide-react';
+import { Search, User, Clock, MapPin, AlertCircle, Loader2, GraduationCap, Navigation, ChevronDown, Info } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
+import InstructionsDialog from '../components/InstructionsDialog';
 
 interface StudentData {
   id: string;
@@ -31,6 +32,7 @@ const ConcoursEnset: React.FC = () => {
   const [examInfo, setExamInfo] = useState<ExamInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+  const [showInstructions, setShowInstructions] = useState<boolean>(true);
   const { isDark } = useTheme();
   const navigate = useNavigate();
 
@@ -132,6 +134,8 @@ const ConcoursEnset: React.FC = () => {
       </div>
     );
   };
+
+  // Composant pour les instructions - maintenant importé depuis components/InstructionsDialog.tsx
 
   // Fonction pour obtenir les informations d'épreuve
   const getEpreuveInfo = (epreuve: string) => {
@@ -236,6 +240,12 @@ const ConcoursEnset: React.FC = () => {
     }`}>
       <FloatingBubbles />
       
+      {/* Instructions Dialog */}
+      <InstructionsDialog 
+        isOpen={showInstructions} 
+        onClose={() => setShowInstructions(false)} 
+      />
+      
       <div className="relative z-10 container mx-auto px-4 py-12">
         {/* Hero Section */}
         <motion.div
@@ -287,6 +297,28 @@ const ConcoursEnset: React.FC = () => {
             Merci de vous présenter ici pour accéder à vos informations d'examen.<br />
             Veuillez saisir votre numéro de CNE pour être guidé vers votre salle d'examen.
           </motion.p>
+          
+          {/* Bouton d'aide */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mt-6"
+          >
+            <motion.button
+              onClick={() => setShowInstructions(true)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 ${
+                isDark 
+                  ? 'bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-600/30' 
+                  : 'bg-blue-100 hover:bg-blue-200 text-blue-700 border border-blue-200'
+              }`}
+            >
+              <Info className="w-4 h-4" />
+              <span className="text-sm">Guide d'utilisation</span>
+            </motion.button>
+          </motion.div>
         </motion.div>
 
         {/* Formulaire principal ou informations d'examen */}
