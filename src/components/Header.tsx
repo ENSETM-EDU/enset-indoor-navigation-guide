@@ -57,7 +57,7 @@ const Header: React.FC = () => {
             </div>
             <div className="text-left">
               <h1 className="text-base sm:text-lg font-semibold text-gray-900 leading-tight">
-                ENSET Mohammedia
+                ENSET
               </h1>
               <p className="text-xs sm:text-sm text-gray-500 hidden sm:block">
                 Navigation Guide
