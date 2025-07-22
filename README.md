@@ -1,1 +1,1 @@
-# enset-ceremoni-navigation
+# enset-indoor-navigation-guide
