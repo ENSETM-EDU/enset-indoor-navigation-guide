@@ -81,7 +81,7 @@
     "from": "Escalier 3",
     "to": "Toilettes Hommes",
     "time": "1 min",
-    "steps": 3,
+    "steps": 2,
     "path": "/photos-navigation/Escalier3ToToilettesHomme",
     "title": "Trajet vers les toilettes",
     "description": "Itinéraire pour accéder aux toilettes pour hommes depuis l’escalier 3.",
