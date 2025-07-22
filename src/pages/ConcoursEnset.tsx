@@ -32,7 +32,7 @@ const ConcoursEnset: React.FC = () => {
   const [examInfo, setExamInfo] = useState<ExamInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
-  const [showInstructions, setShowInstructions] = useState<boolean>(true);
+  const [showInstructions, setShowInstructions] = useState<boolean>(false);
   const { isDark } = useTheme();
   const navigate = useNavigate();
 
