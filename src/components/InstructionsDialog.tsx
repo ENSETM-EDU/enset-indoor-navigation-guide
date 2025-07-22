@@ -14,25 +14,25 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
   const instructions = [
     {
       step: 1,
-      icon: <GraduationCap className="w-6 h-6" />,
+      icon: <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: "Choisir votre filière",
       description: "Sélectionnez la filière correspondant à votre spécialité (Génie Informatique, Génie Mécanique, ou Génie Électrique)"
     },
     {
       step: 2,
-      icon: <User className="w-6 h-6" />,
+      icon: <User className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: "Entrer votre CNE",
       description: "Saisissez votre numéro CNE valide"
     },
     {
       step: 3,
-      icon: <CheckCircle className="w-6 h-6" />,
+      icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: "Vérifier vos informations",
       description: "Consultez vos informations d'examen (salle, horaire, numéro d'examen)"
     },
     {
       step: 4,
-      icon: <Navigation className="w-6 h-6" />,
+      icon: <Navigation className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: "Suivre votre parcours",
       description: "Cliquez sur 'Suivre le parcours' pour être guidé vers votre salle d'examen"
     }
@@ -46,7 +46,7 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50"
         onClick={(e) => {
           if (e.target === e.currentTarget) {
             onClose();
@@ -57,7 +57,7 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className={`max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl ${
+          className={`max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto rounded-xl sm:rounded-2xl shadow-2xl ${
             isDark 
               ? 'bg-gray-800/95 border border-gray-700' 
               : 'bg-white/95 border border-gray-200'
@@ -65,24 +65,24 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className={`p-6 border-b ${
+          <div className={`p-4 sm:p-6 border-b ${
             isDark ? 'border-gray-700' : 'border-gray-200'
           }`}>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                  <Info className="w-6 h-6 text-white" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                  <Info className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className={`text-xl font-bold ${
+                  <h2 className={`text-lg sm:text-xl font-bold ${
                     isDark ? 'text-gray-100' : 'text-slate-800'
                   }`}>
                     Guide d'utilisation
                   </h2>
-                  <p className={`text-sm ${
+                  <p className={`text-xs sm:text-sm ${
                     isDark ? 'text-gray-400' : 'text-slate-600'
                   }`}>
-                    Comment utiliser l'application de navigation
+                    Comment utiliser l'application
                   </p>
                 </div>
               </div>
@@ -102,22 +102,22 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
           </div>
 
           {/* Content */}
-          <div className="p-6">
-            <div className="space-y-6">
+          <div className="p-4 sm:p-6">
+            <div className="space-y-4 sm:space-y-6">
               {instructions.map((instruction, index) => (
                 <motion.div
                   key={instruction.step}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`flex gap-4 p-4 rounded-xl border ${
+                  className={`flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border ${
                     isDark 
                       ? 'bg-gray-700/30 border-gray-600' 
                       : 'bg-slate-50 border-slate-200'
                   }`}
                 >
                   <div className="flex-shrink-0">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center ${
                       isDark 
                         ? 'bg-blue-600/20 text-blue-400' 
                         : 'bg-blue-100 text-blue-600'
@@ -125,29 +125,29 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
                       {instruction.icon}
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2">
+                      <span className={`px-2 py-1 text-xs font-semibold rounded-full self-start ${
                         isDark 
                           ? 'bg-blue-600/20 text-blue-400' 
                           : 'bg-blue-100 text-blue-600'
                       }`}>
                         Étape {instruction.step}
                       </span>
-                      <h3 className={`font-semibold ${
+                      <h3 className={`font-semibold text-sm sm:text-base ${
                         isDark ? 'text-gray-100' : 'text-slate-800'
                       }`}>
                         {instruction.title}
                       </h3>
                     </div>
-                    <p className={`text-sm leading-relaxed ${
+                    <p className={`text-xs sm:text-sm leading-relaxed ${
                       isDark ? 'text-gray-300' : 'text-slate-600'
                     }`}>
                       {instruction.description}
                     </p>
                   </div>
                   {index < instructions.length - 1 && (
-                    <ArrowRight className={`w-5 h-5 mt-3 ${
+                    <ArrowRight className={`hidden sm:block w-5 h-5 mt-3 ${
                       isDark ? 'text-gray-500' : 'text-slate-400'
                     }`} />
                   )}
@@ -160,17 +160,17 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className={`mt-6 p-4 rounded-xl border ${
+              className={`mt-4 sm:mt-6 p-3 sm:p-4 rounded-xl border ${
                 isDark 
                   ? 'bg-red-900/20 border-red-700 text-red-300' 
                   : 'bg-red-50 border-red-200 text-red-800'
               }`}
             >
-              <div className="flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <div className="flex items-start gap-2 sm:gap-3">
+                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h4 className="font-semibold mb-2">Important</h4>
-                  <div className="space-y-2 text-sm">
+                  <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Important</h4>
+                  <div className="space-y-2 text-xs sm:text-sm">
                     <p>
                       En cas d'échéance ou vous n'avez pas trouvé vos informations, vous êtes amenés à chercher 
                       vos informations dans les tableaux et à suivre la méthode classique pour accéder à votre salle. 
@@ -183,16 +183,16 @@ const InstructionsDialog: React.FC<InstructionsDialogProps> = ({ isOpen, onClose
           </div>
 
           {/* Footer */}
-          <div className={`p-6 border-t ${
+          <div className={`p-4 sm:p-6 border-t ${
             isDark ? 'border-gray-700' : 'border-gray-200'
           }`}>
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={onClose}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-4 sm:px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
             >
-              <CheckCircle className="w-5 h-5" />
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               J'ai compris, commencer
             </motion.button>
           </div>
