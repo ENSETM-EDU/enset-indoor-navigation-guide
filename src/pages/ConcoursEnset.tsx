@@ -28,7 +28,7 @@ interface ExamInfo {
 
 const ConcoursEnset: React.FC = () => {
   const [cne, setCne] = useState<string>('');
-  const [selectedFiliere, setSelectedFiliere] = useState<string>('gm');
+  const [selectedFiliere, setSelectedFiliere] = useState<string>('mi');
   const [examInfo, setExamInfo] = useState<ExamInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
