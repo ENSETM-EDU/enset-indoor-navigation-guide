@@ -62,15 +62,15 @@ const ConcoursEnset: React.FC = () => {
       let destination = '';
       
       // Mapping des salles vers les destinations de navigation
-      if (examInfo.salle.includes('Amphithéâtre 1')) {
+      if (examInfo.salle.includes('Amphi1')) {
         destination = 'Amphi1';
-      } else if (examInfo.salle.includes('Amphithéâtre 2')) {
+      } else if (examInfo.salle.includes('Amphi2')) {
         destination = 'Amphi2';
-      } else if (examInfo.salle.includes('Amphithéâtre 3')) {
+      } else if (examInfo.salle.includes('Amphi3')) {
         destination = 'Amphi3';
-      } else if (examInfo.salle.includes('Amphithéâtre 4')) {
+      } else if (examInfo.salle.includes('Amphi4')) {
         destination = 'Amphi4';
-      } else if (examInfo.salle.includes('Amphithéâtre 5')) {
+      } else if (examInfo.salle.includes('Amphi5')) {
         destination = 'Amphi5';
       } else if (examInfo.salle.includes('Amphithéâtre Principal')) {
         destination = 'Amphitheatre';
