@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { QrCode, ChevronDown, Menu, X, Calendar } from 'lucide-react';
+import { QrCode, ChevronDown, Menu, X, Calendar, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import QRScanner from '../components/QRScanner';
 
@@ -92,6 +92,19 @@ const HomePage: React.FC = () => {
                 
                 <div className="space-y-4">
                   <div>
+                    <button
+                      onClick={() => {
+                        navigate('/explorer');
+                        setShowMobileMenu(false);
+                      }}
+                      className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors duration-200 w-full text-left font-semibold"
+                    >
+                      <MapPin className="w-5 h-5" />
+                      <span>Explorer l'ENSET</span>
+                    </button>
+                  </div>
+                  
+                  <div>
                     <div className="flex items-center space-x-3 px-4 py-3 text-gray-600 font-semibold">
                       <Calendar className="w-5 h-5" />
                       <span>Événement</span>
@@ -146,10 +159,23 @@ const HomePage: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowScanner(!showScanner)}
-          className="button-primary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins"
+          className="button-primary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins mb-6"
         >
           <QrCode className="w-6 h-6" />
           <span>{showScanner ? 'Fermer le Scanner' : 'Scanner QR Code'}</span>
+        </motion.button>
+        
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => navigate('/explorer')}
+          className="bg-white text-blue-900 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins border-2 border-blue-200 hover:border-blue-300 transition-all duration-300"
+        >
+          <MapPin className="w-6 h-6" />
+          <span>Explorer l'ENSET</span>
         </motion.button>
       </motion.div>
 

@@ -1,0 +1,31 @@
+{
+  "espaces_pedagogiques": {
+    "Amphithéâtre": "Amphithéâtre",
+    "Amphi 1": "Amphi 1", 
+    "Amphi 2": "Amphi 2",
+    "Amphi 3": "Amphi 3",
+    "Amphi 4": "Amphi 4",
+    "Amphi 5": "Amphi 5",
+    "Salle 1": "Salle 1",
+    "Salle 2": "Salle 2", 
+    "Salle 3": "Salle 3",
+    "Salle 4": "Salle 4",
+    "Salle 5": "Salle 5",
+    "Salle 6": "Salle 6"
+  },
+  "services_essentiels": {
+    "Toilettes Hommes": "Toilettes Hommes",
+    "Toilettes Femmes": "Toilettes Femmes",
+    "Mosquée Hommes": "Mosquée Hommes", 
+    "Mosquée Femmes": "Mosquée Femmes"
+  },
+  "espaces_communs": {
+    "Cafétéria": "Cafétéria"
+  },
+  "points_acces": {
+    "Porte 1": "Porte 1",
+    "Porte 2": "Porte 2",
+    "Escalier 1": "Escalier 1",
+    "Escalier 3": "Escalier 3"
+  }
+}
