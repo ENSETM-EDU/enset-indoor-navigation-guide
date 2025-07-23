@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ChevronDown, ChevronRight, MapPin, Home, GraduationCap, Users, Coffee, DoorOpen } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronRight, MapPin, Home, GraduationCap, Users, Coffee } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface StructureData {
@@ -62,8 +62,7 @@ const ExplorerPage = () => {
     const iconMap: { [key: string]: React.ReactNode } = {
       'espaces_pedagogiques': <GraduationCap className="w-6 h-6 text-blue-900" />,
       'services_essentiels': <Users className="w-6 h-6 text-green-900" />,
-      'espaces_communs': <Coffee className="w-6 h-6 text-orange-900" />,
-      'points_acces': <DoorOpen className="w-6 h-6 text-purple-900" />
+      'espaces_communs': <Coffee className="w-6 h-6 text-orange-900" />
     };
     return iconMap[category] || <MapPin className="w-6 h-6 text-gray-900" />;
   };
@@ -72,8 +71,7 @@ const ExplorerPage = () => {
     const colorMap: { [key: string]: string } = {
       'espaces_pedagogiques': 'from-blue-100 to-blue-50',
       'services_essentiels': 'from-green-100 to-green-50',
-      'espaces_communs': 'from-orange-100 to-orange-50',
-      'points_acces': 'from-purple-100 to-purple-50'
+      'espaces_communs': 'from-orange-100 to-orange-50'
     };
     return colorMap[category] || 'from-gray-100 to-gray-50';
   };
@@ -82,8 +80,7 @@ const ExplorerPage = () => {
     const titles: { [key: string]: string } = {
       'espaces_pedagogiques': 'Espaces Pédagogiques',
       'services_essentiels': 'Services Essentiels',
-      'espaces_communs': 'Espaces Communs',
-      'points_acces': 'Points d\'Accès'
+      'espaces_communs': 'Espaces Communs'
     };
     return titles[category] || category;
   };
@@ -164,7 +161,9 @@ const ExplorerPage = () => {
 
         {/* Sections */}
         <div className="max-w-4xl mx-auto space-y-6">
-          {Object.entries(structure).map(([category, locations], index) => (
+          {Object.entries(structure)
+            .filter(([category]) => category !== 'points_acces')
+            .map(([category, locations], index) => (
             <motion.div 
               key={category}
               className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
@@ -266,7 +265,9 @@ const ExplorerPage = () => {
             <div className="flex justify-around text-center">
               <div>
                 <div className="text-2xl font-bold text-blue-900">
-                  {Object.values(structure).reduce((total, locations) => total + Object.keys(locations).length, 0)}
+                  {Object.entries(structure)
+                    .filter(([category]) => category !== 'points_acces')
+                    .reduce((total, [, locations]) => total + Object.keys(locations).length, 0)}
                 </div>
                 <div className="text-sm text-gray-600">Destinations</div>
               </div>
