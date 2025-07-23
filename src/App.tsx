@@ -8,13 +8,15 @@ import EnsetPage from './pages/EnsetPage';
 import ConcoursEnset from './pages/ConcoursEnset';
 import ToilettesPage from './pages/ToilettesPage';
 import MosqueePage from './pages/MosqueePage';
+import ExplorerPage from './pages/ExplorerPage';
+import DestinationPage from './pages/DestinationPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Header from './components/Header';
 import './App.css';
 
 const AppContent = () => {
   const location = useLocation();
-  const isNotFoundPage = !['/', '/navigate', '/toilettes', '/mosquee', '/concours-enset', '/ensad', '/enset'].some(path => 
+  const isNotFoundPage = !['/', '/navigate', '/toilettes', '/mosquee', '/concours-enset', '/ensad', '/enset', '/explorer', '/destination'].some(path => 
     location.pathname === path || location.pathname.startsWith(path + '/')
   );
 
@@ -33,6 +35,8 @@ const AppContent = () => {
           <Route path="/toilettes/:pointDepart" element={<ToilettesPage />} />
           <Route path="/mosquee/:pointDepart" element={<MosqueePage />} />
           <Route path="/concours-enset" element={<ConcoursEnset />} />
+          <Route path="/explorer" element={<ExplorerPage />} />
+          <Route path="/destination/:destination" element={<DestinationPage />} />
           <Route path="/ensad" element={<EnsadPage />} />
           <Route path="/ensad/:porte" element={<EnsadPage />} />
           <Route path="/enset" element={<EnsetPage />} />
