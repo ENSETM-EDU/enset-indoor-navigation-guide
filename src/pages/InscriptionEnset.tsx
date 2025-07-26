@@ -384,7 +384,7 @@ const InscriptionEnset: React.FC = () => {
                             .toUpperCase(); // Convertir en majuscules
                           setCne(normalizedValue);
                         }}
-                        placeholder="Ex: D123456789 (les espaces seront supprimés automatiquement)"
+                        placeholder="Ex: A123456789"
                         className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-base sm:text-lg font-medium ${
                           isDark 
                             ? 'bg-gray-700/70 border-gray-600 text-gray-100 placeholder-gray-400' 
@@ -394,11 +394,6 @@ const InscriptionEnset: React.FC = () => {
                         onKeyPress={(e) => e.key === 'Enter' && handleStudentSearch()}
                       />
                     </div>
-                    <p className={`text-xs mt-2 ${
-                      isDark ? 'text-gray-400' : 'text-slate-500'
-                    }`}>
-                      💡 Les espaces et minuscules sont automatiquement corrigés
-                    </p>
                   </div>
 
                   {error && (
