@@ -430,6 +430,26 @@ const InscriptionEnset: React.FC = () => {
                       </>
                     )}
                   </motion.button>
+
+                  {/* Note importante */}
+                  <div className={`p-4 rounded-lg border-l-4 ${
+                    isDark 
+                      ? 'bg-yellow-900/20 border-yellow-600 text-yellow-200' 
+                      : 'bg-yellow-50 border-yellow-400 text-yellow-800'
+                  }`}>
+                    <div className="flex items-start gap-3">
+                      <AlertCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                        isDark ? 'text-yellow-400' : 'text-yellow-600'
+                      }`} />
+                      <div className="text-xs sm:text-sm">
+                        <p className="font-semibold mb-1">⚠️ Avertissement Important</p>
+                        <p>
+                          Durant toutes les étapes du concours, depuis la candidature jusqu'à l'inscription définitive, 
+                          toute fausse déclaration détectée entraînera, à tout moment de la procédure, le rejet de la candidature.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ) : currentStep === 'filiere-selection' ? (
@@ -624,6 +644,95 @@ const InscriptionEnset: React.FC = () => {
                           : isDark ? 'text-yellow-300' : 'text-yellow-600'
                       }`}>
                         Votre salle d'inscription
+                      </div>
+                    </div>
+
+                    {/* Informations importantes selon la liste */}
+                    <div className={`p-6 rounded-xl border ${
+                      confirmationInfo?.list === 'principale'
+                        ? isDark 
+                          ? 'bg-blue-900/20 border-blue-700/50' 
+                          : 'bg-blue-50/80 border-blue-200'
+                        : isDark 
+                          ? 'bg-orange-900/20 border-orange-700/50' 
+                          : 'bg-orange-50/80 border-orange-200'
+                    }`}>
+                      <div className="flex items-start gap-3 mb-4">
+                        <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                          confirmationInfo?.list === 'principale'
+                            ? isDark ? 'bg-blue-600' : 'bg-blue-500'
+                            : isDark ? 'bg-orange-600' : 'bg-orange-500'
+                        }`}>
+                          <span className="text-white text-sm font-bold">!</span>
+                        </div>
+                        <div>
+                          <h4 className={`font-bold text-lg mb-3 ${
+                            confirmationInfo?.list === 'principale'
+                              ? isDark ? 'text-blue-300' : 'text-blue-800'
+                              : isDark ? 'text-orange-300' : 'text-orange-800'
+                          }`}>
+                            {confirmationInfo?.list === 'principale' 
+                              ? 'Instructions - Liste Principale' 
+                              : 'Instructions - Liste d\'Attente'
+                            }
+                          </h4>
+                          
+                          <div className={`space-y-3 text-sm ${
+                            isDark ? 'text-gray-300' : 'text-slate-700'
+                          }`}>
+                            <div className={`flex items-center gap-2 p-3 rounded-lg ${
+                              isDark ? 'bg-gray-800/40' : 'bg-white/60'
+                            }`}>
+                              <div className={`w-2 h-2 rounded-full ${
+                                confirmationInfo?.list === 'principale'
+                                  ? 'bg-blue-500' : 'bg-orange-500'
+                              }`}></div>
+                              <span className="font-semibold">📅 Date :</span>
+                              <span>Mardi 29/07/2025</span>
+                            </div>
+                            
+                            <div className={`flex items-center gap-2 p-3 rounded-lg ${
+                              isDark ? 'bg-gray-800/40' : 'bg-white/60'
+                            }`}>
+                              <div className={`w-2 h-2 rounded-full ${
+                                confirmationInfo?.list === 'principale'
+                                  ? 'bg-blue-500' : 'bg-orange-500'
+                              }`}></div>
+                              <span className="font-semibold">⏰ Horaires :</span>
+                              <span className="font-medium">
+                                {confirmationInfo?.list === 'principale' 
+                                  ? '9h00 - 12h00' 
+                                  : '10h30 - 12h00'
+                                } (Heure de rigueur)
+                              </span>
+                            </div>
+
+                            {confirmationInfo?.list === 'attente' && (
+                              <>
+                                <div className={`flex items-start gap-2 p-3 rounded-lg ${
+                                  isDark ? 'bg-gray-800/40' : 'bg-white/60'
+                                }`}>
+                                  <div className="w-2 h-2 rounded-full bg-orange-500 mt-2"></div>
+                                  <div>
+                                    <span className="font-semibold">📄 Documents requis :</span>
+                                    <div className="mt-1 text-xs">
+                                      • Copie de la CIN<br />
+                                      • Copie du BAC
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                <div className={`flex items-center gap-2 p-3 rounded-lg ${
+                                  isDark ? 'bg-green-900/30' : 'bg-green-50'
+                                }`}>
+                                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                  <span className="font-semibold">📋 Résultats :</span>
+                                  <span className="font-medium text-green-600">Affichage à 13h00</span>
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
