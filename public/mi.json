@@ -1,0 +1,1109 @@
+[
+  {
+    "id": "E146059194",
+    "nom": "Aadioui",
+    "prenom": "Soufiane",
+    "numero_examen": 1001,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D136881360",
+    "nom": "Aandadi",
+    "prenom": "Asmaa",
+    "numero_examen": 1002,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D136623923",
+    "nom": "Abayda",
+    "prenom": "Youssef",
+    "numero_examen": 1003,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "F133178284",
+    "nom": "Abba",
+    "prenom": "Salma",
+    "numero_examen": 1004,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "L148062724",
+    "nom": "Abbadi",
+    "prenom": "Meryam",
+    "numero_examen": 1005,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "G130357014",
+    "nom": "Abbahoum",
+    "prenom": "Meriem",
+    "numero_examen": 1006,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "F100067326",
+    "nom": "Abdalli",
+    "prenom": "Fatima",
+    "numero_examen": 1007,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "F132197503",
+    "nom": "Abdaoui",
+    "prenom": "Abdessamad",
+    "numero_examen": 1008,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "F120003011",
+    "nom": "Abdelkhalek",
+    "prenom": "Mohammed",
+    "numero_examen": 1009,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D130618913",
+    "nom": "Abdelouahd",
+    "prenom": "Youssef",
+    "numero_examen": 1010,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "L145062680",
+    "nom": "Abi Dahou",
+    "prenom": "Aya",
+    "numero_examen": 1011,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D130439657",
+    "nom": "Abib",
+    "prenom": "Abdelwahab",
+    "numero_examen": 1012,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "J130040565",
+    "nom": "Abou Eljihad",
+    "prenom": "Youssef",
+    "numero_examen": 1013,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "L139311029",
+    "nom": "Aboufaris",
+    "prenom": "Wassima",
+    "numero_examen": 1014,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "E137171721",
+    "nom": "Aboulhoda",
+    "prenom": "Saad",
+    "numero_examen": 1015,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "J110073405",
+    "nom": "Aboumlik",
+    "prenom": "Hamza",
+    "numero_examen": 1016,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R143109942",
+    "nom": "Aboussaad",
+    "prenom": "Rokaya",
+    "numero_examen": 1017,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D131623008",
+    "nom": "Aboussabre",
+    "prenom": "Oumaima",
+    "numero_examen": 1018,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "D147062437",
+    "nom": "Aboutayeb",
+    "prenom": "Ikram",
+    "numero_examen": 1019,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "D130143820",
+    "nom": "Achahrour",
+    "prenom": "Mustapha",
+    "numero_examen": 1020,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D130260668",
+    "nom": "Achane",
+    "prenom": "Nezha",
+    "numero_examen": 1021,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D135288604",
+    "nom": "Achhachar",
+    "prenom": "Yassine",
+    "numero_examen": 1022,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "G131439219",
+    "nom": "Achlou",
+    "prenom": "Anir",
+    "numero_examen": 1023,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "G133499583",
+    "nom": "Achouay",
+    "prenom": "Abdelilah",
+    "numero_examen": 1024,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "C131096632",
+    "nom": "Adaaiche",
+    "prenom": "Issalmou",
+    "numero_examen": 1025,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "F135201084",
+    "nom": "Adam",
+    "prenom": "Moutik",
+    "numero_examen": 1026,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "R132519575",
+    "nom": "Afi",
+    "prenom": "Samia",
+    "numero_examen": 1027,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R133938161",
+    "nom": "Afkir",
+    "prenom": "Chaimaa",
+    "numero_examen": 1028,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R135417058",
+    "nom": "Agazzara",
+    "prenom": "Keltoum",
+    "numero_examen": 1029,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "E137002903",
+    "nom": "Aghbalou",
+    "prenom": "Driss",
+    "numero_examen": 1030,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "J134242423",
+    "nom": "Agouzoul",
+    "prenom": "Naima",
+    "numero_examen": 1031,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "M139193916",
+    "nom": "Agrat",
+    "prenom": "El Mehdi",
+    "numero_examen": 1032,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "J131166478",
+    "nom": "Agrou",
+    "prenom": "Abdelali",
+    "numero_examen": 1033,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "G138288104",
+    "nom": "Ahachmi",
+    "prenom": "Fadoua",
+    "numero_examen": 1034,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "S136055355",
+    "nom": "Ahaggach",
+    "prenom": "Kaoutar",
+    "numero_examen": 1035,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D130409396",
+    "nom": "Ahanou",
+    "prenom": "Ayoub",
+    "numero_examen": 1036,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "S133227868",
+    "nom": "Ahethour",
+    "prenom": "Nihad",
+    "numero_examen": 1037,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D120021290",
+    "nom": "Ahouari",
+    "prenom": "Mohamed",
+    "numero_examen": 1038,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "G139342674",
+    "nom": "Ait Allal",
+    "prenom": "Mohammed",
+    "numero_examen": 1039,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "R130130999",
+    "nom": "Ait Baba Hida",
+    "prenom": "Fatima Zahra",
+    "numero_examen": 1040,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D136528180",
+    "nom": "Ait Bouhou",
+    "prenom": "Hamza",
+    "numero_examen": 1041,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R131437426",
+    "nom": "Ait Cheikh",
+    "prenom": "Ilyass",
+    "numero_examen": 1042,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D137513702",
+    "nom": "Ait El Kadi",
+    "prenom": "Mohamed",
+    "numero_examen": 1043,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "R137233681",
+    "nom": "Ait Elmaalem",
+    "prenom": "Siham",
+    "numero_examen": 1044,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D139498034",
+    "nom": "Ait Hmane",
+    "prenom": "Ihssane",
+    "numero_examen": 1045,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "Z175100051",
+    "nom": "Ait Hmane",
+    "prenom": "Zakaria",
+    "numero_examen": 1046,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "R130697294",
+    "nom": "Ait Lahcen",
+    "prenom": "Khadija",
+    "numero_examen": 1047,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "D130879463",
+    "nom": "Ait Yahia",
+    "prenom": "Layla",
+    "numero_examen": 1048,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D136548800",
+    "nom": "Akharraz",
+    "prenom": "Asma",
+    "numero_examen": 1049,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "F132113403",
+    "nom": "Akhouad",
+    "prenom": "Salma",
+    "numero_examen": 1050,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "D132745334",
+    "nom": "Akhouairi",
+    "prenom": "Hamza",
+    "numero_examen": 1051,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "R138454925",
+    "nom": "Akioud",
+    "prenom": "Rayan",
+    "numero_examen": 1052,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D110023830",
+    "nom": "Akka",
+    "prenom": "Abdelilah",
+    "numero_examen": 1053,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "M134489716",
+    "nom": "Akniz",
+    "prenom": "Fatima Ezzahrae",
+    "numero_examen": 1054,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "G130540918",
+    "nom": "Akram",
+    "prenom": "Ahlam",
+    "numero_examen": 1055,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D131340950",
+    "nom": "Al Rhafari",
+    "prenom": "Hiba",
+    "numero_examen": 1056,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "D131287203",
+    "nom": "Alahiane",
+    "prenom": "Said",
+    "numero_examen": 1057,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "D130226354",
+    "nom": "Alahyane",
+    "prenom": "Youssef",
+    "numero_examen": 1058,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "M135265065",
+    "nom": "Alala",
+    "prenom": "Mohamed",
+    "numero_examen": 1059,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "R131531224",
+    "nom": "Alami",
+    "prenom": "Yassine",
+    "numero_examen": 1060,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "S135389400",
+    "nom": "Allaoui",
+    "prenom": "Imane",
+    "numero_examen": 1061,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "G132492896",
+    "nom": "Alyachiri",
+    "prenom": "Aimrane",
+    "numero_examen": 1062,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R130540238",
+    "nom": "Amalal",
+    "prenom": "Oumnia",
+    "numero_examen": 1063,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R133434179",
+    "nom": "Amine",
+    "prenom": "Hiba",
+    "numero_examen": 1064,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R130047036",
+    "nom": "Amiqadir",
+    "prenom": "Ouissal",
+    "numero_examen": 1065,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "M120048614",
+    "nom": "Amraoui",
+    "prenom": "Souaad",
+    "numero_examen": 1066,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "X231060199",
+    "nom": "Anani",
+    "prenom": "Mawoueyram",
+    "numero_examen": 1067,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D131375892",
+    "nom": "Anaou",
+    "prenom": "Lina",
+    "numero_examen": 1068,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "ESTO230704",
+    "nom": "Andral",
+    "prenom": "Be Christopher",
+    "numero_examen": 1069,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "G139397163",
+    "nom": "Aqbadou",
+    "prenom": "Othmane",
+    "numero_examen": 1070,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R132418992",
+    "nom": "Araich",
+    "prenom": "Mohamed Amine",
+    "numero_examen": 1071,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "R130589233",
+    "nom": "Araour",
+    "prenom": "Ammar",
+    "numero_examen": 1072,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "B135071195",
+    "nom": "Arbia",
+    "prenom": "Hani",
+    "numero_examen": 1073,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "M130372039",
+    "nom": "Arharbi",
+    "prenom": "Latifa",
+    "numero_examen": 1074,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "K138214516",
+    "nom": "Assaf",
+    "prenom": "Aya",
+    "numero_examen": 1075,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R130412910",
+    "nom": "Assaffah",
+    "prenom": "Malak",
+    "numero_examen": 1076,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "R132928287",
+    "nom": "Assil",
+    "prenom": "Sara",
+    "numero_examen": 1077,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "R130110275",
+    "nom": "Atila",
+    "prenom": "Hammam",
+    "numero_examen": 1078,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "R136300009",
+    "nom": "Atiq",
+    "prenom": "Mohammed",
+    "numero_examen": 1079,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D135225045",
+    "nom": "Atouf",
+    "prenom": "Kaoutar",
+    "numero_examen": 1080,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "D133519522",
+    "nom": "Ayoubi",
+    "prenom": "Yassine",
+    "numero_examen": 1081,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R136537230",
+    "nom": "Azaouaghe",
+    "prenom": "Mohamed Amine",
+    "numero_examen": 1082,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "E140196962",
+    "nom": "Azarou",
+    "prenom": "Lamiae",
+    "numero_examen": 1083,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D131366414",
+    "nom": "Azatouri",
+    "prenom": "Rabya",
+    "numero_examen": 1084,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "L137115074",
+    "nom": "Azelag",
+    "prenom": "Abdelhakim",
+    "numero_examen": 1085,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "H130000022",
+    "nom": "Aziz",
+    "prenom": "Aymane",
+    "numero_examen": 1086,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "H133096492",
+    "nom": "Azizi",
+    "prenom": "Abdelilah",
+    "numero_examen": 1087,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D131193008",
+    "nom": "Azizi",
+    "prenom": "Simane",
+    "numero_examen": 1088,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-CCN",
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "R130171039",
+    "nom": "Baaiza",
+    "prenom": "Walid",
+    "numero_examen": 1089,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "M139318792",
+    "nom": "Badaoui",
+    "prenom": "Mohammed",
+    "numero_examen": 1090,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID"
+    ]
+  },
+  {
+    "id": "2392210006",
+    "nom": "Bado",
+    "prenom": "Yipene Ange Cenacle",
+    "numero_examen": 1091,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC",
+      "GLSID"
+    ]
+  },
+  {
+    "id": "R130193627",
+    "nom": "Baha",
+    "prenom": "Nadia",
+    "numero_examen": 1092,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "H131335025",
+    "nom": "Bahassan",
+    "prenom": "Lamiss",
+    "numero_examen": 1093,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "J143049414",
+    "nom": "Bahri",
+    "prenom": "Ilhame",
+    "numero_examen": 1094,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "B131072364",
+    "nom": "Baicha",
+    "prenom": "Mohamed",
+    "numero_examen": 1095,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "J137406191",
+    "nom": "Bakbachi",
+    "prenom": "Amina",
+    "numero_examen": 1096,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "N138321797",
+    "nom": "Bakkara",
+    "prenom": "Aya",
+    "numero_examen": 1097,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  },
+  {
+    "id": "P134110852",
+    "nom": "Bakkari",
+    "prenom": "Zakariae",
+    "numero_examen": 1098,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "D100050537",
+    "nom": "Bakziz",
+    "prenom": "Yahia",
+    "numero_examen": 1099,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "II-BDCC"
+    ]
+  },
+  {
+    "id": "B139036089",
+    "nom": "Bamousa",
+    "prenom": "Safa",
+    "numero_examen": 1100,
+    "epreuve": "MI",
+    "filieres_reussies": [
+      "GLSID",
+      "II-BDCC",
+      "II-CCN"
+    ]
+  }
+]

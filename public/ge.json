@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "D134761930",
+    "nom": "ANOUIMI",
+    "prenom": "MARIAM",
+    "numero_examen": 1042,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "D131707987",
+    "nom": "FARAH",
+    "prenom": "ABDELLAH",
+    "numero_examen": 1305,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "M130001541",
+    "nom": "AYOUBI",
+    "prenom": "FATIMA ZAHRA",
+    "numero_examen": 1054,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "K132232537",
+    "nom": "FAAD",
+    "prenom": "OSAMA",
+    "numero_examen": 1302,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "G135008478",
+    "nom": "ABBICHA",
+    "prenom": "HOUDA",
+    "numero_examen": 1008,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "R132233684",
+    "nom": "LABZAE",
+    "prenom": "BADR EDDINE",
+    "numero_examen": 1402,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "M139427315",
+    "nom": "AMOUR",
+    "prenom": "HAJAR",
+    "numero_examen": 1036,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "G136143211",
+    "nom": "CHBATI",
+    "prenom": "SALMA",
+    "numero_examen": 1159,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "R134405043",
+    "nom": "ESSAGUER",
+    "prenom": "IKRAM",
+    "numero_examen": 1295,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "M148011302",
+    "nom": "NASSI",
+    "prenom": "YASSINE",
+    "numero_examen": 1461,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "F133288342",
+    "nom": "BENCHIKHI",
+    "prenom": "ACHRAF",
+    "numero_examen": 1098,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "J137335263",
+    "nom": "ARIANI",
+    "prenom": "ILYASS",
+    "numero_examen": 1046,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "R130171039",
+    "nom": "BAAIZA",
+    "prenom": "WALID",
+    "numero_examen": 1062,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "R134844225",
+    "nom": "BENMANSOUR",
+    "prenom": "ZAKARIA",
+    "numero_examen": 1105,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "L148023835",
+    "nom": "OUAZA",
+    "prenom": "YASMINE",
+    "numero_examen": 1471,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "H142058205",
+    "nom": "FARHANE",
+    "prenom": "MOHAMMED",
+    "numero_examen": 1306,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "R131220788",
+    "nom": "FARKOU",
+    "prenom": "OUMAIMA",
+    "numero_examen": 1307,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "K130022697",
+    "nom": "AIT KHORSA",
+    "prenom": "IHSSANE",
+    "numero_examen": 1021,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "H134139265",
+    "nom": "LABRINSSI",
+    "prenom": "SOUFYANE",
+    "numero_examen": 1401,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "P139306398",
+    "nom": "ELGHALI",
+    "prenom": "NIHAD",
+    "numero_examen": 1261,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "E138193253",
+    "nom": "BOUGHIJA",
+    "prenom": "NADA",
+    "numero_examen": 1123,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "R135537131",
+    "nom": "MOUKHIKA",
+    "prenom": "AYMANE",
+    "numero_examen": 1449,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "R134456918",
+    "nom": "ZAHIR",
+    "prenom": "KELTOUM",
+    "numero_examen": 1545,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "R136489125",
+    "nom": "CHAKIR",
+    "prenom": "YASSINE",
+    "numero_examen": 1153,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "D135151214",
+    "nom": "BENALI",
+    "prenom": "SLIMANE",
+    "numero_examen": 1096,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "D130036650",
+    "nom": "AZEGGAGH",
+    "prenom": "IBTISSAM",
+    "numero_examen": 1057,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "R130907164",
+    "nom": "EL BOUFKRANY",
+    "prenom": "AYOUB",
+    "numero_examen": 1204,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "R130042654",
+    "nom": "BELLA",
+    "prenom": "ISMAIL",
+    "numero_examen": 1087,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "R132269303",
+    "nom": "EL JAAFARY",
+    "prenom": "WIAM",
+    "numero_examen": 1233,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "P132128995",
+    "nom": "EL HARRAT",
+    "prenom": "CHIFAE",
+    "numero_examen": 1228,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "D136660538",
+    "nom": "LAZREG",
+    "prenom": "ABDESSAMAD",
+    "numero_examen": 1416,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "F143082019",
+    "nom": "RAJJI",
+    "prenom": "AHMED",
+    "numero_examen": 1489,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "K130032288",
+    "nom": "MAHASSINE",
+    "prenom": "OTHMANE",
+    "numero_examen": 1422,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "D138136560",
+    "nom": "BKHOUTI",
+    "prenom": "HAJAR",
+    "numero_examen": 1114,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "D134114201",
+    "nom": "CHABANI",
+    "prenom": "WALID",
+    "numero_examen": 1147,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "R130741807",
+    "nom": "EL KHAYATI",
+    "prenom": "MOUAD",
+    "numero_examen": 1235,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "K135141956",
+    "nom": "EL ALAMI",
+    "prenom": "AYMANE",
+    "numero_examen": 1187,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "C130003721",
+    "nom": "HAIMOUD",
+    "prenom": "SALEM",
+    "numero_examen": 1331,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "E120020162",
+    "nom": "TAHRI",
+    "prenom": "SAFAA",
+    "numero_examen": 1527,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "M135319085",
+    "nom": "GUIRROU",
+    "prenom": "LAMIAE",
+    "numero_examen": 1325,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "P130228642",
+    "nom": "CHEROUD BEGDOURI",
+    "prenom": "HAMZA",
+    "numero_examen": 1164,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "M138126695",
+    "nom": "EL AZZAOUI",
+    "prenom": "AYA",
+    "numero_examen": 1199,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "H133149372",
+    "nom": "ELGHANIOUI",
+    "prenom": "BENYOUNES",
+    "numero_examen": 1262,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "E132132754",
+    "nom": "JEMI",
+    "prenom": "MERIEME",
+    "numero_examen": 1369,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "G138333402",
+    "nom": "LOUALI",
+    "prenom": "MOHAMED",
+    "numero_examen": 1418,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "R131341587",
+    "nom": "OUARDI",
+    "prenom": "ABDELLAH",
+    "numero_examen": 1469,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "G138307601",
+    "nom": "BELHAZI",
+    "prenom": "KAOUTAR",
+    "numero_examen": 1083,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "P137286131",
+    "nom": "EL MOUSSAOUI",
+    "prenom": "FATIMA ZAHRAE",
+    "numero_examen": 1244,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "D134693166",
+    "nom": "EDAOUDI",
+    "prenom": "SALMA",
+    "numero_examen": 1182,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "G139285275",
+    "nom": "IKKOU",
+    "prenom": "CHAIMAE",
+    "numero_examen": 1358,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "K136408671",
+    "nom": "CHTIOUI",
+    "prenom": "YASSINE",
+    "numero_examen": 1168,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "K130448847",
+    "nom": "HAJJI",
+    "prenom": "ABDERRAHIM",
+    "numero_examen": 1333,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "E144063211",
+    "nom": "TAHADDI",
+    "prenom": "HAJAR",
+    "numero_examen": 1522,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "R131932385",
+    "nom": "ATTARI",
+    "prenom": "ILIAS",
+    "numero_examen": 1053,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "D132770733",
+    "nom": "AMZIL",
+    "prenom": "ANOUAR",
+    "numero_examen": 1038,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "R136513638",
+    "nom": "MOURADI",
+    "prenom": "MOHAMED",
+    "numero_examen": 1450,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "N139270162",
+    "nom": "HANINE",
+    "prenom": "GHITA",
+    "numero_examen": 1338,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "E141109088",
+    "nom": "GUERHOU",
+    "prenom": "AYOUB",
+    "numero_examen": 1323,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "C136120115",
+    "nom": "BEN JOU",
+    "prenom": "WALID",
+    "numero_examen": 1093,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "R139460386",
+    "nom": "BENTALHA",
+    "prenom": "IMAD",
+    "numero_examen": 1107,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "N133129842",
+    "nom": "GHERGHOUCH",
+    "prenom": "MOHAMED AMINE",
+    "numero_examen": 1316,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "D138239989",
+    "nom": "LAGHZAL",
+    "prenom": "HAJAR",
+    "numero_examen": 1407,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "D130040024",
+    "nom": "NOUFAIL",
+    "prenom": "SAMIRA",
+    "numero_examen": 1465,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "K133471275",
+    "nom": "NAJI",
+    "prenom": "MOHAMMED",
+    "numero_examen": 1458,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "K137286286",
+    "nom": "JNIBI",
+    "prenom": "CHAHID",
+    "numero_examen": 1370,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "E133188271",
+    "nom": "MESRAR",
+    "prenom": "ALAEEDDINE",
+    "numero_examen": 1441,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "J131416370",
+    "nom": "LAMRABATE",
+    "prenom": "FATIMAEZZAHRA",
+    "numero_examen": 1414,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "E139265469",
+    "nom": "OUHASSOU",
+    "prenom": "FATIMA ZAHRA",
+    "numero_examen": 1479,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "D131135584",
+    "nom": "EJJAAF",
+    "prenom": "HIBA",
+    "numero_examen": 1183,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "D133159535",
+    "nom": "OULMOUDEN",
+    "prenom": "LAHOUCINE",
+    "numero_examen": 1482,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "P130309816",
+    "nom": "SLIMANI",
+    "prenom": "IMANE",
+    "numero_examen": 1513,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "R131220625",
+    "nom": "BENIK",
+    "prenom": "ABDELMOGHIT",
+    "numero_examen": 1100,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "G135771049",
+    "nom": "AAZIZ",
+    "prenom": "AMINE",
+    "numero_examen": 1005,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "M130111566",
+    "nom": "MCHICHOU",
+    "prenom": "AMINE",
+    "numero_examen": 1435,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "F130024187",
+    "nom": "ADOUAR",
+    "prenom": "ISMAIL",
+    "numero_examen": 1010,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "R137413425",
+    "nom": "OUARDA",
+    "prenom": "ADAM",
+    "numero_examen": 1468,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "G133148315",
+    "nom": "ELHASANY",
+    "prenom": "NAIMA",
+    "numero_examen": 1269,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "L136176504",
+    "nom": "WAHABI",
+    "prenom": "AYOUB",
+    "numero_examen": 1541,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "S139057324",
+    "nom": "SAOUDI",
+    "prenom": "RAHIMA",
+    "numero_examen": 1510,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "R132363880",
+    "nom": "AZAMMAT",
+    "prenom": "YAHYA",
+    "numero_examen": 1056,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "D136233860",
+    "nom": "KHLIFI TAGHZOUTI",
+    "prenom": "HIBA",
+    "numero_examen": 1387,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "F135053229",
+    "nom": "SLIMANI",
+    "prenom": "NOUARA",
+    "numero_examen": 1515,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "E140104530",
+    "nom": "AFQUIR",
+    "prenom": "YAHIA",
+    "numero_examen": 1012,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "K139134837",
+    "nom": "LAHRECH",
+    "prenom": "ABDELGHAFOUR",
+    "numero_examen": 1409,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "K136224085",
+    "nom": "SATOUR",
+    "prenom": "IMAN",
+    "numero_examen": 1511,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "R130103473",
+    "nom": "BAHLOUL",
+    "prenom": "YASSINE",
+    "numero_examen": 1068,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "G132287807",
+    "nom": "BOURZIK",
+    "prenom": "ISMAIL",
+    "numero_examen": 1136,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "H136143338",
+    "nom": "HMIDANI",
+    "prenom": "HAFSA",
+    "numero_examen": 1350,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "R120056309",
+    "nom": "ERRAZI",
+    "prenom": "MARYAM",
+    "numero_examen": 1292,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  },
+  {
+    "id": "J136515752",
+    "nom": "IMRANI",
+    "prenom": "AICHA",
+    "numero_examen": 1359,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "P120086743",
+    "nom": "ELHADAD",
+    "prenom": "MAROUANE",
+    "numero_examen": 1264,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "M132518813",
+    "nom": "EL BAKKAY",
+    "prenom": "ANAS",
+    "numero_examen": 1202,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "J133332600",
+    "nom": "IKECHTANE",
+    "prenom": "MALAK",
+    "numero_examen": 1357,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "R110025423",
+    "nom": "CHAFIK",
+    "prenom": "YASSINE",
+    "numero_examen": 1149,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER",
+      "GECSI"
+    ]
+  },
+  {
+    "id": "H132313192",
+    "nom": "AZAHRAI",
+    "prenom": "YAHYA",
+    "numero_examen": 1055,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "J147073320",
+    "nom": "ERRAHIOUI",
+    "prenom": "FATIMA EZZAHRAA",
+    "numero_examen": 1290,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "K136367079",
+    "nom": "ELMAKKAOUI",
+    "prenom": "SALMA",
+    "numero_examen": 1277,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ]
+  },
+  {
+    "id": "N134173798",
+    "nom": "EL BAKKOURI",
+    "prenom": "WAHIB",
+    "numero_examen": 1203,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "R136651859",
+    "nom": "EL AZZAB",
+    "prenom": "CHAIMAE",
+    "numero_examen": 1198,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ]
+  },
+  {
+    "id": "H139267973",
+    "nom": "BELKHIR",
+    "prenom": "OUMAYMA",
+    "numero_examen": 1086,
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ]
+  }
+]

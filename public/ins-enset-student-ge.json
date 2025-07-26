@@ -1,0 +1,1238 @@
+[
+  {
+    "id": "A136009509",
+    "nom": "Laaribi",
+    "prenom": "Mahjouba",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "C120000018",
+    "nom": "Harraf",
+    "prenom": "Khadija",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "C130003721",
+    "nom": "Haimoud",
+    "prenom": "Salem",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "C134078350",
+    "nom": "Benchga",
+    "prenom": "Nouhaila",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "C136120115",
+    "nom": "Ben Jou",
+    "prenom": "Walid",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "C137168364",
+    "nom": "Anjjar",
+    "prenom": "Abdesslam",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "C139104819",
+    "nom": "Mostahssin",
+    "prenom": "Ikram",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D100051607",
+    "nom": "Diouani",
+    "prenom": "Fatima Zahra",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D130036650",
+    "nom": "Azeggagh",
+    "prenom": "Ibtissam",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D130155008",
+    "nom": "Bouzmane",
+    "prenom": "Faissal",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D130477335",
+    "nom": "Ouchraa",
+    "prenom": "Khalid",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D130530866",
+    "nom": "Elidrissy",
+    "prenom": "Imad",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D131135584",
+    "nom": "Ejjaaf",
+    "prenom": "Hiba",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D131247372",
+    "nom": "Aadayrou",
+    "prenom": "Ayoub",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D131707987",
+    "nom": "Farah",
+    "prenom": "Abdellah",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D133321420",
+    "nom": "Hajjaji",
+    "prenom": "Maryame",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D133828652",
+    "nom": "Essaid",
+    "prenom": "Issam",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D134114201",
+    "nom": "Chabani",
+    "prenom": "Walid",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D134630215",
+    "nom": "Ait - Ouahmane",
+    "prenom": "Mariama",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D134733640",
+    "nom": "Ben Aomar",
+    "prenom": "Fatima Zahra",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D134761930",
+    "nom": "Anouimi",
+    "prenom": "Mariam",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D135151214",
+    "nom": "Benali",
+    "prenom": "Slimane",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D135266831",
+    "nom": "Harout",
+    "prenom": "Brahim",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D135477279",
+    "nom": "El Bouihi",
+    "prenom": "Chaima",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D136660538",
+    "nom": "Lazreg",
+    "prenom": "Abdessamad",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D136855506",
+    "nom": "El Ghazi",
+    "prenom": "Rachid",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D136885858",
+    "nom": "Slimani",
+    "prenom": "Khaoula",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D137430790",
+    "nom": "Id Omar",
+    "prenom": "Mohamed",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D138056804",
+    "nom": "Ben Hakam",
+    "prenom": "Abdessamad",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D138086196",
+    "nom": "Bazzari",
+    "prenom": "Abdessamad",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D138136560",
+    "nom": "Bkhouti",
+    "prenom": "Hajar",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "D139266744",
+    "nom": "Atoum",
+    "prenom": "Jamal",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "D139789807",
+    "nom": "Aaziz",
+    "prenom": "Abdelkarim",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "E133188271",
+    "nom": "Mesrar",
+    "prenom": "Alaeeddine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "E148165172",
+    "nom": "Elmejjaouy",
+    "prenom": "Najlae",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "E202327746",
+    "nom": "Yanogo",
+    "prenom": "Landry",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "E202328113",
+    "nom": "Zampaligre",
+    "prenom": "Zidahoo Rodrigue",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "ESTO120804",
+    "nom": "Abdoul Nasser",
+    "prenom": "Bassoro",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "ESTO160303",
+    "nom": "Djanang Fegang",
+    "prenom": "Fadel Vidal",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "ETR2023025",
+    "nom": "Nadio",
+    "prenom": "Hussein",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "F130024187",
+    "nom": "Adouar",
+    "prenom": "Ismail",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "F130090570",
+    "nom": "Khadim",
+    "prenom": "Yassine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "F133288342",
+    "nom": "Benchikhi",
+    "prenom": "Achraf",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "F135053229",
+    "nom": "Slimani",
+    "prenom": "Nouara",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "F143053745",
+    "nom": "Gherniti",
+    "prenom": "Rayane",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "F143082019",
+    "nom": "Rajji",
+    "prenom": "Ahmed",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "G133050455",
+    "nom": "Elouafi",
+    "prenom": "Ahmed",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "G134677847",
+    "nom": "El Mesmoudi",
+    "prenom": "Ayoub",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "G135008478",
+    "nom": "Abbicha",
+    "prenom": "Houda",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "G135406136",
+    "nom": "Akhbaich",
+    "prenom": "Aicha",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "H132096495",
+    "nom": "Lakhloufi",
+    "prenom": "Alaeddine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "H134139265",
+    "nom": "Labrinssi",
+    "prenom": "Soufyane",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "H136167618",
+    "nom": "Daroui",
+    "prenom": "Houssam",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "H142058205",
+    "nom": "Farhane",
+    "prenom": "Mohammed",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "H147066317",
+    "nom": "Nassri",
+    "prenom": "Hamza",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "J137335263",
+    "nom": "Ariani",
+    "prenom": "Ilyass",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "J139445937",
+    "nom": "Ramadan",
+    "prenom": "Majda",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "J147073320",
+    "nom": "Errahioui",
+    "prenom": "Fatima Ezzahraa",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "J149058269",
+    "nom": "El Bouinany",
+    "prenom": "Ibtissam",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "K100091045",
+    "nom": "Rakibi",
+    "prenom": "Azeddine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "K110048704",
+    "nom": "Labib",
+    "prenom": "Fatima",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "K130022697",
+    "nom": "Ait Khorsa",
+    "prenom": "Ihssane",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "K130453640",
+    "nom": "Belgharbaouia",
+    "prenom": "Omar",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "K132231615",
+    "nom": "Najim",
+    "prenom": "Hanaa",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "K132232537",
+    "nom": "Faad",
+    "prenom": "Osama",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "K132449536",
+    "nom": "El Haloui",
+    "prenom": "Fatima",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "K133428062",
+    "nom": "Bouhamia",
+    "prenom": "Oussama",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "K135141956",
+    "nom": "El Alami",
+    "prenom": "Aymane",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "K138108171",
+    "nom": "Chaabi",
+    "prenom": "Marouane",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "K139354721",
+    "nom": "Guennouni",
+    "prenom": "Elhassan",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "L133078169",
+    "nom": "Bougader",
+    "prenom": "Yassine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "L139040633",
+    "nom": "Elhachimi",
+    "prenom": "Ahmed",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "L140055870",
+    "nom": "Boumazyane",
+    "prenom": "Hammadi",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "M120063518",
+    "nom": "Moutaouakil",
+    "prenom": "Said",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "M130017245",
+    "nom": "Bensalem",
+    "prenom": "Badr",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "M130033367",
+    "nom": "Khajja",
+    "prenom": "Hiba",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "M130054803",
+    "nom": "Ferjali",
+    "prenom": "Layla",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "M130121291",
+    "nom": "Mellouki",
+    "prenom": "Brahim",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "M131360175",
+    "nom": "Fatah",
+    "prenom": "Tarik",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "M136224555",
+    "nom": "Mardioui",
+    "prenom": "Fayza",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "M138232459",
+    "nom": "Hachimi",
+    "prenom": "Aymane",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "M139479771",
+    "nom": "El Hili",
+    "prenom": "Youssef",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "M148011302",
+    "nom": "Nassi",
+    "prenom": "Yassine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "N134173798",
+    "nom": "El Bakkouri",
+    "prenom": "Wahib",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "N134355740",
+    "nom": "El Ansari",
+    "prenom": "Mohammed",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "N134378541",
+    "nom": "Belkacem",
+    "prenom": "Saad",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "NBE748623",
+    "nom": "Nayeli",
+    "prenom": "Madani",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "P139334214",
+    "nom": "Khanfoudi",
+    "prenom": "Mohamed Amine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R120040859",
+    "nom": "Lagdam",
+    "prenom": "Hasnae",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R120055972",
+    "nom": "El Guazmiri",
+    "prenom": "Soukaina",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R120056309",
+    "nom": "Errazi",
+    "prenom": "Maryam",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R130042654",
+    "nom": "Bella",
+    "prenom": "Ismail",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R130096844",
+    "nom": "Kalil",
+    "prenom": "Fatima Ez-Zahraa",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R130103473",
+    "nom": "Bahloul",
+    "prenom": "Yassine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R130193804",
+    "nom": "Gharroumi",
+    "prenom": "Najlaa",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R130371444",
+    "nom": "Elayary",
+    "prenom": "Ibrahim",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R130741807",
+    "nom": "El Khayati",
+    "prenom": "Mouad",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R130907164",
+    "nom": "El Boufkrany",
+    "prenom": "Ayoub",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R131341587",
+    "nom": "Ouardi",
+    "prenom": "Abdellah",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R132233684",
+    "nom": "Labzae",
+    "prenom": "Badr Eddine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R132269303",
+    "nom": "El Jaafary",
+    "prenom": "Wiam",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R132491266",
+    "nom": "Jazoul",
+    "prenom": "Mohamed Amine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R134844225",
+    "nom": "Benmansour",
+    "prenom": "Zakaria",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R135537131",
+    "nom": "Moukhika",
+    "prenom": "Aymane",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R135569314",
+    "nom": "Zaouek",
+    "prenom": "Doha",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "R135652002",
+    "nom": "Taqi",
+    "prenom": "Moaad",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R136307659",
+    "nom": "Ech Charrady",
+    "prenom": "Amine",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R136651859",
+    "nom": "El Azzab",
+    "prenom": "Chaimae",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R137278370",
+    "nom": "Jamal",
+    "prenom": "Hamza",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "R139551527",
+    "nom": "El Hamati",
+    "prenom": "Oussama",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "S131104734",
+    "nom": "Tahri",
+    "prenom": "Mohamed",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "principale"
+  },
+  {
+    "id": "S133302601",
+    "nom": "El Bachiri",
+    "prenom": "Zouhir",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "S139057324",
+    "nom": "Saoudi",
+    "prenom": "Rahima",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI",
+      "GEER"
+    ],
+    "list": "attente"
+  },
+  {
+    "id": "Z237600711",
+    "nom": "El Ouadghiri",
+    "prenom": "Mohamed",
+    "epreuve": "GE",
+    "filieres_reussies": [
+      "GECSI"
+    ],
+    "list": "principale"
+  }
+]
