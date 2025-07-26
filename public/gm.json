@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "E146059194",
+    "nom": "Aadioui",
+    "prenom": "Soufiane",
+    "numero_examen": 1001,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "F134299011",
+    "nom": "Aallam",
+    "prenom": "Ilyas",
+    "numero_examen": 1002,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "G136387312",
+    "nom": "Aaniber",
+    "prenom": "Kaoutar",
+    "numero_examen": 1003,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "G135771049",
+    "nom": "Aaziz",
+    "prenom": "Amine",
+    "numero_examen": 1004,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "G138376883",
+    "nom": "Abachra",
+    "prenom": "Hasna",
+    "numero_examen": 1005,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "M130119727",
+    "nom": "Abadi",
+    "prenom": "Yassine",
+    "numero_examen": 1006,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R130172686",
+    "nom": "Abaly",
+    "prenom": "Kawtar",
+    "numero_examen": 1007,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "L138190328",
+    "nom": "Abbad",
+    "prenom": "Lamiya",
+    "numero_examen": 1008,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "F130011633",
+    "nom": "Aboutta",
+    "prenom": "Khalid",
+    "numero_examen": 1009,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "M130091199",
+    "nom": "Achbar",
+    "prenom": "Chaymae",
+    "numero_examen": 1010,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "D132486062",
+    "nom": "Achfarhouch",
+    "prenom": "Fatima",
+    "numero_examen": 1011,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "G131439219",
+    "nom": "Achlou",
+    "prenom": "Anir",
+    "numero_examen": 1012,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "K136277993",
+    "nom": "Achouyne",
+    "prenom": "Karima",
+    "numero_examen": 1013,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "M139240547",
+    "nom": "Adnane",
+    "prenom": "Abd-Elghafour",
+    "numero_examen": 1014,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "F130024187",
+    "nom": "Adouar",
+    "prenom": "Ismail",
+    "numero_examen": 1015,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R132519575",
+    "nom": "Afi",
+    "prenom": "Samia",
+    "numero_examen": 1016,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "K136186671",
+    "nom": "Afkir",
+    "prenom": "Houda",
+    "numero_examen": 1017,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "L139230428",
+    "nom": "Afoud",
+    "prenom": "Yassine",
+    "numero_examen": 1018,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "M136323331",
+    "nom": "Agouram",
+    "prenom": "Noura",
+    "numero_examen": 1019,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "D135219931",
+    "nom": "Agourram",
+    "prenom": "Salma",
+    "numero_examen": 1020,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "R130165698",
+    "nom": "Agra",
+    "prenom": "Marwa",
+    "numero_examen": 1021,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "D130409396",
+    "nom": "Ahanou",
+    "prenom": "Ayoub",
+    "numero_examen": 1022,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "H137050025",
+    "nom": "Aissaoui",
+    "prenom": "Noureddine",
+    "numero_examen": 1023,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "D130564745",
+    "nom": "Ait Ahmad",
+    "prenom": "Soumia",
+    "numero_examen": 1024,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "L139253712",
+    "nom": "Ait Alla",
+    "prenom": "Aymane",
+    "numero_examen": 1025,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "F138323326",
+    "nom": "Ait Azzi",
+    "prenom": "Zakaria",
+    "numero_examen": 1026,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "E134099166",
+    "nom": "Ait Baatag",
+    "prenom": "Sanae",
+    "numero_examen": 1027,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "L145024632",
+    "nom": "Ait Bahadou",
+    "prenom": "Hasna",
+    "numero_examen": 1028,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "D131647664",
+    "nom": "Ait Douchi",
+    "prenom": "Abdelhadi",
+    "numero_examen": 1029,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "L130153779",
+    "nom": "Ait Elfaria",
+    "prenom": "Doha",
+    "numero_examen": 1030,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R130056760",
+    "nom": "Ait Elkadi",
+    "prenom": "Ayoub",
+    "numero_examen": 1031,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "R134808675",
+    "nom": "Ait Goulbdi",
+    "prenom": "Yassine",
+    "numero_examen": 1032,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "K132292261",
+    "nom": "Ait Hammou",
+    "prenom": "Kawtar",
+    "numero_examen": 1033,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "L147068852",
+    "nom": "Ait Hamou",
+    "prenom": "Donya",
+    "numero_examen": 1034,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "L135190115",
+    "nom": "Ait Hassou",
+    "prenom": "Fahd",
+    "numero_examen": 1035,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "D136666927",
+    "nom": "Ait Lahcen",
+    "prenom": "Lhassan",
+    "numero_examen": 1036,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "D147024852",
+    "nom": "Ait Taher",
+    "prenom": "Khadija",
+    "numero_examen": 1037,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "G139366684",
+    "nom": "Ait Taleb",
+    "prenom": "Kaoutar",
+    "numero_examen": 1038,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "F1341109246",
+    "nom": "Ait Taqui",
+    "prenom": "Said",
+    "numero_examen": 1039,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "D138238942",
+    "nom": "Aitahmad",
+    "prenom": "Amyn",
+    "numero_examen": 1040,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "L139327537",
+    "nom": "Ait-Salah",
+    "prenom": "Salsabil",
+    "numero_examen": 1041,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "K143052534",
+    "nom": "Ajjaoui",
+    "prenom": "Mohamed",
+    "numero_examen": 1042,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "D133461119",
+    "nom": "Akhchane",
+    "prenom": "Mohamed",
+    "numero_examen": 1043,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "G137816853",
+    "nom": "Akhlousi",
+    "prenom": "Abdelmoumen",
+    "numero_examen": 1044,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "G141057504",
+    "nom": "Akil",
+    "prenom": "Mohamed Amine",
+    "numero_examen": 1045,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "H120002790",
+    "nom": "Akkar",
+    "prenom": "Hala",
+    "numero_examen": 1046,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "P135292288",
+    "nom": "Al Moudi",
+    "prenom": "Naziha",
+    "numero_examen": 1047,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "N136339795",
+    "nom": "Alami",
+    "prenom": "Omar",
+    "numero_examen": 1048,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "J135353312",
+    "nom": "Alami",
+    "prenom": "Adam",
+    "numero_examen": 1049,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "N132089603",
+    "nom": "Alaoui",
+    "prenom": "Zakariae",
+    "numero_examen": 1050,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "N137217999",
+    "nom": "Alaoui Mdaghri",
+    "prenom": "Dina",
+    "numero_examen": 1051,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "M148002027",
+    "nom": "Alioui",
+    "prenom": "Salah-Eddine",
+    "numero_examen": 1052,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "K138120879",
+    "nom": "Allam",
+    "prenom": "Hamza",
+    "numero_examen": 1053,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "H144065499",
+    "nom": "Allaoui",
+    "prenom": "Imane",
+    "numero_examen": 1054,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "D148024041",
+    "nom": "Alouah",
+    "prenom": "Aya",
+    "numero_examen": 1055,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "D137114981",
+    "nom": "Amehri",
+    "prenom": "Hamza",
+    "numero_examen": 1056,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "M139427315",
+    "nom": "Amour",
+    "prenom": "Hajar",
+    "numero_examen": 1057,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "P100047553",
+    "nom": "Amziab",
+    "prenom": "Oussama",
+    "numero_examen": 1058,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R133452675",
+    "nom": "Anibar",
+    "prenom": "Salah Eddine",
+    "numero_examen": 1059,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "C137168364",
+    "nom": "Anjjar",
+    "prenom": "Abdesslam",
+    "numero_examen": 1060,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "D134761930",
+    "nom": "Anouimi",
+    "prenom": "Mariam",
+    "numero_examen": 1061,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "J136101804",
+    "nom": "Antar",
+    "prenom": "Aya",
+    "numero_examen": 1062,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "L120028033",
+    "nom": "Aoubayen",
+    "prenom": "Hafssaa",
+    "numero_examen": 1063,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "H120012451",
+    "nom": "Aouragh",
+    "prenom": "Hanane",
+    "numero_examen": 1064,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "L133339048",
+    "nom": "Argadi",
+    "prenom": "Anass",
+    "numero_examen": 1065,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "J137335263",
+    "nom": "Ariani",
+    "prenom": "Ilyass",
+    "numero_examen": 1066,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R130931175",
+    "nom": "Arouane",
+    "prenom": "Khaoula",
+    "numero_examen": 1067,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "D130013917",
+    "nom": "Arouka",
+    "prenom": "Youssef",
+    "numero_examen": 1068,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R135420764",
+    "nom": "Arrai",
+    "prenom": "Ali",
+    "numero_examen": 1069,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "F120016288",
+    "nom": "Arroub",
+    "prenom": "Dounia",
+    "numero_examen": 1070,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "C136092044",
+    "nom": "Asbai",
+    "prenom": "Ziyad",
+    "numero_examen": 1071,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "R139216237",
+    "nom": "Asraoui",
+    "prenom": "Maroua",
+    "numero_examen": 1072,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R136230378",
+    "nom": "Assouli",
+    "prenom": "Fatna",
+    "numero_examen": 1073,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R136300009",
+    "nom": "Atiq",
+    "prenom": "Mohammed",
+    "numero_examen": 1074,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "M120068525",
+    "nom": "Atmani",
+    "prenom": "Siham",
+    "numero_examen": 1075,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "A136010371",
+    "nom": "Atouch",
+    "prenom": "Yassine",
+    "numero_examen": 1076,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "K139505868",
+    "nom": "Atta",
+    "prenom": "Loubna",
+    "numero_examen": 1077,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "L139036603",
+    "nom": "Azado",
+    "prenom": "Abdelbast",
+    "numero_examen": 1078,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R132363880",
+    "nom": "Azammat",
+    "prenom": "Yahya",
+    "numero_examen": 1079,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "R130400953",
+    "nom": "Azbak",
+    "prenom": "Yassine",
+    "numero_examen": 1080,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "D130036650",
+    "nom": "Azeggagh",
+    "prenom": "Ibtissam",
+    "numero_examen": 1081,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "R132371346",
+    "nom": "Aziz",
+    "prenom": "Khalid",
+    "numero_examen": 1082,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "H133096492",
+    "nom": "Azizi",
+    "prenom": "Abdelilah",
+    "numero_examen": 1083,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "E145143018",
+    "nom": "Azoungde",
+    "prenom": "Siham",
+    "numero_examen": 1084,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "L137137292",
+    "nom": "Azzabi",
+    "prenom": "Yahya",
+    "numero_examen": 1085,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "R130171039",
+    "nom": "Baaiza",
+    "prenom": "Walid",
+    "numero_examen": 1086,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "M141041178",
+    "nom": "Baali",
+    "prenom": "Aya",
+    "numero_examen": 1087,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "M131329424",
+    "nom": "Baali",
+    "prenom": "Layla",
+    "numero_examen": 1088,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "G130579817",
+    "nom": "Babrame",
+    "prenom": "Abdelghfour",
+    "numero_examen": 1089,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "F130397816",
+    "nom": "Bachbache",
+    "prenom": "Hanae",
+    "numero_examen": 1090,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "M146069139",
+    "nom": "Baddour",
+    "prenom": "Amina",
+    "numero_examen": 1091,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "M134523884",
+    "nom": "Badi",
+    "prenom": "Salma",
+    "numero_examen": 1092,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "A333295300",
+    "nom": "Badiel",
+    "prenom": "Nebon Linus Martial",
+    "numero_examen": 1093,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "2392210006",
+    "nom": "Bado",
+    "prenom": "Yipene Ange Cenacle",
+    "numero_examen": 1094,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R130093708",
+    "nom": "Badr",
+    "prenom": "Tahir",
+    "numero_examen": 1095,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI"
+    ]
+  },
+  {
+    "id": "N136359926",
+    "nom": "Badri",
+    "prenom": "Aymane",
+    "numero_examen": 1096,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R131378589",
+    "nom": "Bahadou",
+    "prenom": "Salwa",
+    "numero_examen": 1097,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  },
+  {
+    "id": "R130103473",
+    "nom": "Bahloul",
+    "prenom": "Yassine",
+    "numero_examen": 1098,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL"
+    ]
+  },
+  {
+    "id": "D130083132",
+    "nom": "Baibi",
+    "prenom": "Fatima Zahra",
+    "numero_examen": 1099,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GMSI",
+      "GIL"
+    ]
+  },
+  {
+    "id": "B131072364",
+    "nom": "Baicha",
+    "prenom": "Mohamed",
+    "numero_examen": 1100,
+    "epreuve": "GM",
+    "filieres_reussies": [
+      "GIL",
+      "GMSI"
+    ]
+  }
+]

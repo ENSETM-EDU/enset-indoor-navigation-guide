@@ -43,6 +43,15 @@ const HomePage: React.FC = () => {
                   >
                     Concours ENSET 2025
                   </button>
+                  <button
+                    onClick={() => {
+                      navigate('/inscription-enset');
+                      setShowDropdown(false);
+                    }}
+                    className="w-full text-left px-4 py-3 hover:bg-blue-50 transition-colors duration-200 text-gray-700 font-medium"
+                  >
+                    Inscription ENSET 2025
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -118,6 +127,15 @@ const HomePage: React.FC = () => {
                         className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors duration-200"
                       >
                         Concours ENSET 2025
+                      </button>
+                      <button
+                        onClick={() => {
+                          navigate('/inscription-enset');
+                          setShowMobileMenu(false);
+                        }}
+                        className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors duration-200"
+                      >
+                        Inscription ENSET 2025
                       </button>
                     </div>
                   </div>
