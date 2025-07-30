@@ -172,8 +172,6 @@ const SensorVideoPage: React.FC = () => {
 
   // Device motion handler
   const handleDeviceMotion = useCallback((event: DeviceMotionEvent) => {
-    if (!sensorsEnabled) return;
-
     const acceleration = event.accelerationIncludingGravity;
     if (!acceleration) return;
 
@@ -186,19 +184,29 @@ const SensorVideoPage: React.FC = () => {
       (acceleration.z || 0) ** 2
     );
 
+    // Debug log every 2 seconds
+    if (now % 2000 < 100) {
+      console.log('Motion event:', { totalAcceleration, x: acceleration.x, y: acceleration.y, z: acceleration.z });
+    }
+
     if (totalAcceleration > SHAKE_THRESHOLD && now - lastShakeTime.current > SHAKE_DEBOUNCE) {
+      console.log('Shake detected!', totalAcceleration);
       lastShakeTime.current = now;
       toggleWalking();
       setSensorStatus('🔄 Secousse détectée - Toggle lecture');
     }
-  }, [sensorsEnabled]);
+  }, []);
 
   // Device orientation handler
   const handleDeviceOrientation = useCallback((event: DeviceOrientationEvent) => {
-    if (!sensorsEnabled) return;
-
     const beta = event.beta || 0; // Front/back tilt
     const gamma = event.gamma || 0; // Left/right tilt
+
+    // Debug log every 2 seconds
+    const now = Date.now();
+    if (now % 2000 < 100) {
+      console.log('Orientation event:', { beta, gamma });
+    }
 
     const video = videoRef.current;
     if (!video) return;
@@ -211,10 +219,12 @@ const SensorVideoPage: React.FC = () => {
       // Tilted forward - speed up
       newSpeed = 2;
       status = '⚡ Accélération (penché avant)';
+      console.log('Tilted forward, speeding up');
     } else if (beta < -TILT_THRESHOLD) {
       // Tilted backward - slow down
       newSpeed = 0.5;
       status = '🐌 Ralentissement (penché arrière)';
+      console.log('Tilted backward, slowing down');
     }
 
     if (newSpeed !== currentSpeed) {
@@ -225,32 +235,47 @@ const SensorVideoPage: React.FC = () => {
 
     // Control video seeking based on left/right tilt (gamma)
     if (Math.abs(gamma) > ROTATION_THRESHOLD) {
-      const now = Date.now();
       if (now - lastShakeTime.current > 500) { // Throttle seeking
         lastShakeTime.current = now;
         
         if (gamma > ROTATION_THRESHOLD) {
           // Tilted right - seek forward
+          console.log('Tilted right, seeking forward');
           video.currentTime = Math.min(video.duration, video.currentTime + SEEK_AMOUNT);
           setSensorStatus('⏩ Avance rapide (penché droite)');
         } else if (gamma < -ROTATION_THRESHOLD) {
           // Tilted left - seek backward
+          console.log('Tilted left, seeking backward');
           video.currentTime = Math.max(0, video.currentTime - SEEK_AMOUNT);
           setSensorStatus('⏪ Retour rapide (penché gauche)');
         }
       }
     }
-  }, [sensorsEnabled, currentSpeed]);
+  }, [currentSpeed]);
 
   // Request sensor permissions
   const requestSensorPermission = async () => {
     try {
       setSensorPermission('pending');
+      console.log('Requesting sensor permissions...');
       
+      // Check if we're on a mobile device
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (!isMobile) {
+        console.warn('Not on a mobile device');
+        setSensorPermission('denied');
+        setSensorStatus('❌ Capteurs non disponibles sur cet appareil');
+        return;
+      }
+
       // For iOS 13+, we need to request permission
       if (typeof (DeviceMotionEvent as any).requestPermission === 'function') {
+        console.log('iOS device detected, requesting permissions...');
         const motionPermission = await (DeviceMotionEvent as any).requestPermission();
         const orientationPermission = await (DeviceOrientationEvent as any).requestPermission();
+        
+        console.log('Motion permission:', motionPermission);
+        console.log('Orientation permission:', orientationPermission);
         
         if (motionPermission === 'granted' && orientationPermission === 'granted') {
           setSensorPermission('granted');
@@ -261,6 +286,7 @@ const SensorVideoPage: React.FC = () => {
         }
       } else {
         // For Android and older iOS versions
+        console.log('Android device or older iOS, enabling sensors directly...');
         setSensorPermission('granted');
         enableSensors();
       }
@@ -273,15 +299,40 @@ const SensorVideoPage: React.FC = () => {
 
   // Enable sensors
   const enableSensors = () => {
+    console.log('Enabling sensors...');
     setSensorsEnabled(true);
-    setSensorStatus('✅ Capteurs activés');
+    setSensorStatus('✅ Capteurs activés - Bougez votre téléphone !');
     
-    window.addEventListener('devicemotion', handleDeviceMotion);
-    window.addEventListener('deviceorientation', handleDeviceOrientation);
+    // Check if DeviceMotionEvent is available
+    if (typeof DeviceMotionEvent === 'undefined') {
+      console.error('DeviceMotionEvent not supported');
+      setSensorStatus('❌ DeviceMotionEvent non supporté');
+      return;
+    }
+
+    // Check if DeviceOrientationEvent is available
+    if (typeof DeviceOrientationEvent === 'undefined') {
+      console.error('DeviceOrientationEvent not supported');
+      setSensorStatus('❌ DeviceOrientationEvent non supporté');
+      return;
+    }
+
+    // Add event listeners
+    window.addEventListener('devicemotion', handleDeviceMotion, { passive: true });
+    window.addEventListener('deviceorientation', handleDeviceOrientation, { passive: true });
+    
+    console.log('Event listeners added for devicemotion and deviceorientation');
+    
+    // Test if sensors are working after a delay
+    setTimeout(() => {
+      console.log('Checking if sensors are responding...');
+      setSensorStatus('✅ Capteurs prêts - Testez en bougeant le téléphone');
+    }, 1000);
   };
 
   // Disable sensors
   const disableSensors = () => {
+    console.log('Disabling sensors...');
     setSensorsEnabled(false);
     setSensorStatus('⏸️ Capteurs désactivés');
     

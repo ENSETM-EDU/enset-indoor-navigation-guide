@@ -60,10 +60,42 @@ http://localhost:5173/sensor-navigate/Porte1ToAmphitheatre
 ## 5. Debugging
 
 Si les capteurs ne fonctionnent pas :
-1. Vérifiez que vous êtes sur un appareil mobile
-2. Assurez-vous que les permissions sont accordées
-3. Rechargez la page si nécessaire
-4. Consultez la console pour les erreurs
+
+### Étapes de Diagnostic
+1. **Ouvrez la console du navigateur** (F12 ou Inspecteur)
+2. **Vérifiez les logs** - vous devriez voir :
+   - "Requesting sensor permissions..."
+   - "iOS device detected..." ou "Android device..."
+   - "Enabling sensors..."
+   - "Event listeners added"
+   - Des logs périodiques des événements capteurs
+
+### Messages d'Erreur Courants
+- **"❌ Capteurs non disponibles sur cet appareil"** : Vous n'êtes pas sur un smartphone
+- **"❌ Permission refusée"** : L'utilisateur a refusé l'accès aux capteurs
+- **"❌ Erreur de permission"** : Problème technique avec les permissions
+
+### Tests de Fonctionnement
+1. **Vérifiez que vous êtes sur un appareil mobile**
+2. **Assurez-vous que les permissions sont accordées**
+3. **Regardez la console pour les logs d'événements** :
+   - Motion events : `{ totalAcceleration, x, y, z }`
+   - Orientation events : `{ beta, gamma }`
+4. **Rechargez la page si nécessaire**
+5. **Testez sur différents navigateurs** (Safari iOS, Chrome Android)
+
+### Logs de Debug Attendus
+```
+Requesting sensor permissions...
+iOS device detected, requesting permissions...
+Motion permission: granted
+Orientation permission: granted
+Enabling sensors...
+Event listeners added
+Checking if sensors are responding...
+Motion event: {totalAcceleration: 9.8, x: 0, y: 0, z: -9.8}
+Orientation event: {beta: 0, gamma: 0}
+```
 
 ## 6. Personnalisation
 

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Capteurs Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .sensor-data {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 100%;
+        }
+        button:disabled {
+            background: #ccc;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>Test des Capteurs de Mouvement</h1>
+    
+    <div id="status" class="status info">Cliquez sur "Tester les Capteurs" pour commencer</div>
+    
+    <button id="testBtn" onclick="testSensors()">Tester les Capteurs</button>
+    
+    <div class="sensor-data">
+        <h3>DeviceMotionEvent</h3>
+        <div id="motion-data">En attente...</div>
+    </div>
+    
+    <div class="sensor-data">
+        <h3>DeviceOrientationEvent</h3>
+        <div id="orientation-data">En attente...</div>
+    </div>
+    
+    <div class="sensor-data">
+        <h3>Informations Navigateur</h3>
+        <div id="browser-info"></div>
+    </div>
+
+    <script>
+        let motionActive = false;
+        let orientationActive = false;
+
+        // Afficher les informations du navigateur
+        document.getElementById('browser-info').innerHTML = `
+            <strong>User Agent:</strong> ${navigator.userAgent}<br>
+            <strong>DeviceMotionEvent:</strong> ${typeof DeviceMotionEvent !== 'undefined' ? '✅ Disponible' : '❌ Non disponible'}<br>
+            <strong>DeviceOrientationEvent:</strong> ${typeof DeviceOrientationEvent !== 'undefined' ? '✅ Disponible' : '❌ Non disponible'}<br>
+            <strong>DeviceMotion requestPermission:</strong> ${typeof DeviceMotionEvent?.requestPermission === 'function' ? '✅ Disponible (iOS)' : '❌ Non disponible'}<br>
+            <strong>Protocole:</strong> ${location.protocol}
+        `;
+
+        async function testSensors() {
+            const statusEl = document.getElementById('status');
+            const btnEl = document.getElementById('testBtn');
+            
+            btnEl.disabled = true;
+            statusEl.textContent = 'Test en cours...';
+            statusEl.className = 'status info';
+
+            try {
+                // Test DeviceMotionEvent
+                if (typeof DeviceMotionEvent !== 'undefined') {
+                    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+                        console.log('Requesting motion permission (iOS)...');
+                        const permission = await DeviceMotionEvent.requestPermission();
+                        if (permission === 'granted') {
+                            startMotionListening();
+                        } else {
+                            throw new Error('Permission motion refusée');
+                        }
+                    } else {
+                        console.log('Starting motion listening (Android/older iOS)...');
+                        startMotionListening();
+                    }
+                } else {
+                    throw new Error('DeviceMotionEvent non supporté');
+                }
+
+                // Test DeviceOrientationEvent
+                if (typeof DeviceOrientationEvent !== 'undefined') {
+                    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                        console.log('Requesting orientation permission (iOS)...');
+                        const permission = await DeviceOrientationEvent.requestPermission();
+                        if (permission === 'granted') {
+                            startOrientationListening();
+                        } else {
+                            throw new Error('Permission orientation refusée');
+                        }
+                    } else {
+                        console.log('Starting orientation listening (Android/older iOS)...');
+                        startOrientationListening();
+                    }
+                } else {
+                    throw new Error('DeviceOrientationEvent non supporté');
+                }
+
+                statusEl.textContent = '✅ Capteurs activés ! Bougez votre téléphone pour voir les données.';
+                statusEl.className = 'status success';
+
+            } catch (error) {
+                console.error('Erreur:', error);
+                statusEl.textContent = `❌ Erreur: ${error.message}`;
+                statusEl.className = 'status error';
+                btnEl.disabled = false;
+            }
+        }
+
+        function startMotionListening() {
+            window.addEventListener('devicemotion', handleMotion);
+            motionActive = true;
+        }
+
+        function startOrientationListening() {
+            window.addEventListener('deviceorientation', handleOrientation);
+            orientationActive = true;
+        }
+
+        function handleMotion(event) {
+            const acc = event.accelerationIncludingGravity;
+            if (!acc) return;
+
+            const total = Math.sqrt((acc.x || 0)**2 + (acc.y || 0)**2 + (acc.z || 0)**2);
+            
+            document.getElementById('motion-data').innerHTML = `
+                <strong>Accélération totale:</strong> ${total.toFixed(2)} m/s²<br>
+                <strong>X:</strong> ${(acc.x || 0).toFixed(2)} m/s²<br>
+                <strong>Y:</strong> ${(acc.y || 0).toFixed(2)} m/s²<br>
+                <strong>Z:</strong> ${(acc.z || 0).toFixed(2)} m/s²<br>
+                <em>Dernière mise à jour: ${new Date().toLocaleTimeString()}</em>
+            `;
+        }
+
+        function handleOrientation(event) {
+            const alpha = event.alpha || 0;
+            const beta = event.beta || 0;
+            const gamma = event.gamma || 0;
+            
+            document.getElementById('orientation-data').innerHTML = `
+                <strong>Alpha (Boussole):</strong> ${alpha.toFixed(1)}°<br>
+                <strong>Beta (Avant/Arrière):</strong> ${beta.toFixed(1)}°<br>
+                <strong>Gamma (Gauche/Droite):</strong> ${gamma.toFixed(1)}°<br>
+                <em>Dernière mise à jour: ${new Date().toLocaleTimeString()}</em>
+            `;
+        }
+    </script>
+</body>
+</html>
