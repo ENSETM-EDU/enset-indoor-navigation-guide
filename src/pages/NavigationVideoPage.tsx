@@ -8,8 +8,6 @@ import {
   MapPin, 
   Clock, 
   CheckCircle,
-  SkipBack,
-  SkipForward,
   Gauge
 } from 'lucide-react';
 import NavigationModal from '../components/NavigationModal';
@@ -81,15 +79,20 @@ const NavigationVideoPage: React.FC = () => {
   const [isWalking, setIsWalking] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [walkingPace, setWalkingPace] = useState('normale');
+  const [walkingPace, setWalkingPace] = useState('Marche normale');
   const [videoLoading, setVideoLoading] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
+  const [pressPosition, setPressPosition] = useState<{ x: number; y: number } | null>(null);
+  const [initialPressPosition, setInitialPressPosition] = useState<{ x: number; y: number } | null>(null);
 
   // Walking pace options
   const paceOptions: WalkingPace[] = [
+    { label: 'Marche très lente', icon: '🚶‍♂️', speed: 0.25 },
     { label: 'Marche lente', icon: '🚶‍♂️', speed: 0.5 },
     { label: 'Marche normale', icon: '🚶‍♂️', speed: 1 },
     { label: 'Marche rapide', icon: '🏃‍♂️', speed: 1.5 },
-    { label: 'Course légère', icon: '🏃‍♂️', speed: 2 }
+    { label: 'Course légère', icon: '🏃‍♂️', speed: 2 },
+    { label: 'Course rapide', icon: '🏃‍♂️', speed: 2.5 }
   ];
 
   useEffect(() => {
@@ -183,39 +186,62 @@ const NavigationVideoPage: React.FC = () => {
   }, [pathData]);
 
   // Video control functions
-  const toggleWalking = () => {
+  const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
+    e.preventDefault();
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    
+    setIsPressed(true);
+    setInitialPressPosition({ x: clientX, y: clientY });
+    setPressPosition({ x: clientX, y: clientY });
+    
+    // Démarrer la vidéo
     const video = videoRef.current;
-    if (!video) return;
-
-    if (isWalking) {
-      video.pause();
-      setIsWalking(false);
-    } else {
+    if (video) {
       video.play();
       setIsWalking(true);
     }
   };
 
-  const changePace = (pace: WalkingPace) => {
+  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
+    e.preventDefault();
+    if (!isPressed || !initialPressPosition) return;
+    
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    
+    setPressPosition({ x: clientX, y: clientY });
+    
+    // Calculer la différence verticale
+    const deltaY = initialPressPosition.y - clientY;
+    const sensitivity = 50; // Pixels de mouvement pour changer de vitesse
+    
+    // Déterminer la vitesse basée sur le mouvement vertical
+    let speedIndex = Math.floor(deltaY / sensitivity) + 2; // Index central = vitesse normale
+    speedIndex = Math.max(0, Math.min(paceOptions.length - 1, speedIndex));
+    
+    const selectedPace = paceOptions[speedIndex];
+    
+    // Appliquer la vitesse
     const video = videoRef.current;
-    if (!video) return;
-
-    video.playbackRate = pace.speed;
-    setWalkingPace(pace.label);
+    if (video) {
+      video.playbackRate = selectedPace.speed;
+      setWalkingPace(selectedPace.label);
+    }
   };
 
-  const seekBackward = () => {
+  const handleTouchEnd = (e: React.TouchEvent | React.MouseEvent) => {
+    e.preventDefault();
+    setIsPressed(false);
+    setInitialPressPosition(null);
+    setPressPosition(null);
+    
+    // Pauser la vidéo
     const video = videoRef.current;
-    if (!video) return;
-
-    video.currentTime = Math.max(0, video.currentTime - 10);
-  };
-
-  const seekForward = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.currentTime = Math.min(video.duration, video.currentTime + 10);
+    if (video) {
+      video.pause();
+      setIsWalking(false);
+    }
   };
 
   const restartVideo = () => {
@@ -223,8 +249,10 @@ const NavigationVideoPage: React.FC = () => {
     if (!video) return;
 
     video.currentTime = 0;
+    video.playbackRate = 1;
     setCurrentTime(0);
     setIsWalking(false);
+    setWalkingPace('Marche normale');
   };
 
   const startNavigation = () => {
@@ -314,7 +342,7 @@ const NavigationVideoPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="h-full flex flex-col overflow-hidden"
+          className="h-full flex flex-col overflow-hidden max-w-md mx-auto w-full"
         >
           <div className="px-4 py-2">
             <ProgressBar current={currentTime} total={duration} />
@@ -387,14 +415,14 @@ const NavigationVideoPage: React.FC = () => {
                     >
                       <div className="h-full relative overflow-hidden">
                         {videoLoading ? (
-                          <div className="w-full h-[67vh] flex items-center justify-center bg-gray-100">
+                          <div className="w-full h-[50vh] md:h-[55vh] flex items-center justify-center bg-gray-100">
                             <div className="w-8 h-8 border-4 border-blue-900 border-t-transparent rounded-full animate-spin"></div>
                           </div>
                         ) : (
                           <video
                             ref={videoRef}
                             src={videoUrl}
-                            className="w-full h-[67vh] object-cover"
+                            className="w-full h-[50vh] md:h-[55vh] object-cover"
                             playsInline
                             preload="metadata"
                             onError={(e) => {
@@ -414,68 +442,75 @@ const NavigationVideoPage: React.FC = () => {
 
               {!isVideoEnded && (
                 <div className="bg-white/80 backdrop-blur-sm rounded-b-3xl border border-t-0 border-gray-200/50 shadow-xl">
-                  <div className="p-4 space-y-4">
+                  <div className="p-4 space-y-3">
                     {/* Time and pace display */}
                     <div className="flex justify-between items-center text-sm text-gray-600">
                       <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
                       <div className="flex items-center space-x-1">
                         <Gauge className="w-4 h-4" />
                         <span>{walkingPace}</span>
+                        {isPressed && (
+                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Instructions */}
+                    <div className="text-center text-xs text-gray-500 bg-gray-50/80 rounded-lg p-2">
+                      <p className="font-medium mb-1">Instructions :</p>
+                      <div className="grid grid-cols-2 gap-1 text-left">
+                        <p>• Appuyer pour marcher</p>
+                        <p>• Relâcher pour s'arrêter</p>
+                        <p>• ↑ Accélérer</p>
+                        <p>• ↓ Ralentir</p>
                       </div>
                     </div>
 
                     {/* Main controls */}
-                    <div className="flex justify-between items-center gap-3">
-                      <button
-                        onClick={seekBackward}
-                        className="flex-1 button-secondary text-gray-700 px-4 py-3 rounded-xl font-medium flex items-center justify-center space-x-1"
-                      >
-                        <SkipBack className="w-5 h-5" />
-                        <span>Retour</span>
-                      </button>
-
-                      <button
-                        onClick={toggleWalking}
-                        className="flex-1 button-primary text-white px-4 py-3 rounded-xl font-medium flex items-center justify-center space-x-1"
-                      >
-                        {isWalking ? (
-                          <>
-                            <Pause className="w-5 h-5" />
-                            <span>Pause</span>
-                          </>
-                        ) : (
-                          <>
-                            <Play className="w-5 h-5" />
-                            <span>Marcher</span>
-                          </>
-                        )}
-                      </button>
-
-                      <button
-                        onClick={seekForward}
-                        className="flex-1 button-secondary text-gray-700 px-4 py-3 rounded-xl font-medium flex items-center justify-center space-x-1"
-                      >
-                        <span>Avancer</span>
-                        <SkipForward className="w-5 h-5" />
-                      </button>
-                    </div>
-
-                    {/* Pace control */}
-                    <div className="flex justify-center space-x-2">
-                      {paceOptions.map((pace) => (
+                    <div className="space-y-3">
+                      {/* Contrôle tactile principal */}
+                      <div className="flex justify-center">
                         <button
-                          key={pace.label}
-                          onClick={() => changePace(pace)}
-                          className={`px-3 py-2 rounded-lg text-xs font-medium flex items-center space-x-1 transition-colors ${
-                            walkingPace === pace.label
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          onTouchStart={handleTouchStart}
+                          onTouchMove={handleTouchMove}
+                          onTouchEnd={handleTouchEnd}
+                          onMouseDown={handleTouchStart}
+                          onMouseMove={isPressed ? handleTouchMove : undefined}
+                          onMouseUp={handleTouchEnd}
+                          onMouseLeave={handleTouchEnd}
+                          className={`w-36 h-36 md:w-40 md:h-40 rounded-full font-bold text-lg flex flex-col items-center justify-center space-y-1 transition-all duration-200 select-none ${
+                            isPressed
+                              ? 'bg-blue-700 text-white shadow-2xl scale-105'
+                              : 'bg-blue-600 text-white shadow-xl hover:bg-blue-700'
                           }`}
+                          style={{ touchAction: 'none' }}
                         >
-                          <span>{pace.icon}</span>
-                          <span>{pace.label}</span>
+                          {isWalking ? (
+                            <>
+                              <Pause className="w-6 h-6 md:w-8 md:h-8" />
+                              <span className="text-xs md:text-sm">En marche</span>
+                              <span className="text-xs opacity-80 text-center leading-tight">{walkingPace}</span>
+                            </>
+                          ) : (
+                            <>
+                              <Play className="w-6 h-6 md:w-8 md:h-8" />
+                              <span className="text-xs md:text-sm text-center leading-tight">Appuyer pour marcher</span>
+                              <span className="text-xs opacity-80">↑ ↓ Vitesse</span>
+                            </>
+                          )}
                         </button>
-                      ))}
+                      </div>
+
+                      {/* Bouton recommencer */}
+                      <div className="flex justify-center">
+                        <button
+                          onClick={restartVideo}
+                          className="button-secondary text-gray-700 px-6 py-2 rounded-xl font-medium flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm"
+                        >
+                          <RotateCcw className="w-4 h-4" />
+                          <span>Recommencer</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
