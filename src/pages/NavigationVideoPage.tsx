@@ -33,6 +33,39 @@ interface WalkingPace {
   speed: number;
 }
 
+// Helper function to get optimized video URL
+const getVideoUrl = (pathData: PathData) => {
+  // Check if it's already a full URL
+  if (pathData.videoPath.startsWith('http')) {
+    return pathData.videoPath;
+  }
+  
+  // For local files in public folder, ensure proper path
+  const videoPath = pathData.videoPath.startsWith('/') ? pathData.videoPath : `/${pathData.videoPath}`;
+  
+  // Return the path directly (React serves from public folder)
+  return videoPath;
+};
+
+// Helper function to get device-appropriate video quality
+const getOptimalVideoPath = (pathData: PathData) => {
+  const isMobile = window.innerWidth < 768;
+  const isTablet = window.innerWidth < 1024;
+  
+  // Try to use device-specific versions if they exist
+  if (isMobile && pathData.videoPath) {
+    const mobilePath = pathData.videoPath.replace('.mp4', '_mobile.mp4');
+    return getVideoUrl({ ...pathData, videoPath: mobilePath });
+  }
+  
+  if (isTablet && pathData.videoPath) {
+    const tabletPath = pathData.videoPath.replace('.mp4', '_tablet.mp4');
+    return getVideoUrl({ ...pathData, videoPath: tabletPath });
+  }
+  
+  return getVideoUrl(pathData);
+};
+
 const NavigationVideoPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -42,6 +75,7 @@ const NavigationVideoPage: React.FC = () => {
   const [pathData, setPathData] = useState<PathData | null>(null);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(true);
+  const [videoUrl, setVideoUrl] = useState<string>('');
   
   // Video playback states
   const [isWalking, setIsWalking] = useState(false);
@@ -83,6 +117,9 @@ const NavigationVideoPage: React.FC = () => {
 
         if (path) {
           setPathData(path);
+          // Set the optimal video URL based on device and available qualities
+          const optimalUrl = getOptimalVideoPath(path);
+          setVideoUrl(optimalUrl);
         } else {
           console.error('Parcours non trouvé');
         }
@@ -95,6 +132,13 @@ const NavigationVideoPage: React.FC = () => {
 
     loadPathData();
   }, [id, navigate]);
+
+  // Check video size for performance optimization
+  useEffect(() => {
+    if (videoUrl) {
+      checkVideoSize(videoUrl);
+    }
+  }, [videoUrl]);
 
   // Video event handlers
   useEffect(() => {
@@ -202,6 +246,22 @@ const NavigationVideoPage: React.FC = () => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  // Check if video file size is too large and suggest compression
+  const checkVideoSize = async (url: string) => {
+    try {
+      const response = await fetch(url, { method: 'HEAD' });
+      const contentLength = response.headers.get('content-length');
+      if (contentLength) {
+        const sizeMB = parseInt(contentLength) / (1024 * 1024);
+        if (sizeMB > 10) {
+          console.warn(`Video is ${sizeMB.toFixed(1)}MB. Consider compressing for better performance.`);
+        }
+      }
+    } catch (error) {
+      console.error('Error checking video size:', error);
+    }
   };
 
   const isVideoEnded = currentTime >= duration - 1 && duration > 0;
@@ -333,10 +393,17 @@ const NavigationVideoPage: React.FC = () => {
                         ) : (
                           <video
                             ref={videoRef}
-                            src={pathData.videoPath}
+                            src={videoUrl}
                             className="w-full h-[67vh] object-cover"
                             playsInline
                             preload="metadata"
+                            onError={(e) => {
+                              console.error('Video loading error:', e);
+                              // Fallback to original path if optimized version fails
+                              if (pathData && videoUrl !== pathData.videoPath) {
+                                setVideoUrl(pathData.videoPath);
+                              }
+                            }}
                           />
                         )}
                       </div>
