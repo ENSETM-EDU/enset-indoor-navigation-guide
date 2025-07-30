@@ -284,5 +284,18 @@
     "title": "Trajet vers la salle 6",
     "description": "Chemin à suivre pour accéder à la salle 6 depuis la porte 2.",
     "floor_level": 1
+  },
+  {
+    "id": "test",
+    "from": "Porte 2",
+    "to": "Salle 6",
+    "time": "3 min",
+    "steps": 19,
+    "path": "/photos-navigation/Porte2ToSalle6",
+    "videoPath": "/videos-navigation/test.mp4",
+    "title": "Trajet vers la salle 6",
+    "description": "Chemin à suivre pour accéder à la salle 6 depuis la porte 2.",
+    "floor_level": 1,
+    "duration": 40
   }
 ]

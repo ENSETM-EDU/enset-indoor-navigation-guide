@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import HomePage from './pages/HomePage';
 import NavigationPage from './pages/NavigationPage';
+import NavigationVideoPage from './pages/NavigationVideoPage';
 import EnsadPage from './pages/EnsadPage';
 import EnsetPage from './pages/EnsetPage';
 import ConcoursEnset from './pages/ConcoursEnset';
@@ -17,7 +18,7 @@ import './App.css';
 
 const AppContent = () => {
   const location = useLocation();
-  const isNotFoundPage = !['/', '/navigate', '/toilettes', '/mosquee', '/concours-enset', '/inscription-enset', '/ensad', '/enset', '/explorer', '/destination'].some(path => 
+  const isNotFoundPage = !['/', '/navigate', '/video-navigate', '/toilettes', '/mosquee', '/concours-enset', '/inscription-enset', '/ensad', '/enset', '/explorer', '/destination'].some(path => 
     location.pathname === path || location.pathname.startsWith(path + '/')
   );
 
@@ -33,6 +34,7 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/navigate/:id" element={<NavigationPage />} />
+          <Route path="/video-navigate/:id" element={<NavigationVideoPage />} />
           <Route path="/toilettes/:pointDepart" element={<ToilettesPage />} />
           <Route path="/mosquee/:pointDepart" element={<MosqueePage />} />
           <Route path="/concours-enset" element={<ConcoursEnset />} />
