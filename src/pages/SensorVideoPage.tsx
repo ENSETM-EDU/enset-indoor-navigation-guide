@@ -81,14 +81,21 @@ const SensorVideoPage: React.FC = () => {
   const [sensorStatus, setSensorStatus] = useState('Capteurs désactivés');
   
   // Sensor thresholds and settings
-  const TILT_THRESHOLD = 15; // degrees
-  const SHAKE_THRESHOLD = 15; // m/s²
-  const ROTATION_THRESHOLD = 30; // degrees
-  const SEEK_AMOUNT = 5; // seconds
+  const TILT_THRESHOLD = 10; // Réduit pour plus de sensibilité
+  const SHAKE_THRESHOLD = 12; // Réduit pour plus de sensibilité 
+  const ROTATION_THRESHOLD = 20; // Réduit pour plus de sensibilité
+  const SEEK_AMOUNT = 3; // Réduit pour des mouvements plus fins
   
   // Debounce for shake detection
   const lastShakeTime = useRef(0);
-  const SHAKE_DEBOUNCE = 1000; // 1 second
+  const lastOrientationTime = useRef(0);
+  const SHAKE_DEBOUNCE = 800; // Réduit pour plus de réactivité
+  const ORIENTATION_DEBOUNCE = 300;
+
+  // Variables pour calibrer l'orientation initiale
+  const initialBeta = useRef<number | null>(null);
+  const initialGamma = useRef<number | null>(null);
+  const calibrationSamples = useRef<{beta: number[], gamma: number[]}>({beta: [], gamma: []});
 
   useEffect(() => {
     const loadPathData = async () => {
@@ -170,125 +177,210 @@ const SensorVideoPage: React.FC = () => {
     };
   }, [pathData]);
 
-  // Device motion handler
-  const handleDeviceMotion = useCallback((event: DeviceMotionEvent) => {
-    const acceleration = event.accelerationIncludingGravity;
-    if (!acceleration) return;
-
-    const now = Date.now();
+  // Fonction pour calibrer l'orientation initiale
+  const calibrateOrientation = useCallback((beta: number, gamma: number) => {
+    const samples = calibrationSamples.current;
     
-    // Detect shake (sudden movement)
-    const totalAcceleration = Math.sqrt(
-      (acceleration.x || 0) ** 2 + 
-      (acceleration.y || 0) ** 2 + 
-      (acceleration.z || 0) ** 2
-    );
-
-    // Debug log every 2 seconds
-    if (now % 2000 < 100) {
-      console.log('Motion event:', { totalAcceleration, x: acceleration.x, y: acceleration.y, z: acceleration.z });
+    samples.beta.push(beta);
+    samples.gamma.push(gamma);
+    
+    // Garde seulement les 10 derniers échantillons
+    if (samples.beta.length > 10) {
+      samples.beta.shift();
+      samples.gamma.shift();
     }
-
-    if (totalAcceleration > SHAKE_THRESHOLD && now - lastShakeTime.current > SHAKE_DEBOUNCE) {
-      console.log('Shake detected!', totalAcceleration);
-      lastShakeTime.current = now;
-      toggleWalking();
-      setSensorStatus('🔄 Secousse détectée - Toggle lecture');
+    
+    // Calcule la moyenne pour avoir une position de référence stable
+    if (samples.beta.length >= 5) {
+      initialBeta.current = samples.beta.reduce((a, b) => a + b) / samples.beta.length;
+      initialGamma.current = samples.gamma.reduce((a, b) => a + b) / samples.gamma.length;
     }
   }, []);
 
-  // Device orientation handler
-  const handleDeviceOrientation = useCallback((event: DeviceOrientationEvent) => {
-    const beta = event.beta || 0; // Front/back tilt
-    const gamma = event.gamma || 0; // Left/right tilt
+  // Device motion handler - CORRIGÉ
+  const handleDeviceMotion = useCallback((event: DeviceMotionEvent) => {
+    if (!sensorsEnabled) return;
 
-    // Debug log every 2 seconds
+    const acceleration = event.accelerationIncludingGravity;
+    if (!acceleration || !acceleration.x || !acceleration.y || !acceleration.z) {
+      console.log('Pas de données d\'accélération disponibles');
+      return;
+    }
+
     const now = Date.now();
+    
+    // Calcule l'accélération totale
+    const totalAcceleration = Math.sqrt(
+      acceleration.x ** 2 + 
+      acceleration.y ** 2 + 
+      acceleration.z ** 2
+    );
+
+    // Log de debug moins fréquent
+    if (now % 3000 < 100) {
+      console.log('Motion détecté:', { 
+        totalAcceleration: totalAcceleration.toFixed(2), 
+        x: acceleration.x.toFixed(2), 
+        y: acceleration.y.toFixed(2), 
+        z: acceleration.z.toFixed(2) 
+      });
+    }
+
+    // Détection de secousse avec seuil ajusté
+    if (totalAcceleration > SHAKE_THRESHOLD && now - lastShakeTime.current > SHAKE_DEBOUNCE) {
+      console.log('Secousse détectée!', totalAcceleration.toFixed(2));
+      lastShakeTime.current = now;
+      toggleWalking();
+      setSensorStatus(`🔄 Secousse détectée (${totalAcceleration.toFixed(1)} m/s²)`);
+    }
+  }, [sensorsEnabled]);
+
+  // Device orientation handler - CORRIGÉ
+  const handleDeviceOrientation = useCallback((event: DeviceOrientationEvent) => {
+    if (!sensorsEnabled) return;
+
+    const beta = event.beta; // Front/back tilt (-180 à 180)
+    const gamma = event.gamma; // Left/right tilt (-90 à 90)
+
+    if (beta === null || gamma === null) {
+      console.log('Pas de données d\'orientation disponibles');
+      return;
+    }
+
+    const now = Date.now();
+
+    // Calibration initiale
+    if (initialBeta.current === null || initialGamma.current === null) {
+      calibrateOrientation(beta, gamma);
+      return;
+    }
+
+    // Calcule les différences par rapport à la position initiale
+    const deltaBeta = beta - initialBeta.current;
+    const deltaGamma = gamma - initialGamma.current;
+
+    // Log de debug moins fréquent
     if (now % 2000 < 100) {
-      console.log('Orientation event:', { beta, gamma });
+      console.log('Orientation:', { 
+        beta: beta.toFixed(1), 
+        gamma: gamma.toFixed(1),
+        deltaBeta: deltaBeta.toFixed(1),
+        deltaGamma: deltaGamma.toFixed(1)
+      });
     }
 
     const video = videoRef.current;
     if (!video) return;
 
-    // Control video speed based on front/back tilt (beta)
+    // Contrôle de la vitesse basé sur l'inclinaison avant/arrière
     let newSpeed = 1;
-    let status = 'Vitesse normale';
+    let status = 'Vitesse normale 🚶‍♂️';
 
-    if (beta > TILT_THRESHOLD) {
-      // Tilted forward - speed up
-      newSpeed = 2;
-      status = '⚡ Accélération (penché avant)';
-      console.log('Tilted forward, speeding up');
-    } else if (beta < -TILT_THRESHOLD) {
-      // Tilted backward - slow down
-      newSpeed = 0.5;
-      status = '🐌 Ralentissement (penché arrière)';
-      console.log('Tilted backward, slowing down');
+    if (deltaBeta > TILT_THRESHOLD) {
+      // Penché vers l'avant - accélère
+      const speedMultiplier = Math.min(2, 1 + (deltaBeta - TILT_THRESHOLD) / 30);
+      newSpeed = speedMultiplier;
+      status = `⚡ Accélération (${speedMultiplier.toFixed(1)}x)`;
+      console.log('Penché vers l\'avant, accélération:', speedMultiplier);
+    } else if (deltaBeta < -TILT_THRESHOLD) {
+      // Penché vers l'arrière - ralentit
+      const speedMultiplier = Math.max(0.25, 1 + deltaBeta / 30);
+      newSpeed = speedMultiplier;
+      status = `🐌 Ralentissement (${speedMultiplier.toFixed(1)}x)`;
+      console.log('Penché vers l\'arrière, ralentissement:', speedMultiplier);
     }
 
-    if (newSpeed !== currentSpeed) {
+    // Applique le changement de vitesse seulement si différent
+    if (Math.abs(newSpeed - currentSpeed) > 0.1) {
       video.playbackRate = newSpeed;
       setCurrentSpeed(newSpeed);
       setSensorStatus(status);
     }
 
-    // Control video seeking based on left/right tilt (gamma)
-    if (Math.abs(gamma) > ROTATION_THRESHOLD) {
-      if (now - lastShakeTime.current > 500) { // Throttle seeking
-        lastShakeTime.current = now;
+    // Contrôle de navigation basé sur l'inclinaison gauche/droite
+    if (now - lastOrientationTime.current > ORIENTATION_DEBOUNCE) {
+      if (Math.abs(deltaGamma) > ROTATION_THRESHOLD) {
+        lastOrientationTime.current = now;
         
-        if (gamma > ROTATION_THRESHOLD) {
-          // Tilted right - seek forward
-          console.log('Tilted right, seeking forward');
-          video.currentTime = Math.min(video.duration, video.currentTime + SEEK_AMOUNT);
-          setSensorStatus('⏩ Avance rapide (penché droite)');
-        } else if (gamma < -ROTATION_THRESHOLD) {
-          // Tilted left - seek backward
-          console.log('Tilted left, seeking backward');
-          video.currentTime = Math.max(0, video.currentTime - SEEK_AMOUNT);
-          setSensorStatus('⏪ Retour rapide (penché gauche)');
+        if (deltaGamma > ROTATION_THRESHOLD) {
+          // Incliné vers la droite - avance rapide
+          console.log('Incliné vers la droite, avance rapide');
+          const newTime = Math.min(video.duration, video.currentTime + SEEK_AMOUNT);
+          video.currentTime = newTime;
+          setSensorStatus(`⏩ Avance rapide (+${SEEK_AMOUNT}s)`);
+        } else if (deltaGamma < -ROTATION_THRESHOLD) {
+          // Incliné vers la gauche - recule
+          console.log('Incliné vers la gauche, recul');
+          const newTime = Math.max(0, video.currentTime - SEEK_AMOUNT);
+          video.currentTime = newTime;
+          setSensorStatus(`⏪ Retour rapide (-${SEEK_AMOUNT}s)`);
         }
       }
     }
-  }, [currentSpeed]);
+  }, [sensorsEnabled, currentSpeed, calibrateOrientation]);
 
-  // Request sensor permissions
+  // Request sensor permissions - AMÉLIORÉ
   const requestSensorPermission = async () => {
     try {
       setSensorPermission('pending');
-      console.log('Requesting sensor permissions...');
+      setSensorStatus('🔄 Demande de permission...');
+      console.log('Demande de permissions capteurs...');
       
-      // Check if we're on a mobile device
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      // Vérification du type d'appareil
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+      const isIOS = /iphone|ipad|ipod/i.test(userAgent);
+      
+      console.log('Type d\'appareil:', { isMobile, isIOS, userAgent });
+      
       if (!isMobile) {
-        console.warn('Not on a mobile device');
+        console.warn('Pas sur un appareil mobile');
         setSensorPermission('denied');
-        setSensorStatus('❌ Capteurs non disponibles sur cet appareil');
+        setSensorStatus('❌ Capteurs non disponibles (utilisez un téléphone)');
         return;
       }
 
-      // For iOS 13+, we need to request permission
-      if (typeof (DeviceMotionEvent as any).requestPermission === 'function') {
-        console.log('iOS device detected, requesting permissions...');
-        const motionPermission = await (DeviceMotionEvent as any).requestPermission();
-        const orientationPermission = await (DeviceOrientationEvent as any).requestPermission();
+      let permissionGranted = false;
+
+      // Pour iOS 13+
+      if (isIOS && typeof (DeviceMotionEvent as any).requestPermission === 'function') {
+        console.log('iOS détecté, demande de permissions...');
         
-        console.log('Motion permission:', motionPermission);
-        console.log('Orientation permission:', orientationPermission);
-        
-        if (motionPermission === 'granted' && orientationPermission === 'granted') {
-          setSensorPermission('granted');
-          enableSensors();
-        } else {
-          setSensorPermission('denied');
-          setSensorStatus('❌ Permission refusée');
+        try {
+          const motionPermission = await (DeviceMotionEvent as any).requestPermission();
+          console.log('Permission motion:', motionPermission);
+          
+          if (motionPermission === 'granted') {
+            permissionGranted = true;
+          }
+        } catch (error) {
+          console.error('Erreur permission motion:', error);
+        }
+
+        try {
+          if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
+            const orientationPermission = await (DeviceOrientationEvent as any).requestPermission();
+            console.log('Permission orientation:', orientationPermission);
+            
+            if (orientationPermission !== 'granted') {
+              permissionGranted = false;
+            }
+          }
+        } catch (error) {
+          console.error('Erreur permission orientation:', error);
         }
       } else {
-        // For Android and older iOS versions
-        console.log('Android device or older iOS, enabling sensors directly...');
+        // Pour Android et versions iOS plus anciennes
+        console.log('Android ou iOS ancien détecté');
+        permissionGranted = true;
+      }
+
+      if (permissionGranted) {
         setSensorPermission('granted');
         enableSensors();
+      } else {
+        setSensorPermission('denied');
+        setSensorStatus('❌ Permission refusée');
       }
     } catch (error) {
       console.error('Erreur lors de la demande de permission:', error);
@@ -297,49 +389,72 @@ const SensorVideoPage: React.FC = () => {
     }
   };
 
-  // Enable sensors
+  // Enable sensors - AMÉLIORÉ
   const enableSensors = () => {
-    console.log('Enabling sensors...');
+    console.log('Activation des capteurs...');
     setSensorsEnabled(true);
-    setSensorStatus('✅ Capteurs activés - Bougez votre téléphone !');
+    setSensorStatus('🔄 Initialisation des capteurs...');
     
-    // Check if DeviceMotionEvent is available
+    // Reset des valeurs de calibration
+    initialBeta.current = null;
+    initialGamma.current = null;
+    calibrationSamples.current = {beta: [], gamma: []};
+    
+    // Vérification de la disponibilité des APIs
     if (typeof DeviceMotionEvent === 'undefined') {
-      console.error('DeviceMotionEvent not supported');
+      console.error('DeviceMotionEvent non supporté');
       setSensorStatus('❌ DeviceMotionEvent non supporté');
       return;
     }
 
-    // Check if DeviceOrientationEvent is available
     if (typeof DeviceOrientationEvent === 'undefined') {
-      console.error('DeviceOrientationEvent not supported');
+      console.error('DeviceOrientationEvent non supporté');
       setSensorStatus('❌ DeviceOrientationEvent non supporté');
       return;
     }
 
-    // Add event listeners
-    window.addEventListener('devicemotion', handleDeviceMotion, { passive: true });
-    window.addEventListener('deviceorientation', handleDeviceOrientation, { passive: true });
-    
-    console.log('Event listeners added for devicemotion and deviceorientation');
-    
-    // Test if sensors are working after a delay
-    setTimeout(() => {
-      console.log('Checking if sensors are responding...');
-      setSensorStatus('✅ Capteurs prêts - Testez en bougeant le téléphone');
-    }, 1000);
+    // Ajout des événements avec options passives
+    try {
+      window.addEventListener('devicemotion', handleDeviceMotion, { passive: true });
+      window.addEventListener('deviceorientation', handleDeviceOrientation, { passive: true });
+      
+      console.log('Event listeners ajoutés');
+      setSensorStatus('🔄 Calibration en cours...');
+      
+      // Test de fonctionnement après un délai
+      setTimeout(() => {
+        if (initialBeta.current !== null && initialGamma.current !== null) {
+          setSensorStatus('✅ Capteurs actifs - Bougez votre téléphone !');
+        } else {
+          setSensorStatus('⚠️ Capteurs activés - En attente de mouvement...');
+        }
+      }, 2000);
+      
+    } catch (error) {
+      console.error('Erreur lors de l\'ajout des event listeners:', error);
+      setSensorStatus('❌ Erreur d\'activation');
+    }
   };
 
   // Disable sensors
   const disableSensors = () => {
-    console.log('Disabling sensors...');
+    console.log('Désactivation des capteurs...');
     setSensorsEnabled(false);
     setSensorStatus('⏸️ Capteurs désactivés');
     
-    window.removeEventListener('devicemotion', handleDeviceMotion);
-    window.removeEventListener('deviceorientation', handleDeviceOrientation);
+    try {
+      window.removeEventListener('devicemotion', handleDeviceMotion);
+      window.removeEventListener('deviceorientation', handleDeviceOrientation);
+    } catch (error) {
+      console.error('Erreur lors de la suppression des event listeners:', error);
+    }
     
-    // Reset video speed
+    // Reset des valeurs
+    initialBeta.current = null;
+    initialGamma.current = null;
+    calibrationSamples.current = {beta: [], gamma: []};
+    
+    // Reset de la vitesse vidéo
     const video = videoRef.current;
     if (video) {
       video.playbackRate = 1;
@@ -355,7 +470,7 @@ const SensorVideoPage: React.FC = () => {
   }, []);
 
   // Video control functions
-  const toggleWalking = () => {
+  const toggleWalking = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
 
@@ -363,10 +478,12 @@ const SensorVideoPage: React.FC = () => {
       video.pause();
       setIsWalking(false);
     } else {
-      video.play();
+      video.play().catch(error => {
+        console.error('Erreur lors de la lecture:', error);
+      });
       setIsWalking(true);
     }
-  };
+  }, [isWalking]);
 
   const restartVideo = () => {
     const video = videoRef.current;
@@ -375,6 +492,15 @@ const SensorVideoPage: React.FC = () => {
     video.currentTime = 0;
     setCurrentTime(0);
     setIsWalking(false);
+    
+    // Reset la calibration
+    initialBeta.current = null;
+    initialGamma.current = null;
+    calibrationSamples.current = {beta: [], gamma: []};
+    
+    if (sensorsEnabled) {
+      setSensorStatus('🔄 Recalibration...');
+    }
   };
 
   const startNavigation = () => {
@@ -484,14 +610,14 @@ const SensorVideoPage: React.FC = () => {
             </div>
 
             {/* Sensor status bar */}
-            <div className="absolute top-12 left-1/2 -translate-x-1/2 z-10 bg-blue-50/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-blue-200">
+            <div className="absolute top-12 left-1/2 -translate-x-1/2 z-10 bg-blue-50/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-blue-200 max-w-xs">
               <div className="flex items-center space-x-2 text-xs">
-                <Activity className="w-3 h-3 text-blue-600" />
-                <span className="text-blue-800">{sensorStatus}</span>
-                {sensorsEnabled && (
-                  <div className="flex items-center space-x-1">
+                <Activity className="w-3 h-3 text-blue-600 flex-shrink-0" />
+                <span className="text-blue-800 truncate">{sensorStatus}</span>
+                {sensorsEnabled && currentSpeed !== 1 && (
+                  <div className="flex items-center space-x-1 flex-shrink-0">
                     <span className="text-blue-600">{getSpeedIcon(currentSpeed)}</span>
-                    <span className="text-blue-700">{currentSpeed}x</span>
+                    <span className="text-blue-700">{currentSpeed.toFixed(1)}x</span>
                   </div>
                 )}
               </div>
@@ -574,7 +700,7 @@ const SensorVideoPage: React.FC = () => {
                       <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
                       <div className="flex items-center space-x-1">
                         <Gauge className="w-4 h-4" />
-                        <span>{getSpeedIcon(currentSpeed)} {currentSpeed}x</span>
+                        <span>{getSpeedIcon(currentSpeed)} {currentSpeed.toFixed(1)}x</span>
                       </div>
                     </div>
 
@@ -584,7 +710,7 @@ const SensorVideoPage: React.FC = () => {
                         <button
                           onClick={requestSensorPermission}
                           disabled={sensorPermission === 'pending'}
-                          className="w-full button-primary text-white px-4 py-3 rounded-xl font-medium flex items-center justify-center space-x-2"
+                          className="w-full button-primary text-white px-4 py-3 rounded-xl font-medium flex items-center justify-center space-x-2 disabled:opacity-50"
                         >
                           <Smartphone className="w-5 h-5" />
                           <span>
@@ -624,11 +750,12 @@ const SensorVideoPage: React.FC = () => {
                           <div className="flex items-start space-x-2">
                             <AlertTriangle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                             <div className="space-y-1">
-                              <p><strong>Instructions :</strong></p>
-                              <p>• Penchez vers l'avant pour accélérer ⚡</p>
+                              <p><strong>Instructions améliorées :</strong></p>
+                              <p>• Penchez vers l'avant pour accélérer ⚡ (Plus sensible)</p>
                               <p>• Penchez vers l'arrière pour ralentir 🐌</p>
-                              <p>• Inclinez à gauche/droite pour naviguer ⏪⏩</p>
-                              <p>• Secouez pour pause/lecture 🔄</p>
+                              <p>• Inclinez à gauche/droite pour naviguer ⏪⏩ (±3s)</p>
+                              <p>• Secouez pour pause/lecture 🔄 (Plus réactif)</p>
+                              <p>• <strong>Calibration automatique</strong> au démarrage</p>
                             </div>
                           </div>
                         </div>
@@ -636,9 +763,26 @@ const SensorVideoPage: React.FC = () => {
 
                       {sensorPermission === 'denied' && (
                         <div className="bg-red-50 rounded-xl p-3 text-xs text-red-800">
-                          <div className="flex items-center space-x-2">
-                            <AlertTriangle className="w-4 h-4 text-red-600" />
-                            <p>Permission refusée. Activez les capteurs dans les paramètres de votre navigateur.</p>
+                          <div className="flex items-start space-x-2">
+                            <AlertTriangle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
+                            <div>
+                              <p><strong>Permission refusée</strong></p>
+                              <p>• Rechargez la page et réessayez</p>
+                              <p>• Vérifiez les paramètres de votre navigateur</p>
+                              <p>• Utilisez un téléphone (pas un ordinateur)</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Debug info pour développement */}
+                      {sensorsEnabled && import.meta.env.NODE_ENV === 'development' && (
+                        <div className="bg-gray-50 rounded-xl p-3 text-xs text-gray-600">
+                          <div className="space-y-1">
+                            <p><strong>Debug Info:</strong></p>
+                            <p>Initial Beta: {initialBeta.current?.toFixed(1) || 'Non calibré'}</p>
+                            <p>Initial Gamma: {initialGamma.current?.toFixed(1) || 'Non calibré'}</p>
+                            <p>Vitesse actuelle: {currentSpeed.toFixed(2)}x</p>
                           </div>
                         </div>
                       )}
