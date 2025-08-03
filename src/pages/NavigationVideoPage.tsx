@@ -3,17 +3,15 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   RotateCcw, 
-  MapPin, 
-  Clock, 
+  MapPin,  
   CheckCircle,
   Gauge,
   ChevronUp,
   ChevronDown,
-  ChevronLeft,
-  ChevronRight
+  StepBack,
+  StepForward
 } from 'lucide-react';
 import NavigationModal from '../components/NavigationModal';
-import ProgressBar from '../components/ProgressBar';
 
 interface PathData {
   id: string;
@@ -24,7 +22,7 @@ interface PathData {
   path: string; // Keep for compatibility with NavigationModal
   title: string;
   description: string;
-  duration?: number; // Video duration in seconds
+  duration: number; // Video duration in seconds
 }
 
 interface WalkingPace {
@@ -73,7 +71,7 @@ const NavigationVideoPage: React.FC = () => {
     { label: 'Marche normale', speed: 1 },
     { label: 'Marche rapide', speed: 1.5 },
     { label: 'Course légère', speed: 2 },
-    { label: 'Course rapide', speed: 2.5 }
+    { label: 'Course rapide', speed: 4 }
   ];
 
   useEffect(() => {
@@ -303,27 +301,7 @@ const NavigationVideoPage: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="h-full flex flex-col relative"
         >
-          {/* Progress Bar - Fixed at top */}
-          <div className="absolute top-0 left-0 right-0 z-20 px-4 py-2 bg-gradient-to-b from-black/50 to-transparent">
-            <ProgressBar current={currentTime} total={duration} />
-          </div>
-
-          {/* Status Info - Fixed at top */}
-          <div className="absolute top-12 left-1/2 -translate-x-1/2 z-20 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-full text-white">
-            <div className="flex items-center justify-center space-x-3 text-sm">
-              <div className="flex items-center space-x-1">
-                <Clock className="w-4 h-4" />
-                <span>{pathData.time}</span>
-              </div>
-              {videoLoading && (
-                <div className="flex items-center space-x-1">
-                  <div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span className="text-xs">Chargement...</span>
-                </div>
-              )}
-            </div>
-          </div>
-
+          
           {/* Video Container - Full Screen */}
           <div className="flex-1 relative">
             <AnimatePresence mode="wait">
@@ -394,35 +372,17 @@ const NavigationVideoPage: React.FC = () => {
               {/* Speed Indicators */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 translate-y-32 pointer-events-none">
                 {/* Up arrows for speed increase */}
-                <div className="absolute -top-20 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1">
-                  <ChevronUp className={`w-4 h-4 ${walkingPace.includes('rapide') || walkingPace.includes('Course') ? 'text-green-400' : 'text-white/60'}`} />
-                  <ChevronUp className={`w-4 h-4 ${walkingPace.includes('rapide') || walkingPace.includes('Course') ? 'text-green-400' : 'text-white/60'}`} />
-                  <span className="text-xs text-white/60 font-medium">Accélérer</span>
+                <div className="absolute -top-24 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1">
+                  <ChevronUp className={`w-5 h-5 ${walkingPace.includes('rapide') || walkingPace.includes('Course') ? 'text-green-400' : 'text-white/80'}`} />
+                  <ChevronUp className={`w-5 h-5 ${walkingPace.includes('rapide') || walkingPace.includes('Course') ? 'text-green-400' : 'text-white/80'}`} />
+                  <span className="text-xs text-white/80 font-medium bg-black/30 px-2 py-1 rounded">Accélérer</span>
                 </div>
 
                 {/* Down arrows for speed decrease */}
-                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1">
-                  <span className="text-xs text-white/60 font-medium">Ralentir</span>
-                  <ChevronDown className={`w-4 h-4 ${walkingPace.includes('lente') ? 'text-yellow-400' : 'text-white/60'}`} />
-                  <ChevronDown className={`w-4 h-4 ${walkingPace.includes('lente') ? 'text-yellow-400' : 'text-white/60'}`} />
-                </div>
-
-                {/* Left arrows for seek backward */}
-                <div className="absolute top-1/2 -left-20 -translate-y-1/2 flex flex-col items-center space-y-1">
-                  <div className="flex items-center space-x-1">
-                    <ChevronLeft className="w-4 h-4 text-white/60" />
-                    <ChevronLeft className="w-4 h-4 text-white/60" />
-                  </div>
-                  <span className="text-xs text-white/60 font-medium">-3s</span>
-                </div>
-
-                {/* Right arrows for seek forward */}
-                <div className="absolute top-1/2 -right-20 -translate-y-1/2 flex flex-col items-center space-y-1">
-                  <div className="flex items-center space-x-1">
-                    <ChevronRight className="w-4 h-4 text-white/60" />
-                    <ChevronRight className="w-4 h-4 text-white/60" />
-                  </div>
-                  <span className="text-xs text-white/60 font-medium">+3s</span>
+                <div className="absolute -bottom-56 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1">
+                  <span className="text-xs text-white/80 font-medium bg-black/30 px-2 py-1 rounded">Ralentir</span>
+                  <ChevronDown className={`w-5 h-5 ${walkingPace.includes('lente') ? 'text-yellow-400' : 'text-white/80'}`} />
+                  <ChevronDown className={`w-5 h-5 ${walkingPace.includes('lente') ? 'text-yellow-400' : 'text-white/80'}`} />
                 </div>
               </div>
 
@@ -454,19 +414,19 @@ const NavigationVideoPage: React.FC = () => {
                 className="absolute top-1/2 left-4 w-20 h-20 -translate-y-1/2 pointer-events-auto rounded-full"
                 style={{ background: 'rgba(0,0,0,0.1)' }}
                 aria-label="Reculer de 3 secondes"
-              />
+              ><span className='text-white/80 font-bold flex items-center justify-center text-2xl'><StepBack className='inline-block' />-</span></button>
               <button
                 onClick={seekForward}
                 className="absolute top-1/2 right-4 w-20 h-20 -translate-y-1/2 pointer-events-auto rounded-full"
                 style={{ background: 'rgba(0,0,0,0.1)' }}
                 aria-label="Avancer de 3 secondes"
-              />
+              ><span className='text-white/80 font-bold flex items-center justify-center text-2xl'>+<StepForward className='inline-block' /></span></button>
             </div>
           )}
 
           {/* Bottom Status Bar */}
           {!isVideoEnded && (
-            <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent p-4">
+            <div className="absolute bottom-8 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent p-4">
               <div className="flex justify-between items-center text-white text-sm">
                 <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
                 <div className="flex items-center space-x-2">
@@ -479,7 +439,7 @@ const NavigationVideoPage: React.FC = () => {
               </div>
               
               {/* Restart button */}
-              <div className="flex justify-center mt-2">
+              <div className="flex justify-center mt-4">
                 <button
                   onClick={restartVideo}
                   className="text-white/80 hover:text-white px-4 py-2 rounded-lg font-medium flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm"
