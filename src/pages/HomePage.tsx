@@ -7,16 +7,16 @@ import { useNavigate } from 'react-router-dom';
 const pages = [
   { name: 'Concours Enset', route: '/concours-enset' },
   { name: 'Destination', route: '/destination' },
-  { name: 'Ensad', route: '/ensad' },
-  { name: 'Enset', route: '/enset' },
+  { name: 'Ensad', route: '/ensad/porte1' },
+  { name: 'Enset', route: '/enset/porte2' },
   { name: 'Explorer', route: '/explorer' },
   { name: 'Home', route: '/' },
   { name: 'Inscription Enset', route: '/inscription-enset' },
-  { name: 'Mosquee', route: '/mosquee' },
-  { name: 'Navigation', route: '/navigation' },
-  { name: 'Navigation Video', route: '/navigation-video' },
+  { name: 'Mosquee', route: '/mosquee/amphitheatre' },
+  { name: 'Navigation', route: '/navigation/Porte1ToAmphitheatre' },
+  { name: 'Navigation Video', route: '/navigation-video/test' },
   { name: 'Not Found', route: '/not-found' },
-  { name: 'Toilettes', route: '/toilettes' },
+  { name: 'Toilettes', route: '/toilettes/amphitheatre' },
 ];
 //
 const HomePage: React.FC = () => {
