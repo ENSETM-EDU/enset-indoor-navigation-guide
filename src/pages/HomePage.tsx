@@ -8,7 +8,7 @@ const pages = [
   { name: 'Concours Enset', route: '/concours-enset' },
   { name: 'Cérémonie Ensad', route: '/ensad/porte1' },
   { name: 'Cérémonie Enset', route: '/enset/porte2' },
-  { name: 'Explorer', route: '/explorer' },
+  { name: 'Exploration de l\'ENSET', route: '/explorer' },
   { name: 'Inscription Enset', route: '/inscription-enset' },
   { name: 'Navigation Video', route: '/video-navigate/test' },
   { name: 'Toilettes', route: '/toilettes/amphitheatre' },
@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate(page.route)}
-              className="button-primary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins w-full"
+              className="button-primary text-white px-8 py-4 rounded-2xl text-center font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins w-full"
             >
               <span>{page.name}</span>
             </motion.button>
