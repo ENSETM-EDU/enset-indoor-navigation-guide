@@ -18,7 +18,7 @@ const pages = [
   { name: 'Not Found', route: '/not-found' },
   { name: 'Toilettes', route: '/toilettes' },
 ];
-
+//
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
