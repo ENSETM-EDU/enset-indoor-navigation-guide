@@ -9,13 +9,10 @@ const pages = [
   { name: 'Cérémonie Ensad', route: '/ensad/porte1' },
   { name: 'Cérémonie Enset', route: '/enset/porte2' },
   { name: 'Explorer', route: '/explorer' },
-  { name: 'Home', route: '/' },
   { name: 'Inscription Enset', route: '/inscription-enset' },
-  { name: 'Mosquee', route: '/mosquee/amphitheatre' },
-  { name: 'Navigation', route: '/navigation/porte1ToAmphitheatre' },
   { name: 'Navigation Video', route: '/video-navigate/test' },
-  { name: 'Not Found', route: '/not-found' },
   { name: 'Toilettes', route: '/toilettes/amphitheatre' },
+  { name: 'Mosquee', route: '/mosquee/amphitheatre' },
 ];
 //
 const HomePage: React.FC = () => {
