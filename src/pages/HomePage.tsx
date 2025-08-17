@@ -56,9 +56,8 @@ const HomePage: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate(page.route)}
-              className="button-primary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins"
+              className="button-primary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins w-full"
             >
-              <GraduationCap className="w-6 h-6" />
               <span>{page.name}</span>
             </motion.button>
           ))}
