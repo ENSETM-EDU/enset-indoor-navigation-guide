@@ -13,8 +13,8 @@ const pages = [
   { name: 'Home', route: '/' },
   { name: 'Inscription Enset', route: '/inscription-enset' },
   { name: 'Mosquee', route: '/mosquee/amphitheatre' },
-  { name: 'Navigation', route: '/navigation/Porte1ToAmphitheatre' },
-  { name: 'Navigation Video', route: '/navigation-video/test' },
+  { name: 'Navigation', route: '/navigation/porte1ToAmphitheatre' },
+  { name: 'Navigation Video', route: '/video-navigate/test' },
   { name: 'Not Found', route: '/not-found' },
   { name: 'Toilettes', route: '/toilettes/amphitheatre' },
 ];
