@@ -6,9 +6,8 @@ import { useNavigate } from 'react-router-dom';
 // List of available pages with their routes and display names
 const pages = [
   { name: 'Concours Enset', route: '/concours-enset' },
-  { name: 'Destination', route: '/destination' },
-  { name: 'Ensad', route: '/ensad/porte1' },
-  { name: 'Enset', route: '/enset/porte2' },
+  { name: 'Cérémonie Ensad', route: '/ensad/porte1' },
+  { name: 'Cérémonie Enset', route: '/enset/porte2' },
   { name: 'Explorer', route: '/explorer' },
   { name: 'Home', route: '/' },
   { name: 'Inscription Enset', route: '/inscription-enset' },
@@ -48,29 +47,23 @@ const HomePage: React.FC = () => {
         >
           École Normale Supérieure de l'Enseignement Technique
         </motion.p>
-        
-        <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => navigate('/inscription-enset')}
-          className="button-primary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins"
-        >
-          <GraduationCap className="w-6 h-6" />
-          <span>Inscription ENSET 2025</span>
-        </motion.button>
+
+
         {/* List of all available pages as navigation options */}
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {pages.map((page) => (
-            <button
-              key={page.route}
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => navigate(page.route)}
-              className="bg-white border border-gray-200 hover:bg-blue-50 text-gray-800 px-6 py-3 rounded-xl shadow font-medium transition-colors duration-200 font-poppins"
+              className="button-primary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins"
             >
-              {page.name}
-            </button>
+              <GraduationCap className="w-6 h-6" />
+              <span>{page.name}</span>
+            </motion.button>
           ))}
         </div>
       </motion.div>
