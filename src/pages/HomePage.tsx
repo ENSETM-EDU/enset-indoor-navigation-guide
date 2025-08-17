@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 
 // List of available pages with their routes and display names
 const pages = [
-  { name: 'Concours Enset', route: '/concours-enset' },
-  { name: 'Cérémonie Ensad', route: '/ensad/porte1' },
-  { name: 'Cérémonie Enset', route: '/enset/porte2' },
+  { name: 'Concours ENSET', route: '/concours-enset' },
+  { name: 'Cérémonie ENSAD', route: '/ensad/porte1' },
+  { name: 'Cérémonie ENSET', route: '/enset/porte2' },
   { name: 'Exploration de l\'ENSET', route: '/explorer' },
-  { name: 'Inscription Enset', route: '/inscription-enset' },
-  { name: 'Navigation Video', route: '/video-navigate/test' },
+  { name: 'Inscription ENSET', route: '/inscription-enset' },
+  { name: 'Navigation Vidéo', route: '/video-navigate/test' },
   { name: 'Toilettes', route: '/toilettes/amphitheatre' },
-  { name: 'Mosquee', route: '/mosquee/amphitheatre' },
+  { name: 'Mosquée', route: '/mosquee/amphitheatre' },
 ];
 //
 const HomePage: React.FC = () => {
