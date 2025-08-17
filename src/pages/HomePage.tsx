@@ -3,6 +3,22 @@ import { motion } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
+// List of available pages with their routes and display names
+const pages = [
+  { name: 'Concours Enset', route: '/concours-enset' },
+  { name: 'Destination', route: '/destination' },
+  { name: 'Ensad', route: '/ensad' },
+  { name: 'Enset', route: '/enset' },
+  { name: 'Explorer', route: '/explorer' },
+  { name: 'Home', route: '/' },
+  { name: 'Inscription Enset', route: '/inscription-enset' },
+  { name: 'Mosquee', route: '/mosquee' },
+  { name: 'Navigation', route: '/navigation' },
+  { name: 'Navigation Video', route: '/navigation-video' },
+  { name: 'Not Found', route: '/not-found' },
+  { name: 'Toilettes', route: '/toilettes' },
+];
+
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
@@ -45,6 +61,18 @@ const HomePage: React.FC = () => {
           <GraduationCap className="w-6 h-6" />
           <span>Inscription ENSET 2025</span>
         </motion.button>
+        {/* List of all available pages as navigation options */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {pages.map((page) => (
+            <button
+              key={page.route}
+              onClick={() => navigate(page.route)}
+              className="bg-white border border-gray-200 hover:bg-blue-50 text-gray-800 px-6 py-3 rounded-xl shadow font-medium transition-colors duration-200 font-poppins"
+            >
+              {page.name}
+            </button>
+          ))}
+        </div>
       </motion.div>
     </div>
   );
