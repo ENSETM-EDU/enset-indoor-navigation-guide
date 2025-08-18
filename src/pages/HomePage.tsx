@@ -1,18 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-// List of available pages with their routes and display names
-const pages = [
-  { name: 'Concours ENSET', route: '/concours-enset' },
-  { name: 'Cérémonie ENSAD', route: '/ensad/porte1' },
-  { name: 'Cérémonie ENSET', route: '/enset/porte2' },
-  { name: 'Exploration de l\'ENSET', route: '/explorer' },
-  { name: 'Inscription ENSET', route: '/inscription-enset' },
-  { name: 'Navigation Vidéo', route: '/video-navigate/test' },
-  { name: 'Toilettes', route: '/toilettes/amphitheatre' },
-  { name: 'Mosquée', route: '/mosquee/amphitheatre' },
+// Main categories for organized navigation
+const categories = [
+  { 
+    name: 'Concours', 
+    route: '/concours', 
+    description: 'Accéder aux différents concours disponibles',
+    icon: '🎓'
+  },
+  { 
+    name: 'Cérémonies', 
+    route: '/ceremonie', 
+    description: 'Participer aux cérémonies organisées',
+    icon: '🎉'
+  },
+  { 
+    name: 'Services', 
+    route: '/services', 
+    description: 'Découvrir tous les services de l\'ENSET',
+    icon: '🏢'
+  },
 ];
 //
 const HomePage: React.FC = () => {
@@ -46,20 +55,23 @@ const HomePage: React.FC = () => {
         </motion.p>
 
 
-        {/* List of all available pages as navigation options */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {pages.map((page) => (
-            <motion.button
+        {/* Main categories navigation */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          {categories.map((category, index) => (
+            <motion.div
+              key={category.name}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.6 + index * 0.2 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => navigate(page.route)}
-              className="button-primary text-white px-8 py-4 rounded-2xl text-center font-semibold text-lg shadow-lg flex items-center space-x-3 mx-auto font-poppins w-full"
+              onClick={() => navigate(category.route)}
+              className="button-primary text-white p-8 rounded-2xl cursor-pointer shadow-lg font-poppins group"
             >
-              <span>{page.name}</span>
-            </motion.button>
+              <div className="text-4xl mb-4">{category.icon}</div>
+              <h3 className="text-2xl font-semibold mb-3">{category.name}</h3>
+              <p className="text-sm opacity-90 leading-relaxed">{category.description}</p>
+            </motion.div>
           ))}
         </div>
       </motion.div>

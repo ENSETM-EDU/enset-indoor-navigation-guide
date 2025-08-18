@@ -13,12 +13,16 @@ import MosqueePage from './pages/MosqueePage';
 import ExplorerPage from './pages/ExplorerPage';
 import DestinationPage from './pages/DestinationPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ConcoursPage from './pages/ConcoursPage';
+import CeremoniePage from './pages/CeremoniePage';
+import ServicesPage from './pages/ServicesPage';
+import IVotingPage from './pages/IVotingPage';
 import Header from './components/Header';
 import './App.css';
 
 const AppContent = () => {
   const location = useLocation();
-  const isNotFoundPage = !['/', '/navigate', '/video-navigate', '/toilettes', '/mosquee', '/concours-enset', '/inscription-enset', '/ensad', '/enset', '/explorer', '/destination'].some(path => 
+  const isNotFoundPage = !['/', '/navigate', '/video-navigate', '/toilettes', '/mosquee', '/concours-enset', '/inscription-enset', '/ensad', '/enset', '/explorer', '/destination', '/concours', '/ceremonie', '/services', '/i-voting'].some(path => 
     location.pathname === path || location.pathname.startsWith(path + '/')
   );
 
@@ -33,6 +37,10 @@ const AppContent = () => {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/concours" element={<ConcoursPage />} />
+          <Route path="/ceremonie" element={<CeremoniePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/i-voting" element={<IVotingPage />} />
           <Route path="/navigate/:id" element={<NavigationPage />} />
           <Route path="/video-navigate/:id" element={<NavigationVideoPage />} />
           <Route path="/toilettes/:pointDepart" element={<ToilettesPage />} />
