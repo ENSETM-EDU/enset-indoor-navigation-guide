@@ -1,7 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Camera, Upload, FileText, RefreshCw } from 'lucide-react';
+import { Camera, Upload, FileText, RefreshCw, Settings } from 'lucide-react';
 import Tesseract from 'tesseract.js';
+import { checkCameraPermission, createCameraConstraints, CameraPermissionStatus } from '../utils/cameraUtils';
+import CameraDiagnostic from './CameraDiagnostic';
 
 interface UserInfo {
   nom: string;
@@ -20,6 +22,8 @@ const IDCardScanner: React.FC<IDCardScannerProps> = ({ onScanComplete }) => {
   const [scannedImage, setScannedImage] = useState<string | null>(null);
   const [showCamera, setShowCamera] = useState(false);
   const [stream, setStream] = useState<MediaStream | null>(null);
+  const [cameraError, setCameraError] = useState<string | null>(null);
+  const [showDiagnostic, setShowDiagnostic] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -146,24 +150,70 @@ const IDCardScanner: React.FC<IDCardScannerProps> = ({ onScanComplete }) => {
   };
 
   const startCamera = async () => {
+    setCameraError(null);
+    
     try {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: { 
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
-          facingMode: 'environment' // Use back camera if available
-        }
-      });
+      // Check camera permission first
+      const permissionStatus: CameraPermissionStatus = await checkCameraPermission();
+      
+      if (!permissionStatus.isSupported) {
+        throw new Error('getUserMedia not supported');
+      }
+      
+      if (!permissionStatus.hasPermission && permissionStatus.error) {
+        setCameraError(permissionStatus.error);
+        alert(permissionStatus.error);
+        return;
+      }
+
+      // Get camera constraints
+      const constraints = createCameraConstraints('environment', { width: 1280, height: 720 });
+      
+      let mediaStream;
+      try {
+        // Try with back camera first
+        mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
+      } catch (backCameraError) {
+        console.warn('Back camera not available, trying front camera:', backCameraError);
+        // Fallback to front camera or any available camera
+        const fallbackConstraints = createCameraConstraints('user');
+        mediaStream = await navigator.mediaDevices.getUserMedia(fallbackConstraints);
+      }
       
       setStream(mediaStream);
       setShowCamera(true);
       
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
+        
+        // Wait for video to be ready
+        videoRef.current.addEventListener('loadedmetadata', () => {
+          if (videoRef.current) {
+            videoRef.current.play().catch(err => {
+              console.error('Error playing video:', err);
+              setCameraError('Erreur lors de la lecture de la vidéo.');
+            });
+          }
+        });
       }
     } catch (error) {
       console.error('Camera access error:', error);
-      alert('Impossible d\'accéder à la caméra. Veuillez vérifier les permissions.');
+      let errorMessage = 'Impossible d\'accéder à la caméra.';
+      
+      if (error instanceof Error) {
+        if (error.name === 'NotAllowedError') {
+          errorMessage = 'Accès à la caméra refusé. Veuillez autoriser l\'accès à la caméra dans les paramètres de votre navigateur.';
+        } else if (error.name === 'NotFoundError') {
+          errorMessage = 'Aucune caméra trouvée sur cet appareil.';
+        } else if (error.name === 'NotSupportedError' || error.message === 'getUserMedia not supported') {
+          errorMessage = 'Votre navigateur ne supporte pas l\'accès à la caméra.';
+        } else if (error.name === 'OverconstrainedError') {
+          errorMessage = 'La caméra ne peut pas satisfaire les contraintes demandées.';
+        }
+      }
+      
+      setCameraError(errorMessage);
+      alert(errorMessage);
     }
   };
 
@@ -175,16 +225,35 @@ const IDCardScanner: React.FC<IDCardScannerProps> = ({ onScanComplete }) => {
     setShowCamera(false);
   };
 
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, [stream]);
+
   const captureImage = () => {
     if (videoRef.current && canvasRef.current) {
       const video = videoRef.current;
       const canvas = canvasRef.current;
+      
+      // Check if video is ready and playing
+      if (video.readyState !== 4) { // HAVE_ENOUGH_DATA
+        alert('La vidéo n\'est pas encore prête. Veuillez attendre un moment.');
+        return;
+      }
+      
       const context = canvas.getContext('2d');
       
       if (context) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0);
+        // Set canvas dimensions to match video
+        canvas.width = video.videoWidth || video.offsetWidth;
+        canvas.height = video.videoHeight || video.offsetHeight;
+        
+        // Draw the current frame
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
         
         const imageData = canvas.toDataURL('image/jpeg', 0.8);
         setScannedImage(imageData);
@@ -251,9 +320,20 @@ const IDCardScanner: React.FC<IDCardScannerProps> = ({ onScanComplete }) => {
             ref={videoRef}
             autoPlay
             playsInline
+            muted
             className="w-full max-w-md mx-auto rounded-lg shadow-md"
+            onLoadedMetadata={() => {
+              console.log('Video metadata loaded');
+            }}
+            onError={(e) => {
+              console.error('Video error:', e);
+              alert('Erreur lors du chargement de la vidéo.');
+            }}
           />
           <canvas ref={canvasRef} className="hidden" />
+          
+          {/* Camera overlay for better UX */}
+          <div className="absolute inset-0 border-2 border-dashed border-blue-400 rounded-lg pointer-events-none" />
         </div>
 
         <div className="flex justify-center space-x-4">
@@ -331,6 +411,28 @@ const IDCardScanner: React.FC<IDCardScannerProps> = ({ onScanComplete }) => {
           <strong>Note:</strong> Assurez-vous que votre carte d'identité est bien éclairée et lisible pour un meilleur résultat OCR.
         </p>
       </div>
+
+      {cameraError && (
+        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-red-800">
+                <strong>Erreur caméra:</strong> {cameraError}
+              </p>
+            </div>
+            <button
+              onClick={() => setShowDiagnostic(true)}
+              className="text-red-600 hover:text-red-800 text-sm font-medium underline ml-4"
+            >
+              Diagnostic
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showDiagnostic && (
+        <CameraDiagnostic onClose={() => setShowDiagnostic(false)} />
+      )}
     </motion.div>
   );
 };

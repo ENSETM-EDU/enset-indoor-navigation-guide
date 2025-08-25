@@ -9,6 +9,7 @@ const ConcoursPage: React.FC = () => {
   const concoursOptions = [
     { name: 'Concours ENSET', route: '/concours-enset', description: 'Accéder au concours ENSET' },
     { name: 'Inscription ENSET 1er année', route: '/inscription-enset', description: 'Accéder à l\'inscription ENSET 1er année' },
+    { name: 'Contrôle de Présence', route: '/controle-presence', description: 'Système de contrôle de présence pour les examens' },
   ];
 
   return (
@@ -50,7 +51,7 @@ const ConcoursPage: React.FC = () => {
         </motion.p>
 
         {/* Concours options */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {concoursOptions.map((option, index) => (
             <motion.div
               key={option.name}

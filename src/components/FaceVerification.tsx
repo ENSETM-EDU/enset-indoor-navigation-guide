@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Camera, User, CheckCircle } from 'lucide-react';
+import { checkCameraPermission, createCameraConstraints, CameraPermissionStatus } from '../utils/cameraUtils';
+import CameraDiagnostic from './CameraDiagnostic';
 
 interface UserInfo {
   nom: string;
@@ -20,28 +22,67 @@ const FaceVerification: React.FC<FaceVerificationProps> = ({ userInfo, onVerific
   const [isVerified, setIsVerified] = useState(false);
   const [showCamera, setShowCamera] = useState(false);
   const [stream, setStream] = useState<MediaStream | null>(null);
+  const [cameraError, setCameraError] = useState<string | null>(null);
+  const [showDiagnostic, setShowDiagnostic] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const startCamera = async () => {
+    setCameraError(null);
+    
     try {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: { 
-          width: { ideal: 640 },
-          height: { ideal: 480 },
-          facingMode: 'user' // Use front camera for selfie
-        }
-      });
+      // Check camera permission first
+      const permissionStatus: CameraPermissionStatus = await checkCameraPermission();
+      
+      if (!permissionStatus.isSupported) {
+        throw new Error('getUserMedia not supported');
+      }
+      
+      if (!permissionStatus.hasPermission && permissionStatus.error) {
+        setCameraError(permissionStatus.error);
+        alert(permissionStatus.error);
+        return;
+      }
+
+      // Get camera constraints for front camera (selfie)
+      const constraints = createCameraConstraints('user', { width: 640, height: 480 });
+      
+      const mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
       
       setStream(mediaStream);
       setShowCamera(true);
       
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
+        
+        // Wait for video to be ready
+        videoRef.current.addEventListener('loadedmetadata', () => {
+          if (videoRef.current) {
+            videoRef.current.play().catch(err => {
+              console.error('Error playing video:', err);
+              setCameraError('Erreur lors de la lecture de la vidéo.');
+            });
+          }
+        });
       }
     } catch (error) {
       console.error('Camera access error:', error);
-      alert('Impossible d\'accéder à la caméra. Veuillez vérifier les permissions.');
+      let errorMessage = 'Impossible d\'accéder à la caméra.';
+      
+      if (error instanceof Error) {
+        if (error.name === 'NotAllowedError') {
+          errorMessage = 'Accès à la caméra refusé. Veuillez autoriser l\'accès à la caméra dans les paramètres de votre navigateur.';
+        } else if (error.name === 'NotFoundError') {
+          errorMessage = 'Aucune caméra trouvée sur cet appareil.';
+        } else if (error.name === 'NotSupportedError' || error.message === 'getUserMedia not supported') {
+          errorMessage = 'Votre navigateur ne supporte pas l\'accès à la caméra.';
+        } else if (error.name === 'OverconstrainedError') {
+          errorMessage = 'La caméra ne peut pas satisfaire les contraintes demandées.';
+        }
+      }
+      
+      setCameraError(errorMessage);
+      alert(errorMessage);
     }
   };
 
@@ -53,16 +94,36 @@ const FaceVerification: React.FC<FaceVerificationProps> = ({ userInfo, onVerific
     setShowCamera(false);
   };
 
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, [stream]);
+
   const captureImage = () => {
     if (videoRef.current && canvasRef.current) {
       const video = videoRef.current;
       const canvas = canvasRef.current;
+      
+      // Check if video is ready and playing
+      if (video.readyState !== 4) { // HAVE_ENOUGH_DATA
+        alert('La vidéo n\'est pas encore prête. Veuillez attendre un moment.');
+        return;
+      }
+      
       const context = canvas.getContext('2d');
       
       if (context) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0);
+        // Set canvas dimensions to match video
+        canvas.width = video.videoWidth || video.offsetWidth;
+        canvas.height = video.videoHeight || video.offsetHeight;
+        
+        // Draw the current frame (flip horizontally for selfie)
+        context.scale(-1, 1);
+        context.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
         
         const imageData = canvas.toDataURL('image/jpeg', 0.8);
         setCapturedImage(imageData);
@@ -72,7 +133,7 @@ const FaceVerification: React.FC<FaceVerificationProps> = ({ userInfo, onVerific
     }
   };
 
-  const performFaceVerification = (imageData: string) => {
+  const performFaceVerification = (_imageData: string) => {
     setIsVerifying(true);
     
     // Simulate face verification process
@@ -181,9 +242,21 @@ const FaceVerification: React.FC<FaceVerificationProps> = ({ userInfo, onVerific
             ref={videoRef}
             autoPlay
             playsInline
+            muted
             className="w-full max-w-md mx-auto rounded-lg shadow-md transform scale-x-[-1]"
+            onLoadedMetadata={() => {
+              console.log('Video metadata loaded');
+            }}
+            onError={(e) => {
+              console.error('Video error:', e);
+              alert('Erreur lors du chargement de la vidéo.');
+            }}
           />
           <canvas ref={canvasRef} className="hidden" />
+          
+          {/* Face detection overlay for better UX */}
+          <div className="absolute inset-0 border-2 border-dashed border-purple-400 rounded-lg pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-60 border-2 border-purple-500 rounded-full pointer-events-none opacity-50" />
         </div>
 
         <div className="flex justify-center space-x-4">
@@ -254,6 +327,28 @@ const FaceVerification: React.FC<FaceVerificationProps> = ({ userInfo, onVerific
           <strong>Note:</strong> Assurez-vous d'être dans un endroit bien éclairé et regardez directement la caméra.
         </p>
       </div>
+
+      {cameraError && (
+        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-red-800">
+                <strong>Erreur caméra:</strong> {cameraError}
+              </p>
+            </div>
+            <button
+              onClick={() => setShowDiagnostic(true)}
+              className="text-red-600 hover:text-red-800 text-sm font-medium underline ml-4"
+            >
+              Diagnostic
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showDiagnostic && (
+        <CameraDiagnostic onClose={() => setShowDiagnostic(false)} />
+      )}
     </motion.div>
   );
 };
